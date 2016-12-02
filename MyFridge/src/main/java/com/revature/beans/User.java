@@ -1,9 +1,26 @@
 package com.revature.beans;
 
-public class User {
+import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="USER_TABLE")
+public class User implements Serializable{
+
+	private static final long serialVersionUID = -4857119443710048796L;
+	
+	@Id //Tells the user that this is the primary key.
+	@Column(name="USER_ID")
 	private int user_id;
+	
+	@Column(name="USER_NAME")
 	private String user_name;
+	
+	@Column(name="PASS_WORD")
 	private String pass_word;
 	
 	public int getUser_id() {

@@ -1,15 +1,30 @@
 package com.revature.beans;
 
-import java.nio.file.Path;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Recipe { 
+@Entity
+@Table(name="RECIPE_ITEM_TABLE")
+public class Recipe {
 	
+	@Id
+	@Column(name="RECIPE_ID")
 	private int recipe_id;
+	
+	@Column(name="RECIPE_NAME")
 	private String recipe_name;
-	private String recipe_link;
-	private String recipe_details;
-	private Path recipe_img;
-	private String file_type;
+	
+	@Column(name="RECIPE_DESCRIPTION")
+	private String recipe_description;
+	
+	@Column(name="RECIPE_URL")
+	private String recipe_url;
+	
+	@Column(name="IMG_ID")
+	private int img_id;
+
 	public int getRecipe_id() {
 		return recipe_id;
 	}
@@ -22,40 +37,33 @@ public class Recipe {
 	public void setRecipe_name(String recipe_name) {
 		this.recipe_name = recipe_name;
 	}
-	public String getRecipe_link() {
-		return recipe_link;
+	public String getRecipe_description() {
+		return recipe_description;
 	}
-	public void setRecipe_link(String recipe_link) {
-		this.recipe_link = recipe_link;
+	public void setRecipe_description(String recipe_description) {
+		this.recipe_description = recipe_description;
 	}
-	public String getRecipe_details() {
-		return recipe_details;
+	public String getRecipe_url() {
+		return recipe_url;
 	}
-	public void setRecipe_details(String recipe_details) {
-		this.recipe_details = recipe_details;
+	public void setRecipe_url(String recipe_url) {
+		this.recipe_url = recipe_url;
 	}
-	public Path getRecipe_img() {
-		return recipe_img;
+	public int getImg_id() {
+		return img_id;
 	}
-	public void setRecipe_img(Path recipe_img) {
-		this.recipe_img = recipe_img;
-	}
-	public String getFile_type() {
-		return file_type;
-	}
-	public void setFile_type(String file_type) {
-		this.file_type = file_type;
+	public void setImg_id(int img_id) {
+		this.img_id = img_id;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((file_type == null) ? 0 : file_type.hashCode());
-		result = prime * result + ((recipe_details == null) ? 0 : recipe_details.hashCode());
+		result = prime * result + img_id;
+		result = prime * result + ((recipe_description == null) ? 0 : recipe_description.hashCode());
 		result = prime * result + recipe_id;
-		result = prime * result + ((recipe_img == null) ? 0 : recipe_img.hashCode());
-		result = prime * result + ((recipe_link == null) ? 0 : recipe_link.hashCode());
 		result = prime * result + ((recipe_name == null) ? 0 : recipe_name.hashCode());
+		result = prime * result + ((recipe_url == null) ? 0 : recipe_url.hashCode());
 		return result;
 	}
 	@Override
@@ -67,55 +75,42 @@ public class Recipe {
 		if (getClass() != obj.getClass())
 			return false;
 		Recipe other = (Recipe) obj;
-		if (file_type == null) {
-			if (other.file_type != null)
-				return false;
-		} else if (!file_type.equals(other.file_type))
+		if (img_id != other.img_id)
 			return false;
-		if (recipe_details == null) {
-			if (other.recipe_details != null)
+		if (recipe_description == null) {
+			if (other.recipe_description != null)
 				return false;
-		} else if (!recipe_details.equals(other.recipe_details))
+		} else if (!recipe_description.equals(other.recipe_description))
 			return false;
 		if (recipe_id != other.recipe_id)
-			return false;
-		if (recipe_img == null) {
-			if (other.recipe_img != null)
-				return false;
-		} else if (!recipe_img.equals(other.recipe_img))
-			return false;
-		if (recipe_link == null) {
-			if (other.recipe_link != null)
-				return false;
-		} else if (!recipe_link.equals(other.recipe_link))
 			return false;
 		if (recipe_name == null) {
 			if (other.recipe_name != null)
 				return false;
 		} else if (!recipe_name.equals(other.recipe_name))
 			return false;
+		if (recipe_url == null) {
+			if (other.recipe_url != null)
+				return false;
+		} else if (!recipe_url.equals(other.recipe_url))
+			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Recipe [recipe_id=" + recipe_id + ", recipe_name=" + recipe_name + ", recipe_link=" + recipe_link
-				+ ", recipe_details=" + recipe_details + ", recipe_img=" + recipe_img + ", file_type=" + file_type
-				+ "]";
+		return "Recipe [recipe_id=" + recipe_id + ", recipe_name=" + recipe_name + ", recipe_description="
+				+ recipe_description + ", recipe_url=" + recipe_url + ", img_id=" + img_id + "]";
 	}
-	public Recipe(int recipe_id, String recipe_name, String recipe_link, String recipe_details, Path recipe_img,
-			String file_type) {
+	public Recipe(int recipe_id, String recipe_name, String recipe_description, String recipe_url, int img_id) {
 		super();
 		this.recipe_id = recipe_id;
 		this.recipe_name = recipe_name;
-		this.recipe_link = recipe_link;
-		this.recipe_details = recipe_details;
-		this.recipe_img = recipe_img;
-		this.file_type = file_type;
+		this.recipe_description = recipe_description;
+		this.recipe_url = recipe_url;
+		this.img_id = img_id;
 	}
 	public Recipe() {
 		super();
 		// TODO Auto-generated constructor stub
-	} 
-	
-
+	}
 }
