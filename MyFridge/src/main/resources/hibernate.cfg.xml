@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Database Configuration -->
+		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</property>
+		
+		<property name="hibernate.connection.url">jdbc:oracle:thin:@wm2d-myfridge.cwsh3enqs3vk.us-west-2.rds.amazonaws.com:1521:ORCL</property>
+		<property name="hibernate.connection.username">wm2d</property>
+		<property name="hibernate.connection.password">p4ssw0rd</property>
+		<property name="hibernate.connection.pool_size">30</property>
+		
+		<property name="show_sql">true</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<!-- We have to tell hibernate where our classes it maps are -->
+		<mapping class="com.revature.beans.Item"/>
+		<mapping class="com.revature.beans.Recipe"/>
+		<mapping class="com.revature.beans.User"/>
+		
+		<!-- Example of an HBM FILE MAPPING -->
+		<!-- <mapping resource="myObject.hbm.xml"/> -->
+	</session-factory>
+</hibernate-configuration>

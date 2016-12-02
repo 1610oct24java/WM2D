@@ -33,5 +33,4 @@ public class HibernateUtil
 		sessionFactory.close();
 		super.finalize();
 	}
-	
 }
