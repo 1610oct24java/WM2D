@@ -1,8 +1,14 @@
 package com.revature.beans;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,7 +30,19 @@ public class Recipe {
 	
 	@Column(name="IMAGE_ID")
 	private int img_id;
+	
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(name="RECIPE_ITEM_TABLE", 
+				joinColumns=@JoinColumn(name="RECIPE_ID"),
+				inverseJoinColumns=@JoinColumn(name="ITEM_ID"))
+	private List<Item> items;
 
+	public List<Item> getItems() {
+		return items;
+	}
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
 	public int getRecipe_id() {
 		return recipe_id;
 	}
