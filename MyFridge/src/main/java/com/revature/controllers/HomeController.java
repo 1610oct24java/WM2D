@@ -10,11 +10,8 @@ public class HomeController
 	@RequestMapping(value="/home", method=RequestMethod.GET)
 	public String getHomepage()
 	{
-		return "home";
+		System.out.println("inside direction");
+		return "index";
 	}
-	@RequestMapping(value="/home", method=RequestMethod.POST)
-	public String getNotHomepage()
-	{
-		return "nothome";
-	}
+	
 }
