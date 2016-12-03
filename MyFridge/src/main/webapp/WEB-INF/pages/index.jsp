@@ -8,8 +8,8 @@
 <title>MyFridge-Login</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="css/style.css" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}css/style.css" rel="stylesheet" type="text/css">
+<link href="${pageContext.request.contextPath}css/bootstrap.css" rel="stylesheet" type="text/css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -63,7 +63,7 @@
 		</li>
 		<li>
 			
-			<div class="accordion-content"> <img src="images/doorTop.jpg" width="100%" height="100%" alt=""/>
+			<div class="accordion-content"> <img src="${pageContext.request.contextPath}images/doorTop.jpg" width="100%" height="100%" alt=""/>
             <div id="door_label">About</div>
             </div>
 			<div class="accordion-separator"></div>
@@ -87,14 +87,14 @@
 			<div class="accordion-separator"></div>
 		</li>
 		<li>
-			<div class="accordion-content"> <img src="images/doorBottom.jpg" width="100%" height="100%" alt=""/>
+			<div class="accordion-content"> <img src="${pageContext.request.contextPath}images/doorBottom.jpg" width="100%" height="100%" alt=""/>
             <div id="door_label">Contact Us</div>
             </div>
 			<div class="accordion-separator"></div>
 		</li>
 	</ul>
 </div>
-<script src="js/jquery-1.11.2.min.js" type="text/javascript"></script> 
-<script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}js/jquery-1.11.2.min.js" type="text/javascript"></script> 
+<script src="${pageContext.request.contextPath}js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>
