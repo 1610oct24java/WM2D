@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="RECIPE_ITEM_TABLE")
+@Table(name="RECIPE_TABLE")
 public class Recipe {
 	
 	@Id
@@ -22,7 +22,7 @@ public class Recipe {
 	@Column(name="RECIPE_URL")
 	private String recipe_url;
 	
-	@Column(name="IMG_ID")
+	@Column(name="IMAGE_ID")
 	private int img_id;
 
 	public int getRecipe_id() {

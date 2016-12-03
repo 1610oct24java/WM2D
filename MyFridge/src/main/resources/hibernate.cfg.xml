@@ -18,6 +18,7 @@
 		<mapping class="com.revature.beans.Item"/>
 		<mapping class="com.revature.beans.Recipe"/>
 		<mapping class="com.revature.beans.User"/>
+		<mapping class="com.revature.beans.UserItem"/>
 		
 		<!-- Example of an HBM FILE MAPPING -->
 		<!-- <mapping resource="myObject.hbm.xml"/> -->
