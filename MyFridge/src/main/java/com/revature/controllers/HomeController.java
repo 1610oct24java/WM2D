@@ -15,7 +15,7 @@ public class HomeController{
 	
 	@RequestMapping(value="/loginCreate", method=RequestMethod.POST)
 	public String loginCreate(){
-		String result;
+		String result = new String();
 		
 		
 		return result;
