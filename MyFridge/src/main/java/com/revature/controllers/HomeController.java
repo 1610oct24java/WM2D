@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController{
 	
-	@RequestMapping(value="/home", method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String getHomepage(){
 		System.out.println("inside direction");
 		return "index";
 	}
 	
-	@RequestMapping(value="/loginCreate", method=RequestMethod.POST)
+	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String loginCreate(){
 		String result = new String();
 		

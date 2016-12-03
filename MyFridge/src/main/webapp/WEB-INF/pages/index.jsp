@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+   
 <!doctype html>
 <html>
 <head>
@@ -30,19 +33,28 @@
             <form class="navbar-form navbar-left" role="search">
 				<button type="submit" class="btn btn-default">Logout</button>
 			</form>
-			<form class="navbar-form navbar-left" role="search">
+			<form:form action="login" method="POST" commandName="user" class="navbar-form navbar-left">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Username">
-                    <input type="text" class="form-control" placeholder="Password">
+	
+					<form:input path="username" class="form-control" placeholder="Username"/>
+      					<form:errors path="username" cssClass="alert alert-danger" element="div" />
+      					
+                    <form:password path="password" class="form-control" placeholder="Password"/>
+                    	<form:errors path="password" cssClass="alert alert-danger" element="div" />
 				</div>
-				<button type="submit" class="btn btn-default">Login</button>
+				<button type="submit" class="btn btn-default" value="login">Login</button>
                 <button type="submit" class="btn btn-default">Create User</button>
-			</form>
+			</form:form>
 		</div>
 		<!-- /.navbar-collapse --> 
 	</div>
 	<!-- /.container-fluid --> 
 </nav>
+
+<c:if test="${errorMessage != null}">
+	<div class="alert alert-danger">${errorMessage}</div>
+</c:if>
+
 <div class="accordion Fridge">
 	<ul>
 		<li>
