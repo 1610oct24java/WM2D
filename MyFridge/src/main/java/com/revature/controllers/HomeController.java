@@ -14,8 +14,9 @@ import com.revature.beans.User;
 public class HomeController{
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String getHomepage(){
-		System.out.println("inside direction");
+	public String getHomepage(ModelMap modelMap){
+		User user = new User();
+		modelMap.addAttribute("User", user);
 		return "index";
 	}
 	
