@@ -21,42 +21,21 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-			<a class="navbar-brand" href="#">Brand</a></div>
+			<a class="navbar-brand" href="#">WM2D</a></div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="topFixedNavbar1">
-			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">Link<span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Link</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-						<li class="divider"></li>
-						<li><a href="#">One more separated link</a></li>
-					</ul>
-				</li>
-			</ul>
+			
+            <form class="navbar-form navbar-left" role="search">
+				<button type="submit" class="btn btn-default">Logout</button>
+			</form>
 			<form class="navbar-form navbar-left" role="search">
 				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Search">
+					<input type="text" class="form-control" placeholder="Username">
+                    <input type="text" class="form-control" placeholder="Password"
 				</div>
-				<button type="submit" class="btn btn-default">Submit</button>
+				<button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" class="btn btn-default">Create User</button>
 			</form>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Link</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Action</a></li>
-						<li><a href="#">Another action</a></li>
-						<li><a href="#">Something else here</a></li>
-						<li class="divider"></li>
-						<li><a href="#">Separated link</a></li>
-					</ul>
-				</li>
-			</ul>
 		</div>
 		<!-- /.navbar-collapse --> 
 	</div>
@@ -65,55 +44,50 @@
 <div class="accordion Fridge">
 	<ul>
 		<li>
-			<input type="radio" name="select" class="accordion-select" checked />
-			<div class="accordion-title"> <span>SignIn</span> </div>
+			<input type="checkbox" name="select" class="accordion-select"  />
 			<div class="accordion-content">
 				<form>
 					<fieldset>
-						<legend>Username</legend>
-						<input type="text" name="username">
-						<legend>Password</legend>
-						<input type="password" name="password">
-						<br>
-						<input type="submit">
-						<input type="reset">
+						<legend>My Fridge</legend>
+						<div>
+                            This is where a basic app description will go
+                        
+                        </div>
+						
 					</fieldset>
 				</form>
 			</div>
 			<div class="accordion-separator"></div>
 		</li>
 		<li>
-			<div class="accordion-title"> <span>SignIn</span> </div>
-			<div class="accordion-content"> <img src="images/doorTop.jpg" width="100%" height="100%" alt=""/></div>
+			
+			<div class="accordion-content"> <img src="images/doorTop.jpg" width="100%" height="100%" alt=""/>
+            <div id="door_label">About</div>
+            </div>
 			<div class="accordion-separator"></div>
 		</li>
 	</ul>
 </div>
-<div class="accordion Fridge">
+<div class="accordion Fridge" id="bottom_door">
 	<ul>
 		<li>
-			<input type="radio" name="select" class="accordion-select" />
-			<div class="accordion-title"> <span>Register</span> </div>
+			<input type="checkbox" name="select" class="accordion-select"/>
+			
 			<div class="accordion-content">
 				<form>
 					<fieldset>
-						<legend>Username</legend>
-						<input type="text" name="username">
-						<legend>Password</legend>
-						<input type="password" name="password">
-						<legend>Confirm Password</legend>
-						<input type="password" name="password">
-						<br>
-						<input type="submit">
-						<input type="reset">
+						<div>
+                            NO! GO AWAY!
+                        </div>
 					</fieldset>
 				</form>
 			</div>
 			<div class="accordion-separator"></div>
 		</li>
 		<li>
-			<div class="accordion-title"> <span>Register</span> </div>
-			<div class="accordion-content"> <img src="images/doorBottom.jpg" width="100%" height="100%" alt=""/></div>
+			<div class="accordion-content"> <img src="images/doorBottom.jpg" width="100%" height="100%" alt=""/>
+            <div id="door_label">Contact Us</div>
+            </div>
 			<div class="accordion-separator"></div>
 		</li>
 	</ul>
