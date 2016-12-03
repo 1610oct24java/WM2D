@@ -35,8 +35,8 @@
 			</form>
 			<form:form action="login" method="POST" commandName="user" class="navbar-form navbar-left">
 				<div class="form-group">
-	
-					<form:input path="user_name" <%-- class="form-control" placeholder="Username" --%>/>
+					 <%-- class="form-control" placeholder="Username" --%>
+					<form:input path="user_name"/>
       					<form:errors path="user_name" cssClass="alert alert-danger" element="div" />
       					
                     <form:password path="pass_word" class="form-control" placeholder="Password"/>
