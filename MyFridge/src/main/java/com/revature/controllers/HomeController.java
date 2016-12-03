@@ -5,14 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HomeController
-{
+public class HomeController{
 	
 	@RequestMapping(value="/home", method=RequestMethod.GET)
-	public String getHomepage()
-	{
+	public String getHomepage(){
 		System.out.println("inside direction");
 		return "index";
+	}
+	
+	@RequestMapping(value="/loginCreate", method=RequestMethod.POST)
+	public String loginCreate(){
+		String result;
+		
+		
+		return result;
 	}
 	
 }
