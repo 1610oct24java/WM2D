@@ -27,12 +27,13 @@ public class HomeController{
 	}
 	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public String create(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
-		modelMap.addAttribute("User", user);
-		if (bindingResult.hasErrors()) {
-			return "index";
-		}
-		modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
-		return "index";
+		return IndexHelper.createUserHelp(user, bindingResult, modelMap);
+		//		modelMap.addAttribute("User", user);
+//		if (bindingResult.hasErrors()) {
+//			return "index";
+//		}
+//		modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
+//		return "index";
 	}
 	
 	

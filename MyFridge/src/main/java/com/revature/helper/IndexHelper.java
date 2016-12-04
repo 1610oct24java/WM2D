@@ -34,7 +34,7 @@ public class IndexHelper {
 		}
 	}
 	
-	public static String createUserHelp(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
+	public static String createUserHelp(User user, BindingResult bindingResult, ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
 			return "index";
