@@ -26,7 +26,7 @@ public class User implements Serializable{
     @Column(name="PASS_WORD")
     private String password;
     
-    @OneToMany(fetch=FetchType.EAGER, mappedBy="user_id")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy="user_id")
     private List<UserItem> items;
     public int getUserId() {
         return userId;
