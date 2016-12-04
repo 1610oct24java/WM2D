@@ -27,9 +27,11 @@ public class HomeController{
 			return "login";
 		}
 		
+		if (user.getUser_name()=="mike" && user.getPass_word()=="mike"){
+			return "success";
+		}
 		
-		
-		return "success";
+		return "login";
 	}
 	
 }
