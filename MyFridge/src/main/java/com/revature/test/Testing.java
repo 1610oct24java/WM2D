@@ -20,7 +20,7 @@ public class Testing {
 		UserDAO uDAO = new UserDAOimpl();
 		User user = new User();
 		
-		System.out.println(rDAO.getRecipe(5));
+		System.out.println(uDAO.getUser("Alpha", "Alpha"));
 		
 	}
 	

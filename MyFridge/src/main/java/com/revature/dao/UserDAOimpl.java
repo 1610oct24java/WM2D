@@ -21,10 +21,10 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public User getUser(String username, String password) {
 		Session session = hu.getSession();
-//		Criteria criteria;	
+
 		User user = (User) session.createCriteria(User.class)
-				.add(Restrictions.and(Restrictions.ilike("USER_NAME", username),
-						Restrictions.ilike("PASS_WORD", password)));
+				.add(Restrictions.and(Restrictions.eq("password", username),
+						Restrictions.eq("password", password))).uniqueResult();
 		return user;
 	}
 
