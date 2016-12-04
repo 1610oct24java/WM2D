@@ -37,23 +37,25 @@
       					<form:errors path="username" cssClass="alert alert-danger" element="div" />
       					
                     <form:password path="password" class="form-control" placeholder="Password"/>
-                    	<form:errors path="password" cssClass="alert alert-danger" element="div" />
+                    	<form:errors path="password" cssClass="alert alert-danger" element="div"  />
 				</div>
 				<button type="submit" class="btn btn-default">Login</button>
                 <button type="submit" class="btn btn-default" formaction="create">Create User</button>
 			</form:form>
 		<c:if test="${errorMessage != null}">
-			<p class="alert alert-danger">${errorMessage}</p>
+			<span class="alert alert-danger">${errorMessage}</span>
 		</c:if>	
+		<c:if test="${successMessage != null}">
+			<span class="alert alert-success">${successMessage}</span>
+		</c:if>
+		
 		</div>
 		<!-- /.navbar-collapse --> 
 	</div>
 	<!-- /.container-fluid --> 
 </nav>
 
-<c:if test="${successMessage != null}">
-	<div class="alert alert-success">${successMessage}</div>
-</c:if>
+
 
 <div class="accordion Fridge">
 	<ul>
