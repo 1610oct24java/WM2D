@@ -24,14 +24,16 @@ public class HomeController{
 	public String loginCreate(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		
 		if (bindingResult.hasErrors()) {
-			return "login1";
+			return "/";
 		}
 		
 		if (user.getUser_name()=="mike" && user.getPass_word()=="mike"){
 			return "success";
 		}
-		
-		return "login2";
+		else{
+			modelMap.addAttribute("errorMessage", "entered:"+user.getUser_name()+","+user.getPass_word());
+			return "/";
+		}
 	}
 	
 }
