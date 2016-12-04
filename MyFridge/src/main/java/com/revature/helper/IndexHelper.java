@@ -43,7 +43,7 @@ public class IndexHelper {
 		UserDAO uDao = new UserDAOimpl();
 		uDao.createUser(user);
 		modelMap.addAttribute("currentUser", user);
-		modelMap.addAttribute("errorMessage", "User created!");
+		modelMap.addAttribute("successMessage", "User created!");
 		return "index";
 	}
 }

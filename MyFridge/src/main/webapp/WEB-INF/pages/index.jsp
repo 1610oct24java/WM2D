@@ -45,14 +45,17 @@
 				<button type="submit" class="btn btn-default">Login</button>
                 <button type="submit" class="btn btn-default" formaction="create">Create User</button>
 			</form:form>
+		<c:if test="${errorMessage != null}">
+			<div class="alert alert-danger">${errorMessage}</div>
+		</c:if>	
 		</div>
 		<!-- /.navbar-collapse --> 
 	</div>
 	<!-- /.container-fluid --> 
 </nav>
 
-<c:if test="${errorMessage != null}">
-	<div class="alert alert-danger">${errorMessage}</div>
+<c:if test="${successMessage != null}">
+	<div class="alert alert-success">${successMessage}</div>
 </c:if>
 
 <div class="accordion Fridge">
