@@ -31,7 +31,7 @@ public class HomeController{
 			return "success";
 		}
 		else{
-			modelMap.addAttribute("errorMessage", "entered:"+user.getUser_name()+","+user.getPass_word());
+			modelMap.addAttribute("errorMessage", "you dun goofed");
 			return "index";
 		}
 	}
