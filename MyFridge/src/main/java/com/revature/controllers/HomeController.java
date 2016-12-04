@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.revature.beans.User;
 import com.revature.helper.IndexHelper;
@@ -22,18 +23,12 @@ public class HomeController{
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+	public String login(@Valid User user, BindingResult bindingResult, ModelMap modelMap){	
 		return IndexHelper.loginHelp(user, bindingResult, modelMap);
 	}
 	@RequestMapping(value="/create", method=RequestMethod.POST)
 	public String create(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		return IndexHelper.createUserHelp(user, bindingResult, modelMap);
-		//		modelMap.addAttribute("User", user);
-//		if (bindingResult.hasErrors()) {
-//			return "index";
-//		}
-//		modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
-//		return "index";
 	}
 	
 	

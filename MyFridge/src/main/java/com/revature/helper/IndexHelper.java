@@ -1,13 +1,15 @@
 package com.revature.helper;
 
-import javax.validation.Valid;
+
 
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOimpl;
+
 
 public class IndexHelper {
 
@@ -20,13 +22,11 @@ public class IndexHelper {
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage", "please enter a usermane or password");
 			return "index";
-		}
-		
+		}		
 		UserDAO uDao = new UserDAOimpl();
-		
 		User u = uDao.getUser(user.getUsername(), user.getPassword());
-		
 		if (u != null){
+			modelMap.addAttribute("currentUser", user);
 			return "success";
 		}
 		else{
@@ -42,7 +42,9 @@ public class IndexHelper {
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
-		uDao.createUser(user);;
+		uDao.createUser(user);
+		modelMap.addAttribute("currentUser", user);
+		modelMap.addAttribute("errorMessage", "User created!");
 		return "index";
 	}
 }
