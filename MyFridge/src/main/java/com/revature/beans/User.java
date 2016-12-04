@@ -1,12 +1,14 @@
 package com.revature.beans;
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 @Entity
@@ -14,15 +16,16 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class User implements Serializable{
     private static final long serialVersionUID = -4857119443710048796L;
     
-    @NotEmpty
     @Id //Tells the user that this is the primary key.
     @Column(name="USER_ID")
     private int userId;
     
-    @NotEmpty
+    @NotEmpty(message="Please enter a username")
+	@Size(min=4, max=20)
     @Column(name="USER_NAME")
     private String username;
     
+    @NotEmpty
     @Column(name="PASS_WORD")
     private String password;
     
