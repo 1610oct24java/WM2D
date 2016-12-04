@@ -43,7 +43,7 @@
                 <button type="submit" class="btn btn-default" formaction="create">Create User</button>
 			</form:form>
 		<c:if test="${errorMessage != null}">
-			<span class="alert alert-danger">${errorMessage}</span>
+			<p class="alert alert-danger">${errorMessage}</p>
 		</c:if>	
 		</div>
 		<!-- /.navbar-collapse --> 
