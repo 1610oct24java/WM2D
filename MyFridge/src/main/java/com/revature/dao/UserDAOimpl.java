@@ -20,6 +20,15 @@ public class UserDAOimpl implements UserDAO {
 	}
 
 	@Override
+	public User getUserByName(String username) {
+		Session session = hu.getSession();
+
+		User user = (User) session.createCriteria(User.class)
+				.add(Restrictions.eq("username", username)).uniqueResult();
+		return user;
+	}
+	
+	@Override
 	public User getUser(String username, String password) {
 		Session session = hu.getSession();
 

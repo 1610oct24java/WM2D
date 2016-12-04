@@ -41,6 +41,10 @@ public class IndexHelper {
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
+		if(uDao.getUserByName(user.getUsername()) != null) {
+			modelMap.addAttribute("errorMessage", "Username already exists");
+			return "index";
+		}
 		uDao.createUser(user);
 		modelMap.addAttribute("successMessage", "User created!!");
 		return "index";
