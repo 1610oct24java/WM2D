@@ -29,7 +29,7 @@ public class IndexHelper {
 			return "success";
 		}
 		else{
-			modelMap.addAttribute("errorMessage", "you dun goofed");
+			modelMap.addAttribute("errorMessage", "invalid username/password");
 			return "index";
 		}
 	}
@@ -37,6 +37,7 @@ public class IndexHelper {
 	public static String createUserHelp(User user, BindingResult bindingResult, ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", "please enter a usermane or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
