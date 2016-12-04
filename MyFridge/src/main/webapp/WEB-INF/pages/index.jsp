@@ -33,7 +33,7 @@
             <form class="navbar-form navbar-left" role="search">
 				<button type="submit" class="btn btn-default">Logout</button>
 			</form>
-			<form:form action="login" method="POST" commandName="user" class="navbar-form navbar-left">
+			<form:form action="login" method="POST" commandName="User" class="navbar-form navbar-left">
 				<div class="form-group">
 					 <%-- class="form-control" placeholder="Username" --%>
 					<form:input path="user_name"/>
