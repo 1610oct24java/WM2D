@@ -29,10 +29,7 @@
 			<a class="navbar-brand" href="#">WM2D</a></div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="topFixedNavbar1">
-			
-            <form class="navbar-form navbar-left" role="search">
-				<button type="submit" class="btn btn-default">Logout</button>
-			</form>
+		
 			<form:form action="login" method="POST" commandName="User" class="navbar-form navbar-left">
 				<div class="form-group">
 					 
@@ -46,7 +43,7 @@
                 <button type="submit" class="btn btn-default" formaction="create">Create User</button>
 			</form:form>
 		<c:if test="${errorMessage != null}">
-			<div class="alert alert-danger">${errorMessage}</div>
+			<span class="alert alert-danger">${errorMessage}</span>
 		</c:if>	
 		</div>
 		<!-- /.navbar-collapse --> 

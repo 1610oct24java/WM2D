@@ -30,6 +30,10 @@ public class HomeController{
 	public String create(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		return IndexHelper.createUserHelp(user, bindingResult, modelMap);
 	}
-	
+	@RequestMapping(value="/logout", method=RequestMethod.POST)
+	public String logout(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+		modelMap.clear();
+		return "/";
+	}
 	
 }

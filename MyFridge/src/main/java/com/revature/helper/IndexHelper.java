@@ -26,7 +26,7 @@ public class IndexHelper {
 		User u = uDao.getUser(user.getUsername(), user.getPassword());
 		if (u != null){
 			modelMap.addAttribute("currentUser", user);
-			return "success";
+			return "home";
 		}
 		else{
 			modelMap.addAttribute("errorMessage", "invalid username/password");
@@ -37,7 +37,7 @@ public class IndexHelper {
 	public static String createUserHelp(User user, BindingResult bindingResult, ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", "please enter a usermane or password");
+			modelMap.addAttribute("errorMessage", "please enter a username or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
