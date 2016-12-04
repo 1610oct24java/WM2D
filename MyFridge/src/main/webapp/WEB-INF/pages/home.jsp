@@ -10,7 +10,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
 <title>MyFridge | Home</title>
 </head>
-<body data-ng-app="" data-ng-init="currentUser = ${currentUser}">
+<body data-ng-app="">
 <!-- 	<fieldset> -->
 <!-- 		<legend>Name</legend> -->
 <!-- 		<!--  Set an input, then set to be the model for "name" --> -->
@@ -21,7 +21,7 @@
 		<!-- Access variable via expression  -->
 <!-- 		<p>Your name is: {{currentUser}}</p> -->
 <!-- 	</fieldset> -->
-	Test: {{currentUser}}
+	Test: ($location.search()).currentUser
 	<!-- <div>${currentUser}</div> -->
 	<form:form action="logout" method="POST"
 		class="navbar-form navbar-left">
