@@ -4,6 +4,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
 import com.revature.beans.User;
+import com.revature.dao.UserDAO;
+import com.revature.dao.UserDAOimpl;
 
 public class IndexHelper {
 
@@ -17,7 +19,11 @@ public class IndexHelper {
 			return "index";
 		}
 		
-		if (user.getUsername().equals("mike") && user.getPassword().equals("mike")){
+		UserDAO uDao = new UserDAOimpl();
+		
+		User u = uDao.getUser(user.getUsername(), user.getPassword());
+		
+		if (u != null){
 			return "success";
 		}
 		else{
