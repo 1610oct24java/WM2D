@@ -25,7 +25,7 @@ public class IndexHelper {
 		UserDAO uDao = new UserDAOimpl();
 		User u = uDao.getUser(user.getUsername(), user.getPassword());
 		if (u != null){
-			modelMap.addAttribute("currentUser", user);
+			modelMap.addAttribute("currentUser", u);
 			return "home";
 		}
 		else{
@@ -42,7 +42,6 @@ public class IndexHelper {
 		}
 		UserDAO uDao = new UserDAOimpl();
 		uDao.createUser(user);
-		modelMap.addAttribute("currentUser", user);
 		modelMap.addAttribute("successMessage", "User created!!");
 		return "index";
 	}
