@@ -1,7 +1,5 @@
 package com.revature.beans;
-
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,125 +8,131 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-
 @Entity
 @Table(name="RECIPE_TABLE")
 public class Recipe {
-	
-	@Id
-	@Column(name="RECIPE_ID")
-	private int recipe_id;
-	
-	@Column(name="RECIPE_NAME")
-	private String recipe_name;
-	
-	@Column(name="RECIPE_DESCRIPTION")
-	private String recipe_description;
-	
-	@Column(name="RECIPE_URL")
-	private String recipe_url;
-	
-	@Column(name="IMAGE_ID")
-	private int img_id;
-	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="RECIPE_ITEM_TABLE", 
-				joinColumns=@JoinColumn(name="RECIPE_ID"),
-				inverseJoinColumns=@JoinColumn(name="ITEM_ID"))
-	private List<Item> items;
-
-	public List<Item> getItems() {
-		return items;
-	}
-	public void setItems(List<Item> items) {
-		this.items = items;
-	}
-	public int getRecipe_id() {
-		return recipe_id;
-	}
-	public void setRecipe_id(int recipe_id) {
-		this.recipe_id = recipe_id;
-	}
-	public String getRecipe_name() {
-		return recipe_name;
-	}
-	public void setRecipe_name(String recipe_name) {
-		this.recipe_name = recipe_name;
-	}
-	public String getRecipe_description() {
-		return recipe_description;
-	}
-	public void setRecipe_description(String recipe_description) {
-		this.recipe_description = recipe_description;
-	}
-	public String getRecipe_url() {
-		return recipe_url;
-	}
-	public void setRecipe_url(String recipe_url) {
-		this.recipe_url = recipe_url;
-	}
-	public int getImg_id() {
-		return img_id;
-	}
-	public void setImg_id(int img_id) {
-		this.img_id = img_id;
-	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + img_id;
-		result = prime * result + ((recipe_description == null) ? 0 : recipe_description.hashCode());
-		result = prime * result + recipe_id;
-		result = prime * result + ((recipe_name == null) ? 0 : recipe_name.hashCode());
-		result = prime * result + ((recipe_url == null) ? 0 : recipe_url.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Recipe other = (Recipe) obj;
-		if (img_id != other.img_id)
-			return false;
-		if (recipe_description == null) {
-			if (other.recipe_description != null)
-				return false;
-		} else if (!recipe_description.equals(other.recipe_description))
-			return false;
-		if (recipe_id != other.recipe_id)
-			return false;
-		if (recipe_name == null) {
-			if (other.recipe_name != null)
-				return false;
-		} else if (!recipe_name.equals(other.recipe_name))
-			return false;
-		if (recipe_url == null) {
-			if (other.recipe_url != null)
-				return false;
-		} else if (!recipe_url.equals(other.recipe_url))
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Recipe [recipe_id=" + recipe_id + ", recipe_name=" + recipe_name + ", recipe_description="
-				+ recipe_description + ", recipe_url=" + recipe_url + ", img_id=" + img_id + "]";
-	}
-	public Recipe(int recipe_id, String recipe_name, String recipe_description, String recipe_url, int img_id) {
-		super();
-		this.recipe_id = recipe_id;
-		this.recipe_name = recipe_name;
-		this.recipe_description = recipe_description;
-		this.recipe_url = recipe_url;
-		this.img_id = img_id;
-	}
-	public Recipe() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    
+    @Id
+    @Column(name="RECIPE_ID")
+    private int recipeId;
+    
+    @Column(name="RECIPE_NAME")
+    private String recipeName;
+    
+    @Column(name="RECIPE_DESCRIPTION")
+    private String recipeDescription;
+    
+    @Column(name="RECIPE_URL")
+    private String recipeUrl;
+    
+    @Column(name="IMAGE_ID")
+    private int imgId;
+    
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="RECIPE_ITEM_TABLE", 
+                joinColumns=@JoinColumn(name="RECIPE_ID"),
+                inverseJoinColumns=@JoinColumn(name="ITEM_ID"))
+    private List<Item> items;
+    public List<Item> getItems() {
+        return items;
+    }
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+    public int getRecipeId() {
+        return recipeId;
+    }
+    public void setRecipeId(int recipeId) {
+        this.recipeId = recipeId;
+    }
+    public String getRecipeName() {
+        return recipeName;
+    }
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+    public String getRecipeDescription() {
+        return recipeDescription;
+    }
+    public void setRecipeDescription(String recipeDescription) {
+        this.recipeDescription = recipeDescription;
+    }
+    public String getRecipeUrl() {
+        return recipeUrl;
+    }
+    public void setRecipeUrl(String recipeUrl) {
+        this.recipeUrl = recipeUrl;
+    }
+    public int getImgId() {
+        return imgId;
+    }
+    public void setImgId(int imgId) {
+        this.imgId = imgId;
+    }
+    public Recipe(int recipeId, String recipeName, String recipeDescription, String recipeUrl, int imgId,
+            List<Item> items) {
+        super();
+        this.recipeId = recipeId;
+        this.recipeName = recipeName;
+        this.recipeDescription = recipeDescription;
+        this.recipeUrl = recipeUrl;
+        this.imgId = imgId;
+        this.items = items;
+    }
+    public Recipe() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    @Override
+    public String toString() {
+        return "Recipe [recipeId=" + recipeId + ", recipeName=" + recipeName + ", recipeDescription="
+                + recipeDescription + ", recipeUrl=" + recipeUrl + ", imgId=" + imgId + ", items=" + items + "]";
+    }
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + imgId;
+        result = prime * result + ((items == null) ? 0 : items.hashCode());
+        result = prime * result + ((recipeDescription == null) ? 0 : recipeDescription.hashCode());
+        result = prime * result + recipeId;
+        result = prime * result + ((recipeName == null) ? 0 : recipeName.hashCode());
+        result = prime * result + ((recipeUrl == null) ? 0 : recipeUrl.hashCode());
+        return result;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Recipe other = (Recipe) obj;
+        if (imgId != other.imgId)
+            return false;
+        if (items == null) {
+            if (other.items != null)
+                return false;
+        } else if (!items.equals(other.items))
+            return false;
+        if (recipeDescription == null) {
+            if (other.recipeDescription != null)
+                return false;
+        } else if (!recipeDescription.equals(other.recipeDescription))
+            return false;
+        if (recipeId != other.recipeId)
+            return false;
+        if (recipeName == null) {
+            if (other.recipeName != null)
+                return false;
+        } else if (!recipeName.equals(other.recipeName))
+            return false;
+        if (recipeUrl == null) {
+            if (other.recipeUrl != null)
+                return false;
+        } else if (!recipeUrl.equals(other.recipeUrl))
+            return false;
+        return true;
+    }
 }

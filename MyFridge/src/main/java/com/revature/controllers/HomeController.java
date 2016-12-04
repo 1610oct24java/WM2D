@@ -22,12 +22,12 @@ public class HomeController{
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String loginCreate(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
-		
+		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
 			return "index";
 		}
 		
-		if (user.getUser_name().equals("mike") && user.getPass_word().equals("mike")){
+		if (user.getUsername().equals("mike") && user.getPassword().equals("mike")){
 			return "success";
 		}
 		else{
