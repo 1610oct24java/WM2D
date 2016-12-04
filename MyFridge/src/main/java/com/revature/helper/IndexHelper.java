@@ -4,7 +4,6 @@ package com.revature.helper;
 
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
