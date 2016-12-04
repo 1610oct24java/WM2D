@@ -21,7 +21,7 @@ public class HomeController{
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String loginCreate(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+	public String login(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
 			return "index";
@@ -35,5 +35,15 @@ public class HomeController{
 			return "index";
 		}
 	}
+	@RequestMapping(value="/create", method=RequestMethod.POST)
+	public String create(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+		modelMap.addAttribute("User", user);
+		if (bindingResult.hasErrors()) {
+			return "index";
+		}
+			modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
+			return "index";
+	}
+	
 	
 }
