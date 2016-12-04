@@ -23,8 +23,8 @@ public class UserDAOimpl implements UserDAO {
 		Session session = hu.getSession();
 //		Criteria criteria;	
 		User user = (User) session.createCriteria(User.class)
-				.add(Restrictions.and(Restrictions.ilike("username", username),
-						Restrictions.ilike("password", password)));
+				.add(Restrictions.and(Restrictions.ilike("USER_NAME", username),
+						Restrictions.ilike("PASS_WORD", password)));
 		return user;
 	}
 
