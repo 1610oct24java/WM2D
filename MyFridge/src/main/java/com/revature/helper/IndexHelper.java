@@ -18,6 +18,7 @@ public class IndexHelper {
 	public static String loginHelp(User user, BindingResult bindingResult, ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
+			modelMap.addAttribute("errorMessage", "please enter a usermane or password");
 			return "index";
 		}
 		
