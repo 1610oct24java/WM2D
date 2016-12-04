@@ -42,8 +42,8 @@
                     <form:password path="password" class="form-control" placeholder="Password"/>
                     	<form:errors path="password" cssClass="alert alert-danger" element="div" />
 				</div>
-				<button type="submit" class="btn btn-default" value="login">Login</button>
-                <button type="submit" class="btn btn-default" value="create">Create User</button>
+				<button type="submit" class="btn btn-default">Login</button>
+                <button type="submit" class="btn btn-default" formaction="create">Create User</button>
 			</form:form>
 		</div>
 		<!-- /.navbar-collapse --> 
