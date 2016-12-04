@@ -33,13 +33,13 @@
             <form class="navbar-form navbar-left" role="search">
 				<button type="submit" class="btn btn-default">Logout</button>
 			</form>
-			<form:form action="login" method="POST" commandName="User" class="navbar-form navbar-left">
+			<form:form action="login" method="POST" commandName="User" class="navbar-form navbar-left" required>
 				<div class="form-group">
 					 
-					<form:input path="username" class="form-control" placeholder="Username"/>
+					<form:input path="username" class="form-control" placeholder="Username" />
       					<form:errors path="username" cssClass="alert alert-danger" element="div" />
       					
-                    <form:password path="password" class="form-control" placeholder="Password"/>
+                    <form:password path="password" class="form-control" placeholder="Password" />
                     	<form:errors path="password" cssClass="alert alert-danger" element="div" />
 				</div>
 				<button type="submit" class="btn btn-default">Login</button>
