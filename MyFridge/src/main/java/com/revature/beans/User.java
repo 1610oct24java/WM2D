@@ -1,25 +1,25 @@
 package com.revature.beans;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="USER_TABLE")
 public class User implements Serializable{
     private static final long serialVersionUID = -4857119443710048796L;
     
+    @NotEmpty
     @Id //Tells the user that this is the primary key.
     @Column(name="USER_ID")
     private int userId;
     
+    @NotEmpty
     @Column(name="USER_NAME")
     private String username;
     

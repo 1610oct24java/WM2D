@@ -41,7 +41,6 @@ public class IndexHelper {
 		}
 		UserDAO uDao = new UserDAOimpl();
 		uDao.createUser(user);;
-		modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
 		return "index";
 	}
 }
