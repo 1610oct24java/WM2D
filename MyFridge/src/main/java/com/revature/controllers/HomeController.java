@@ -33,7 +33,9 @@ public class HomeController{
 	@RequestMapping(value="/logout", method=RequestMethod.POST)
 	public String logout(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		modelMap.clear();
-		return "/";
+		user = new User();
+		modelMap.addAttribute("User", user);
+		return "index";
 	}
 	
 }
