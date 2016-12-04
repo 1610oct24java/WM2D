@@ -11,6 +11,8 @@
 </head>
 <body>
 	<div>${currentUser}</div>
-	<form:button type="submit" class="btn btn-default" formaction="logout">Logout</form:button>
+	<form:form action="logout" method="POST" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default" >Logout</button>
+	</form:form>
 </body>
 </html>
