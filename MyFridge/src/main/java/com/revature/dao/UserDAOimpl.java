@@ -1,9 +1,7 @@
 package com.revature.dao;
 
-import java.util.List;
-
-import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.User;
@@ -14,8 +12,11 @@ public class UserDAOimpl implements UserDAO {
 
 	@Override
 	public void createUser(User user) {
-		
-
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
 	}
 
 	@Override
@@ -32,6 +33,4 @@ public class UserDAOimpl implements UserDAO {
 		super();
 		hu = new HibernateUtil();
 	}
-	
-	
 }

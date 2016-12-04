@@ -1,5 +1,7 @@
 package com.revature.helper;
 
+import javax.validation.Valid;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 
@@ -32,5 +34,14 @@ public class IndexHelper {
 		}
 	}
 	
-	
+	public static String createUserHelp(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
+		modelMap.addAttribute("User", user);
+		if (bindingResult.hasErrors()) {
+			return "index";
+		}
+		UserDAO uDao = new UserDAOimpl();
+		uDao.createUser(user);;
+		modelMap.addAttribute("errorMessage", "tried to create(unprofessionally)");
+		return "index";
+	}
 }
