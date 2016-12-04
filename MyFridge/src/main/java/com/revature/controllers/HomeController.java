@@ -27,7 +27,7 @@ public class HomeController{
 			return "index";
 		}
 		
-		if (user.getUser_name()=="mike" && user.getPass_word()=="mike"){
+		if (user.getUser_name().equals("mike") && user.getPass_word().equals("mike")){
 			return "success";
 		}
 		else{
