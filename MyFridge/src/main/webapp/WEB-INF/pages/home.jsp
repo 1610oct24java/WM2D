@@ -25,6 +25,9 @@
 	<br>
 	<table id=table>
 		<tr ng-repeat="item in items">
+		<td>{{items.itemId}}</tr>
+		<td>{{items.itemDetails}}</td>
+		<td></td>
 	</table>
 	
 	
