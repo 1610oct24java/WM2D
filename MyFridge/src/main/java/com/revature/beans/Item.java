@@ -1,11 +1,8 @@
 package com.revature.beans;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name="ITEM_TABLE")
@@ -70,4 +67,10 @@ public class Item implements Serializable{
     public Item() {
         super();
     }   
+    
+    public String toJSON() {
+    	return "{\"itemId\" : \"" + itemId + "\","
+    			+ "\"itemName\" : \"" + itemName +"\""
+    			+ "}";
+    }
 }

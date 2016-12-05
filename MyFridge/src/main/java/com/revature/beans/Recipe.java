@@ -69,6 +69,17 @@ public class Recipe {
     public void setImgId(int imgId) {
         this.imgId = imgId;
     }
+    
+    public String toJSON() {
+    	return "{\"recipeId\" : \"" + recipeId + "\","
+    			+ "\"recipeName\" : \"" + recipeName + "\","
+    			+ "\"recipeDescription\" : \"" + recipeDescription + "\","
+    			+ "\"recipeUrl\" : \"" + recipeUrl + "\","
+    			+ "\"imgId\" : \"" + imgId + "\","
+    			+ "\"items\" : \"" + items +"\""
+    			+ "}";
+    }
+    
     public Recipe(int recipeId, String recipeName, String recipeDescription, String recipeUrl, int imgId,
             List<Item> items) {
         super();

@@ -98,4 +98,16 @@ public class UserItem {
         this.measureType = measureType;
         this.itemDetails = itemDetails;
     }
+    
+    public String toJSON() {
+    	return "{userItemId : " + userItemId + "\","
+    			+ "\"userId\" : \"" + userId + "\","
+    			+ "\"itemId\" : \"" + itemId + "\","
+    			+ "\"itemStatus\" : \"" + itemStatus + "\","
+    			+ "\"measureAmount\" : \"" + measureAmount + "\","
+    			+ "\"expirationDate\" : \"" + expirationDate + "\","
+    			+ "\"measureType\" : \"" + measureType + "\","
+    			+ "\"itemDetails\" : \"" + itemDetails + "\""
+    			+ "}";
+    }
 }
