@@ -14,7 +14,8 @@ app.controller('myController', function($scope, $http) {
 	$http
 	.post("getItems")
     .then(function(response) {
-    	console.log(response);
+    	console.log(response.data);
+    	$scope.items = response.data.items
     });	   
 });
 

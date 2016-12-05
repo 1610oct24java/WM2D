@@ -11,19 +11,6 @@
 <title>MyFridge | Home</title>
 </head>
 <body data-ng-app="myApp" ng-controller="myController">
-<!-- 	<fieldset> -->
-<!-- 		<legend>Name</legend> -->
-<!-- 		<!--  Set an input, then set to be the model for "name" --> -->
-<!-- 		<input type="text" data-ng-model="currentUser" -->
-<!-- 			placeholder="{{currentUser}}"> -->
-<!-- 		<!-- Access variable via directive  --> -->
-<!-- 		<p data-ng-bind="currentUser"></p> -->
-		<!-- Access variable via expression  -->
-<!-- 		<p>Your name is: {{currentUser}}</p> -->
-<!-- 	</fieldset> -->
-	Test: ($location.search()).currentUser
-	USER: ${currentUser}
-	<br>JSON: ${UserJSON}
 	
 	<input type="hidden" id="test" name="x" value="${UserJSON}"> 
 	
@@ -36,7 +23,9 @@
 	<br>
 	<br>
 	<br>
-	<table id=table></table>
+	<table id=table>
+		<tr ng-repeat="item in items">
+	</table>
 	
 	
 	
