@@ -34,6 +34,16 @@
     <p>Search Query: {{ searchFish }}</p>
   </div>
 	<br>
+  <form>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon"><i class="fa fa-search"></i></div>
+
+        <input type="text" class="form-control" placeholder="Search Items" data-ng-model="searchItems">
+
+      </div>      
+    </div>
+  </form>
 	<h1>Table!</h1>
 	<table id=table class="table table-bordered table-striped">
 	<thead>
