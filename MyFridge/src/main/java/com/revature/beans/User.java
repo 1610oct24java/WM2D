@@ -29,7 +29,7 @@ public class User implements Serializable{
     @Column(name="PASS_WORD")
     private String password;
     
-    @OneToMany(fetch=FetchType.LAZY, mappedBy="userId")
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="userId")
     private List<UserItem> items;
     public int getUserId() {
         return userId;

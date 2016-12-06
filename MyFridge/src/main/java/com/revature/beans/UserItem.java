@@ -1,4 +1,7 @@
 package com.revature.beans;
+
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,7 +14,7 @@ import javax.persistence.Table;
 // @AssociationOverride(name="primaryKey.item",
 // joinColumns = @JoinColumn(name="ITEM_ID"))
 // })
-public class UserItem {
+public class UserItem implements Serializable {
     @Id
     @Column(name = "USER_ITEM_ID")
     private int userItemId;
