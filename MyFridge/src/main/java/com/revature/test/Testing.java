@@ -1,3 +1,4 @@
+
 package com.revature.test;
 
 import com.revature.beans.Recipe;
@@ -7,14 +8,26 @@ import com.revature.dao.RecipeDAOimpl;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOimpl;
 
+/**
+ * The Class Testing.
+ */
 public class Testing {
 	
+	/**
+	 * Instantiates a new testing.
+	 */
 	public Testing() {
-		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
 	public static void main(String[] args) {
-		//inserts recipe
+		
+		// inserts recipe
 		RecipeDAO rDAO = new RecipeDAOimpl();
 		Recipe recipe = new Recipe();
 		UserDAO uDAO = new UserDAOimpl();
@@ -24,7 +37,11 @@ public class Testing {
 		
 	}
 	
-	public void finalize(){
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#finalize()
+	 */
+	public void finalize() {
 		
 	}
 	
