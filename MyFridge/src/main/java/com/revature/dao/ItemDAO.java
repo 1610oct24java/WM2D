@@ -1,9 +1,27 @@
+
 package com.revature.dao;
 
 import com.revature.beans.Item;
 
+/**
+ * The Interface ItemDAO.
+ */
 public interface ItemDAO {
-	Item getItem();
-	void insertItem(Item item);
 	
+	/**
+	 * Gets the item.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the item
+	 */
+	Item getItem(int id);
+	
+	/**
+	 * Insert item.
+	 *
+	 * @param item
+	 *            the item
+	 */
+	void insertItem(Item item);
 }

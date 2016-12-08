@@ -1,25 +1,48 @@
+
 package com.revature.helper;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.revature.beans.User;
 import com.revature.dao.UserDAO;
 import com.revature.dao.UserDAOimpl;
 
+/**
+ * The Class IndexHelper.
+ */
 public class IndexHelper {
-
+	
+	/**
+	 * Instantiates a new index helper.
+	 */
 	public IndexHelper() {
-
+		
 	}
-
-	public static String loginHelp(User user, BindingResult bindingResult, ModelMap modelMap, HttpServletRequest request) {
+	
+	/**
+	 * Login help.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @return the string
+	 */
+	public static String loginHelp(User user, BindingResult bindingResult,
+			ModelMap modelMap, HttpServletRequest request) {
+		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", "please enter a usermane or password");
+			modelMap.addAttribute(
+					"errorMessage",
+					"please enter a usermane or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
@@ -33,11 +56,26 @@ public class IndexHelper {
 			return "index";
 		}
 	}
-
-	public static String createUserHelp(User user, BindingResult bindingResult, ModelMap modelMap) {
+	
+	/**
+	 * Creates the user help.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @return the string
+	 */
+	public static String createUserHelp(User user, BindingResult bindingResult,
+			ModelMap modelMap) {
+		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute("errorMessage", "please enter a username or password");
+			modelMap.addAttribute(
+					"errorMessage",
+					"please enter a username or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
