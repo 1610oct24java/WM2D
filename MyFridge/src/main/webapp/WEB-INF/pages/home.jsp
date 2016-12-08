@@ -157,10 +157,10 @@
 		</thead>
 		<tbody>
 			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems"
+				data-ng-repeat="item in items | filter:searchItems"
 			>
-				<!-- Print out of the information -->
-				<td>{{item.name}}</td>
+				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
+				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}{{items.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>

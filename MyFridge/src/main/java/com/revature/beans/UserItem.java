@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -34,8 +37,10 @@ public class UserItem implements Serializable {
 	private int userId;
 	
 	/** The item id. */
-	@Column(name = "ITEM_ID")
-	private int itemId;
+	//Don't need to call @Column because item name is in another table.
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity=Item.class)
+	@JoinColumn(name="ITEM_ID")
+	private Item itemId;
 	
 	/** The item status. */
 	@Column(name = "ITEM_STATUS")
@@ -104,7 +109,7 @@ public class UserItem implements Serializable {
 	 *
 	 * @return the item id
 	 */
-	public int getItemId() {
+	public Item getItemId() {
 		
 		return itemId;
 	}
@@ -115,7 +120,7 @@ public class UserItem implements Serializable {
 	 * @param itemId
 	 *            the new item id
 	 */
-	public void setItemId(int itemId) {
+	public void setItemId(Item itemId) {
 		
 		this.itemId = itemId;
 	}
@@ -229,27 +234,7 @@ public class UserItem implements Serializable {
 	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
-	public String toString() {
-		
-		return "UserItem [userItemId="
-				+ userItemId
-				+ ", userId="
-				+ userId
-				+ ", itemId="
-				+ itemId
-				+ ", itemStatus="
-				+ itemStatus
-				+ ", measureAmount="
-				+ measureAmount
-				+ ", expirationDate="
-				+ expirationDate
-				+ ", measureType="
-				+ measureType
-				+ ", itemDetails="
-				+ itemDetails
-				+ "]";
-	}
+
 	
 	/**
 	 * Instantiates a new user item.
@@ -258,6 +243,14 @@ public class UserItem implements Serializable {
 		super();
 	}
 	
+
+	@Override
+	public String toString() {
+		return "UserItem [userItemId=" + userItemId + ", userId=" + userId + ", itemId=" + itemId + ", itemStatus="
+				+ itemStatus + ", measureAmount=" + measureAmount + ", expirationDate=" + expirationDate
+				+ ", measureType=" + measureType + ", itemDetails=" + itemDetails + "]";
+	}
+
 	/**
 	 * Instantiates a new user item.
 	 *
@@ -278,7 +271,7 @@ public class UserItem implements Serializable {
 	 * @param itemDetails
 	 *            the item details
 	 */
-	public UserItem(int userItemId, int userId, int itemId, int itemStatus,
+	public UserItem(int userItemId, int userId, Item itemId, int itemStatus,
 			double measureAmount, String expirationDate, String measureType,
 			String itemDetails) {
 		super();
@@ -305,9 +298,6 @@ public class UserItem implements Serializable {
 				+ "\"userId\" : \""
 				+ userId
 				+ "\","
-				+ "\"itemId\" : \""
-				+ itemId
-				+ "\","
 				+ "\"itemStatus\" : \""
 				+ itemStatus
 				+ "\","
@@ -322,6 +312,9 @@ public class UserItem implements Serializable {
 				+ "\","
 				+ "\"itemDetails\" : \""
 				+ itemDetails
+				+ "\","
+				+ "\"itemName\" : \""
+				+ itemId.toJSON()
 				+ "\""
 				+ "}";
 	}

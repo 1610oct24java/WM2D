@@ -139,10 +139,10 @@ public class HomeController {
 	 *            the UserItem
 	 * @return the item name
 	 */
-	@RequestMapping(value = "/getItemName", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/getItemName", method = RequestMethod.POST)
 	public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
 		
 		Item item = new ItemDAOimpl().getItem(ui.getItemId());
 		return item;
-	}
+	}*/
 }
