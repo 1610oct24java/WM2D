@@ -1,75 +1,43 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
-<%@taglib
-	uri="http://www.springframework.org/tags/form"
-	prefix="form"
-%>
-<%@taglib
-	prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"
-%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=ISO-8859-1"
->
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Latest compiled and minified CSS -->
-<link
-	rel="stylesheet"
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous"
->
+	crossorigin="anonymous">
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"
-></script>
-<link
-	rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
->
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 
 <script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"
-></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
 <title>MyFridge | Home</title>
 </head>
 
 <!-- Setting up angular app/controller -->
-<body
-	class="container"
-	data-ng-app="myApp"
-	data-ng-controller="myController"
->
+<body class="container" data-ng-app="myApp"
+	data-ng-controller="myController">
 
 	<!-- Temporary storage for the user information to work with -->
-	<input
-		type="hidden"
-		id="test"
-		name="x"
-		value="${UserJSON}"
-	>
+	<input type="hidden" id="test" name="x" value="${UserJSON}">
 
 	<!-- The JSTL way -->
 	<!-- <div>${currentUser}</div> -->
-	<form:form
-		action="logout"
-		method="POST"
-		class="navbar-form navbar-left"
-	>
-		<button
-			type="submit"
-			class="btn btn-default"
-		>Logout</button>
+	<form:form action="logout" method="POST"
+		class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">Logout</button>
 	</form:form>
 	<br>
 
@@ -89,12 +57,8 @@
 				</div>
 
 				<!-- Creating a text search field -->
-				<input
-					type="text"
-					class="form-control"
-					placeholder="Search Items"
-					data-ng-model="searchItems"
-				>
+				<input type="text" class="form-control" placeholder="Search Items"
+					data-ng-model="searchItems">
 
 			</div>
 		</div>
@@ -102,63 +66,62 @@
 
 	<!-- Printing out the User's items -->
 	<h1>Fridge</h1>
-	<table
-		id=table
-		class="table table-bordered table-striped"
-	>
+	<table id=table class="table table-bordered table-striped">
 		<!-- Setting up table to be sortable via title click -->
 		<thead>
 			<tr>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'name'; sortReverse = !sortReverse"
-				> Name <span
-						data-ng-show="sortType == 'name' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+				<th><a href='#'
+					data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
+						Name <span data-ng-show="sortType == 'name' && !sortReverse"
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'name' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse"
-				> Amount <span
+				<th><a href='#'
+					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
+						Amount <span
 						data-ng-show="sortType == 'measureAmount' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'measureAmount' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse"
-				> Expiration Date <span
+				<th><a href='#'
+					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse">
+						Expiration Date <span
 						data-ng-show="sortType == 'expirationDate' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'expirationDate' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse"
-				> Details <span
+				<th><a href='#'
+					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
+						Details <span
 						data-ng-show="sortType == 'itemDetails' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'itemDetails' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr
-				data-ng-repeat="item in items | filter:searchItems"
-			>
+			<tr>
+			
+			<!-- attempt to send the new item to the controller form a form that is also table columns -->
+			
+			<%-- <form:form 
+					action="addItem"
+					method="POST"
+					commandName="UserItem">
+				<td><form:input type="text" path="itemId.itemName" /></td>
+				<td><form:input type="number" path="measureAmount" /><form:input
+					type="text" path="measureType" /></td>
+				<td><form:input type="date" path="expirationDate" /></td>
+				<td><form:input type="text" path="itemDetails" /></td>
+				<td><button type="submit">Create Item</button></td>
+			</form:form> --%>
+			</tr>
+
+			<tr data-ng-repeat="item in items | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}{{items.measureType}}</td>
@@ -167,9 +130,20 @@
 		</tbody>
 	</table>
 
-	<script
-		src="resources/js/home.js"
-		type="text/javascript"
-	></script>
+
+<!-- Just trying to figure out how to send the new item to the controller... -->
+			<form:form 
+					action="addItem"
+					method="POST"
+					commandName="UserItem">
+				<%-- <form:input type="text" path="itemId.itemName" /> --%>
+				<form:input type="number" path="measureAmount" />
+				<form:input type="text" path="measureType" />
+				<form:input type="date" path="expirationDate" />
+				<form:input type="text" path="itemDetails" />
+				<button type="submit">Create Item</button>
+			</form:form>
+
+	<script src="resources/js/home.js" type="text/javascript"></script>
 </body>
 </html>

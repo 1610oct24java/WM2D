@@ -2,6 +2,7 @@
 package com.revature.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -130,6 +131,17 @@ public class HomeController {
 		
 		User user = (User) request.getSession().getAttribute("currentUser");
 		return user;
+	}
+	
+	//My attempt at getting the new item into the controller from JS.
+	
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public String addItem(@Valid UserItem ui, BindingResult bindingResult,
+			ModelMap modelMap) {
+	modelMap.addAttribute("UserItem", ui);
+		
+		
+		return null;
 	}
 	
 	/**
