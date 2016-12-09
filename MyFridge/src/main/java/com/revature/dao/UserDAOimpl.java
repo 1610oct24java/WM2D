@@ -57,6 +57,7 @@ public class UserDAOimpl implements UserDAO {
 				(User) session.createCriteria(User.class).add(Restrictions.and(
 						Restrictions.eq("username", username),
 						Restrictions.eq("password", password))).uniqueResult();
+		session.close();
 		return user;
 	}
 	

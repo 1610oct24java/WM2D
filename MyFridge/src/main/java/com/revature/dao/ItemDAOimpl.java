@@ -4,6 +4,7 @@ package com.revature.dao;
 import org.hibernate.Session;
 
 import com.revature.beans.Item;
+import com.revature.beans.User;
 import com.revature.util.HibernateUtil;
 
 /**
@@ -15,13 +16,13 @@ public class ItemDAOimpl implements ItemDAO {
 	private HibernateUtil hu;
 	
 	/**
-	 * Instantiates a new item DA oimpl.
+	 * Instantiates a new item DAOimpl. 
 	 */
 	public ItemDAOimpl() {
 		hu = new HibernateUtil();
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see com.revature.dao.ItemDAO#getItem(int)
 	 */
@@ -34,12 +35,20 @@ public class ItemDAOimpl implements ItemDAO {
 		return item;
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see com.revature.dao.ItemDAO#insertItem(com.revature.beans.Item)
 	 */
 	@Override
 	public void insertItem(Item item) {
+		
+	}
+
+	@Override
+	public void deleteItem(Item item) {
+		Session session = hu.getSession();
+		//User user = (User) session.get(User.class, id);
+		
 		
 	}
 	

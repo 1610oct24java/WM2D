@@ -24,6 +24,7 @@ public class HibernateUtil {
 		
 		if (sessionFactory == null) {
 			// make a new one
+			System.out.println("inside null sessionFactory. com.revature.util.HibernateUtil");
 			Configuration conf = new Configuration().configure();
 			ServiceRegistry serviceRegistry =
 					new StandardServiceRegistryBuilder()
@@ -51,6 +52,7 @@ public class HibernateUtil {
 	@Override
 	protected void finalize() throws Throwable {
 		
+		System.out.println("closing shit. com.revature.util.HibernateUtil");
 		sessionFactory.close();
 		super.finalize();
 	}

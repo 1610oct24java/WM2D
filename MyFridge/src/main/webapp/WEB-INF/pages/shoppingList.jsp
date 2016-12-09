@@ -89,12 +89,13 @@
 		<tbody>
 			<tr
 				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
-				<td>{{item.name}}</td>
+				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}</td>
 				<td>{{item.itemDetails}}</td>
 				<td>
-					<form action="deleteFromShoppingList" method="post">
-							<input name="sList" type="hidden" value="${item.getItemId()}"> 
+					<form action="deleteItemFromList" method="post">
+							<input name="iId" type="hidden" value="${item.getItemId()}"> 
+							<input name="iStatus" type="hidden" value="${item.getItemStatus()}">
 							<input class="btn btn-info" type="submit" value="Delete Item">
 					</form>
 				</td>

@@ -139,10 +139,21 @@ public class HomeController {
 	 *            the UserItem
 	 * @return the item name
 	 */
-	/*@RequestMapping(value = "/getItemName", method = RequestMethod.POST)
-	public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
+
+	@RequestMapping(value= "/sList",method = RequestMethod.GET)
+	public String shoppingListGet(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap){
 		
-		Item item = new ItemDAOimpl().getItem(ui.getItemId());
-		return item;
-	}*/
+		modelMap.addAttribute("User", user);
+		return "shoppingList";
+	}
+	
+	@RequestMapping(value="/deleteItemFromList", method = RequestMethod.GET)
+	public @ResponseBody User deleteItemFromList(HttpServletRequest request){
+		
+		User user = (User) request.getSession().getAttribute("currentUser");
+		user.getItems();
+		return user;
+	}
+	
 }

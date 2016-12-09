@@ -71,6 +71,17 @@
 			class="btn btn-default"
 		>Logout</button>
 	</form:form>
+
+	<form:form
+		action="sList"
+		method="GET"
+		class="navbar-form navbar-left"
+	>
+		<button
+			type="submit"
+			class="btn btn-default"
+		>Shopping List</button>
+	</form:form>
 	<br>
 
 	<br>
