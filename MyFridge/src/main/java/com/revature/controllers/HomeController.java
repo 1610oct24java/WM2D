@@ -7,16 +7,15 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
-import com.revature.beans.Item;
 import com.revature.beans.User;
-import com.revature.beans.UserItem;
-import com.revature.dao.ItemDAOimpl;
 import com.revature.helper.IndexHelper;
+import com.revature.util.Error;
 
 /**
  * The Class HomeController.
@@ -139,10 +138,31 @@ public class HomeController {
 	 *            the UserItem
 	 * @return the item name
 	 */
-	/*@RequestMapping(value = "/getItemName", method = RequestMethod.POST)
-	public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
+	/*
+	 * @RequestMapping(value = "/getItemName", method = RequestMethod.POST)
+	 * public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
+	 * Item item = new ItemDAOimpl().getItem(ui.getItemId());
+	 * return item;
+	 * }
+	 */
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleError(HttpServletRequest req, Exception ex) {
 		
-		Item item = new ItemDAOimpl().getItem(ui.getItemId());
-		return item;
-	}*/
+		StackTraceElement thing = Thread.currentThread().getStackTrace()[1];
+		Error.error(
+				"\nat Line:\t"
+						+ thing.getLineNumber()
+						+ "\nin Method:\t"
+						+ thing.getMethodName()
+						+ "\nin Class:\t"
+						+ thing.getClassName(),
+				ex);
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("exception", ex);
+		mav.addObject("url", req.getRequestURL());
+		mav.setViewName("ExceptionError");
+		return mav;
+	}
 }
