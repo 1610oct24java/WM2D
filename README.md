@@ -27,10 +27,12 @@ The repository for the WM2D team
 
 
 ### Technologies
-- Spring
+- Spring (MVC)
 - Hibernate
 - AngularJS
 - Java
+- HTML/CSS
+- Oracle DB
 
 
 
