@@ -150,7 +150,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/deleteItemFromList", method = RequestMethod.GET)
 	public @ResponseBody User deleteItemFromList(HttpServletRequest request){
-		
+		int itemId = (int)request.getSession().getAttribute("iId");
 		User user = (User) request.getSession().getAttribute("currentUser");
 		user.getItems();
 		return user;
