@@ -23,7 +23,21 @@
 </head>
 <body>
 
+	<div
+		class="alert alert-warning alert-dismissible"
+		role="alert"
+	>
+
+		<strong>Warning!</strong> If you are seeing this page, something <strong>MAJOR</strong>
+		happened.
+	</div>
+
 	<h3>Error</h3>
+	<br> Please contact support...
+	<p>
+		Cause:<br>
+		<%=exception.getCause()%>
+	</p>
 	<p>
 		Message:<br>
 		<%=exception.getMessage()%>
@@ -34,8 +48,7 @@
     Exception:  ${exception.message}
     
         <c:forEach items="${exception.stackTrace}" var="ste">
-            ${ste} 
-            
+            ${ste}   
     </c:forEach>
   -->
 </body>

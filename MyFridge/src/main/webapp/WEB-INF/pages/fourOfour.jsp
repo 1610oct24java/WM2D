@@ -3,6 +3,7 @@
 	contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +11,26 @@
 	http-equiv="Content-Type"
 	content="text/html; charset=ISO-8859-1"
 >
-<title>404</title>
+<link
+	href="resources/css/bootstrap.css"
+	rel="stylesheet"
+	type="text/css"
+>
+<title>Simple Error</title>
 </head>
-<body>The page you were looking for could not be found
+<body>
+
+	<div
+		class="alert alert-warning alert-dismissible"
+		role="alert"
+	>
+
+		<strong>Warning!</strong> If you are seeing this page, something <strong>minor</strong>
+		happened.
+	</div>
+
+	<p>Try again.</p>
+	<p>If you continue to see this page, contact support...</p>
+
 </body>
 </html>

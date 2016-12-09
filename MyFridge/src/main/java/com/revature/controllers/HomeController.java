@@ -17,6 +17,7 @@ import com.revature.beans.User;
 import com.revature.helper.IndexHelper;
 import com.revature.util.Error;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class HomeController.
  */
@@ -146,6 +147,15 @@ public class HomeController {
 	 * }
 	 */
 	
+	/**
+	 * Handle error.
+	 *
+	 * @param req
+	 *            the request
+	 * @param ex
+	 *            the exception
+	 * @return the model and view
+	 */
 	@ExceptionHandler(Exception.class)
 	public ModelAndView handleError(HttpServletRequest req, Exception ex) {
 		
