@@ -17,6 +17,7 @@ import com.revature.beans.Item;
 import com.revature.beans.User;
 import com.revature.beans.UserItem;
 import com.revature.dao.ItemDAOimpl;
+import com.revature.helper.HomeHelper;
 import com.revature.helper.IndexHelper;
 
 /**
@@ -133,15 +134,15 @@ public class HomeController {
 		return user;
 	}
 	
+	
 	//My attempt at getting the new item into the controller from JS.
 	
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
-	public String addItem(@Valid UserItem ui, BindingResult bindingResult,
-			ModelMap modelMap) {
-	modelMap.addAttribute("UserItem", ui);
+	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
+		System.out.println("INSIDE ADD ITEM");
+		System.out.println("USERITEM:  " + ui);
 		
-		
-		return null;
+		return HomeHelper.addItem(ui, session);
 	}
 	
 	/**

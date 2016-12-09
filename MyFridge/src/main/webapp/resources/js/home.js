@@ -28,34 +28,36 @@ app.controller('myController', function($scope, $http) {
 	//it was a complete failure, but its here until I figure out how to 
 	//accomplish this
 	
-//	$scope.newItem = function() {
-//		console.log("INSIDE NEWITEM()");
-//		makeItem();
-//		console.log("DONE");
-//		console.log(item);
-//		$http
-//		.post("addItem", item)
-//		.then(function success(response) {
-//			
-//		}, function error(response) {
-//	        console.log("FAILED GET ITEM NAME");
-//	    });
-//	}
-//	var item;
-//	function makeItem() {
-//		item = {}
+	$scope.createNewItem = function() {
+		console.log("INSIDE NEWITEM()");
+		makeItem();
+		console.log("DONE");
+		console.log($scope.newItem);
+		$http
+		.post("addItem", $scope.newItem)
+		.then(function success(response) {
+			console.log("SUCESSSSSSSS!!!!!");
+			console.log(response.data);
+			$scope.items = response.data.items;
+		}, function error(response) {
+	        console.log("FAILED GET ITEM NAME");
+	    });
+	}
+	var item;
+	function makeItem() {
+		item = {}
 //		item.userItemId = -1;
-//		item.userId = $scope.items.userId;
-//		item.itemId = {
-//				"itemId" : -1,
-//				"itemName" : $scope.newItemName
-//		};
-//		item.itemStatus = 1;
-//		item.measureAmount = $scope.newItemAmount;
-//		item.expirationDate = $scope.newExpirationDate;
-//		item.measureType = $scope.newItemMeasureType;
-//		item.itemDetails = $scope.newItemDetails;
-//		$scope.newItem = item;
-//		console.log(item);
-//	}
+		item.userId = $scope.items.userId;
+		item.itemId = {
+				"itemId" : -1,
+				"itemName" : $scope.newItemName
+		};
+		item.itemStatus = 1;
+		item.measureAmount = $scope.newItemAmount;
+		item.expirationDate = $scope.newExpirationDate;
+		item.measureType = $scope.newItemMeasureType;
+		item.itemDetails = $scope.newItemDetails;
+		$scope.newItem = item;
+		console.log(item);
+	}
 });

@@ -24,4 +24,6 @@ public interface ItemDAO {
 	 *            the item
 	 */
 	void insertItem(Item item);
+	
+	Item getItemByName(String itemName);
 }
