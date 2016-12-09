@@ -21,6 +21,7 @@ public class ItemDAOimpl implements ItemDAO {
 	public ItemDAOimpl() {
 		hu = new HibernateUtil();
 	}
+	//hu = HibernateUtil.getInstance();
 	
 	/**
 	 * (non-Javadoc)
