@@ -2,15 +2,14 @@
 The repository for the WM2D team
 
 
-# Name 
-&nbsp;&nbsp;&nbsp;&nbsp; My Fridge 
-This Java application is an online system for managing one's contents of their refrigerator. This application also tracks expiration, recipes, and items of the refrigerator. This environment is complete with Java, Spring, Angular, 
+# My Fridge 
+&nbsp;&nbsp;&nbsp;&nbsp;  This Java application is an online system for managing one's contents of their refrigerator. This application also tracks expiration, recipes, and items of the refrigerator. This environment is complete with Java, Spring, Angular, 
 
 
 
 
 ###### menu
-- [Description](#Name)
+- [Description](#My Fridge)
 - [Responsibilities](#responsibilities)
 - [Features & Services](#features-and-services)
 - [Technologies](#technologies)
