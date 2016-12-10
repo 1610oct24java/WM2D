@@ -8,12 +8,7 @@ app.controller('myController', function($scope, $http) {
 
 	$http
 		.get("getItems")
-		.then(function(response) {
-//			console.log(response.data);
-//			items = response.data.items;
-//			angular.forEach()
-//			$scope.items = items;
-			
+		.then(function(response) {	
 			var items = response.data.items;
 			console.log(items);
 	        $scope.items = [];
@@ -26,25 +21,41 @@ app.controller('myController', function($scope, $http) {
 	
 
 	//for removing items from list
-    $scope.remove = function () {
+    $scope.remove = function (item) {
         console.log("INSIDE REMOVE!");
-        var items = $scope.items;
-        $scope.items = [];
-        angular.forEach(items, function (item) {
-            if (!(item.check)) {
-                $scope.items.push(item);
-                console.log("POSTING");
-            } else {
-            	$http
-                .post("removeItemFromFridge", item)
-                .then(function success(response) {
-                	console.log("SUCCESS");
-                	
-                }, function error(response) {
-        	        console.log("FAILED TO REMOVE ITEM");
-        	    });
-            }     
-        });
+        console.log(item);
+        $http
+	      .post("removeItemFromFridge", item)
+	      .then(function success(response) {
+	      	console.log("SUCCESS");
+	      	var items = response.data.items;
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
+	      }, function error(response) {
+	        console.log("FAILED TO REMOVE ITEM");
+	      })
+        
+//        var items = $scope.items;
+//        $scope.items = [];
+//        angular.forEach(items, function (item) {
+//            if (!(item.check)) {
+//                $scope.items.push(item);
+//                console.log("POSTING");
+//            } else {
+//            	$http
+//                .post("removeItemFromFridge", item)
+//                .then(function success(response) {
+//                	console.log("SUCCESS");
+//                	
+//                }, function error(response) {
+//        	        console.log("FAILED TO REMOVE ITEM");
+//        	    });
+//            }     
+//        });
     }
 	
 	//for adding items to list

@@ -64,11 +64,11 @@ public class HomeHelper {
 		UserItemDAO uiDao = new UserItemDAOimpl();
 		ui.setItemStatus(-1); // set status to -1
 		uiDao.updateUserItem(ui); // update current useritem
+		System.out.println("REOMVED UI: " + ui);
 		UserDAO uDao = new UserDAOimpl();
 		User currentUser = (User) session.getAttribute("currentUser"); // get currentUser
 		User user = uDao.getUserByName(currentUser.getUsername()); // get user with updated item list
 		session.setAttribute("currentUser", user);
 		return user;
 	}
-	
 }

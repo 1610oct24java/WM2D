@@ -171,10 +171,10 @@
 				<td>{{item.measureAmount}}{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td><input type="checkbox" data-ng-model="item.check"/></td>
+				<td><button data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
-	<button data-ng-click="remove()">Remove</button>
+	<!-- <button data-ng-click="remove()">Remove</button> -->
 	<button>Add to shopping list</button>
 
 	<script
