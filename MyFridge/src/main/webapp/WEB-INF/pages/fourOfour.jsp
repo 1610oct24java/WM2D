@@ -16,12 +16,13 @@
 	rel="stylesheet"
 	type="text/css"
 >
+<meta http-equiv="refresh" content="3;url=/MyFridge/" />
 <title>Simple Error</title>
 </head>
 <body>
 
 	<div
-		class="alert alert-warning alert-dismissible"
+		class="alert alert-warning"
 		role="alert"
 	>
 
