@@ -74,7 +74,7 @@ public class RecipeDAOimpl implements RecipeDAO {
 	 */
 	public RecipeDAOimpl() {
 		super();
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
 	}
 	
 }

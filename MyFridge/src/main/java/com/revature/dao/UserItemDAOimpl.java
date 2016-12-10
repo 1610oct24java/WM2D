@@ -14,7 +14,7 @@ public class UserItemDAOimpl implements UserItemDAO {
 	
 	public UserItemDAOimpl() {
 		super();
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
 	}
 	
 	public void insertUserItem(UserItem ui) {

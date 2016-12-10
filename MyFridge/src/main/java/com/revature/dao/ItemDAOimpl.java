@@ -22,7 +22,7 @@ public class ItemDAOimpl implements ItemDAO {
 	 * Instantiates a new item DA oimpl.
 	 */
 	public ItemDAOimpl() {
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
 	}
 	
 	/*
