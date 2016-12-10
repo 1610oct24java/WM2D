@@ -6,6 +6,11 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
+	<properties>
+		<source.target>1.8</source.target>
+		<spring>4.3.4.RELEASE</spring>
+	</properties>
+
 	<build>
 		<finalName>MyFridge</finalName>
 		<plugins>
@@ -14,8 +19,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.6.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${source.target}</source>
+					<target>${source.target}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -106,7 +111,6 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>5.3.3.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -130,7 +134,4 @@
 		</dependency>
 
 	</dependencies>
-	<properties>
-		<spring>4.3.4.RELEASE</spring>
-	</properties>
 </project>
