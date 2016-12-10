@@ -69,4 +69,13 @@ public class UserDAOimpl implements UserDAO {
 		super();
 		hu = HibernateUtil.getInstance();
 	}
+
+	@Override
+	public void updateUser(User user) {
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		session.merge(user);
+		tx.commit();
+		session.close();
+	}
 }

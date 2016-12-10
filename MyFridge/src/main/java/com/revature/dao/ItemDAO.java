@@ -33,4 +33,6 @@ public interface ItemDAO {
 	 * 				the item
 	 */
 	void deleteItem(Item item);
+	
+	Item getItemByName(String itemName);
 }

@@ -1,7 +1,11 @@
 
 package com.revature.dao;
 
+import java.io.Serializable;
+
 import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.Item;
 import com.revature.beans.User;
@@ -42,7 +46,20 @@ public class ItemDAOimpl implements ItemDAO {
 	 */
 	@Override
 	public void insertItem(Item item) {
-		
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		session.save(item);
+		tx.commit();
+		session.close();
+	}
+
+	@Override
+	public Item getItemByName(String itemName) {
+		Session session = hu.getSession();
+		Item item = (Item) session.createCriteria(Item.class)
+				.add(Restrictions.eq("itemName", itemName)).uniqueResult();
+		session.close();
+		return item;
 	}
 
 	@Override

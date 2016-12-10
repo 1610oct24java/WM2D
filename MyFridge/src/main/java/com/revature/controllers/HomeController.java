@@ -2,18 +2,22 @@
 package com.revature.controllers;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.revature.beans.User;
+import com.revature.beans.UserItem;
+import com.revature.helper.HomeHelper;
 import com.revature.helper.IndexHelper;
 import com.revature.util.Error;
 
@@ -161,6 +165,16 @@ public class HomeController {
 			ModelMap modelMap) {
 		return "home";
 	}
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
+		return HomeHelper.addItem(ui, session);
+	}
+	
+	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
+		System.out.println("REMOVE ITEM CONTROLLER");
+		return HomeHelper.removeItemFromFridgeHelper(ui, session);
+	}
 	
 	/**
 	 * Handle error.
@@ -190,13 +204,4 @@ public class HomeController {
 		mav.setViewName("ExceptionError");
 		return mav;
 	}
-	
-	@RequestMapping(value="/deleteItemFromList", method = RequestMethod.GET)
-	public @ResponseBody User deleteItemFromList(HttpServletRequest request){
-		int itemId = (int)request.getSession().getAttribute("iId");
-		User user = (User) request.getSession().getAttribute("currentUser");
-		user.getItems();
-		return user;
-	}
-	
 }

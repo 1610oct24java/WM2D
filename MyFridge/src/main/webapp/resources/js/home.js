@@ -8,19 +8,89 @@ app.controller('myController', function($scope, $http) {
 
 	$http
 		.get("getItems")
-		.then(function(response) {
-			console.log(response.data);
-			items = response.data.items;
-			$scope.items = items;
-		});
+		.then(function(response) {	
+			var items = response.data.items;
+			console.log(items);
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
+	});
+	
 
-
-	function getNames(items) {
-
-		console.log(items);
-		var i = 0;
-		items.forEach(function(item) {
-			console.log(item);
-		});
+	//for removing items from list
+    $scope.remove = function (item) {
+        console.log("INSIDE REMOVE!");
+        console.log(item);
+        $http
+	      .post("removeItemFromFridge", item)
+	      .then(function success(response) {
+	      	console.log("SUCCESS");
+	      	var items = response.data.items;
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
+	      }, function error(response) {
+	        console.log("FAILED TO REMOVE ITEM");
+	      })
+        
+//        var items = $scope.items;
+//        $scope.items = [];
+//        angular.forEach(items, function (item) {
+//            if (!(item.check)) {
+//                $scope.items.push(item);
+//                console.log("POSTING");
+//            } else {
+//            	$http
+//                .post("removeItemFromFridge", item)
+//                .then(function success(response) {
+//                	console.log("SUCCESS");
+//                	
+//                }, function error(response) {
+//        	        console.log("FAILED TO REMOVE ITEM");
+//        	    });
+//            }     
+//        });
+    }
+	
+	//for adding items to list
+	$scope.createNewItem = function() {
+		makeItem();
+		$http
+		.post("addItem", $scope.newItem)
+		.then(function success(response) {
+			console.log("SUCESSSSSSSS!!!!!");
+			var items = response.data.items;
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
+		}, function error(response) {
+	        console.log("FAILED GET ITEM NAME");
+	    });
+	}
+	var item;
+	function makeItem() {
+		item = {}
+//		item.userItemId = -1;
+		item.userId = $scope.items.userId;
+		item.itemId = {
+				"itemId" : -1,
+				"itemName" : $scope.newItemName
+		};
+		item.itemStatus = 1;
+		item.measureAmount = $scope.newItemAmount;
+		item.expirationDate = $scope.newExpirationDate;
+		item.measureType = $scope.newItemMeasureType;
+		item.itemDetails = $scope.newItemDetails;
+		$scope.newItem = item;
+		console.log(item);
 	}
 });

@@ -89,7 +89,7 @@
 	<div class="alert alert-info">
 		<p>Sort Type: {{ sortType }}</p>
 		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchFish }}</p>
+		<p>Search Query: {{ searchItem }}</p>
 	</div>
 	<br>
 	<form>
@@ -167,16 +167,26 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr
-				data-ng-repeat="item in items | filter:searchItems"
-			>
+			<tr>
+				<td><input type="text" data-ng-model="newItemName" /></td>
+				<td><input type="number" data-ng-model="newItemAmount" />
+				<input type="text" data-ng-model="newItemMeasureType" /></td>
+				<td><input type="date" data-ng-model="newExpirationDate" /></td>
+				<td><input type="text" data-ng-model="newItemDetails" /></td>
+				<td><button data-ng-click="createNewItem()">Create Item</button></td>
+			</tr>
+		
+			<tr data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
-				<td>{{item.measureAmount}}{{items.measureType}}</td>
+				<td>{{item.measureAmount}}{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
+				<td><button data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
+	<!-- <button data-ng-click="remove()">Remove</button> -->
+	<button>Add to shopping list</button>
 
 	<script
 		src="resources/js/home.js"
