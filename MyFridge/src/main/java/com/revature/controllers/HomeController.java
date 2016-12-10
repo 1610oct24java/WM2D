@@ -58,7 +58,8 @@ public class HomeController {
 	public String loginGet(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap) {
 		
-		return "home";
+		login(user, bindingResult, modelMap, null);
+		return "index";
 	}
 	
 	/**
@@ -119,6 +120,14 @@ public class HomeController {
 		request.getSession().invalidate();
 		User emptyUser = new User();
 		modelMap.addAttribute("User", emptyUser);
+		return "index";
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutGet(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap, HttpServletRequest request) {
+		
+		logout(user, bindingResult, modelMap, request);
 		return "index";
 	}
 	

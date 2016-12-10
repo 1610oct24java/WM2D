@@ -4,7 +4,7 @@ var items = 0;
 app.controller('myController', function($scope, $http) {
 	$scope.sortType = '';
 	$scope.sortReverse = false;
-	$scope.searchItems = ''; 
+	$scope.searchItems = '';
 
 	$http
 		.get("getItems")

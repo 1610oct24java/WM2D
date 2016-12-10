@@ -19,16 +19,24 @@
 	http-equiv="Content-Type"
 	content="text/html; charset=ISO-8859-1"
 >
+<link
+	href="resources/css/bootstrap.css"
+	rel="stylesheet"
+	type="text/css"
+>
+<meta
+	http-equiv="refresh"
+	content="3;url=/MyFridge/"
+/>
 <title>Error</title>
 </head>
 <body>
 
 	<div
-		class="alert alert-warning alert-dismissible"
+		class="alert alert-danger"
 		role="alert"
 	>
-
-		<strong>Warning!</strong> If you are seeing this page, something <strong>MAJOR</strong>
+		<strong>Danger!</strong> If you are seeing this page, something <strong>MAJOR</strong>
 		happened.
 	</div>
 
