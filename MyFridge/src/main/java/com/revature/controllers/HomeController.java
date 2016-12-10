@@ -4,12 +4,14 @@ package com.revature.controllers;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.revature.beans.Recipe;
 import com.revature.beans.User;
+import com.revature.beans.UserItem;
+import com.revature.helper.HomeHelper;
 import com.revature.helper.IndexHelper;
 import com.revature.helper.RecipeHelper;
 import com.revature.util.Error;
@@ -58,7 +62,8 @@ public class HomeController {
 	public String loginGet(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap) {
 		
-		return "home";
+		login(user, bindingResult, modelMap, null);
+		return "index";
 	}
 	
 	/**
@@ -122,6 +127,14 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logoutGet(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap, HttpServletRequest request) {
+		
+		logout(user, bindingResult, modelMap, request);
+		return "index";
+	}
+	
 	/**
 	 * Gets the items.
 	 *
@@ -147,20 +160,16 @@ public class HomeController {
 	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request){
 		return RecipeHelper.getAllRecipes();
 	}
-	/**
-	 * Gets the item name.
-	 *
-	 * @param ui
-	 *            the UserItem
-	 * @return the item name
-	 */
-	/*
-	 * @RequestMapping(value = "/getItemName", method = RequestMethod.POST)
-	 * public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
-	 * Item item = new ItemDAOimpl().getItem(ui.getItemId());
-	 * return item;
-	 * }
-	 */
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
+		return HomeHelper.addItem(ui, session);
+	}
+	
+	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
+		System.out.println("REMOVE ITEM CONTROLLER");
+		return HomeHelper.removeItemFromFridgeHelper(ui, session);
+	}
 	
 	/**
 	 * Handle error.

@@ -35,4 +35,6 @@ public interface UserDAO {
 	 * @return the user by name
 	 */
 	User getUserByName(String username);
+	
+	void updateUser(User user);
 }
