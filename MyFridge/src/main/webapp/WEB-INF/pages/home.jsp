@@ -78,7 +78,7 @@
 	<div class="alert alert-info">
 		<p>Sort Type: {{ sortType }}</p>
 		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchFish }}</p>
+		<p>Search Query: {{ searchItem }}</p>
 	</div>
 	<br>
 	<form>
@@ -165,16 +165,17 @@
 				<td><button data-ng-click="createNewItem()">Create Item</button></td>
 			</tr>
 		
-		
 			<tr data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td></td>
+				<td><input type="checkbox" data-ng-model="item.check"/></td>
 		</tbody>
 	</table>
+	<button data-ng-click="remove()">Remove</button>
+	<button>Add to shopping list</button>
 
 	<script
 		src="resources/js/home.js"

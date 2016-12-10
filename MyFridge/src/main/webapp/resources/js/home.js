@@ -9,36 +9,58 @@ app.controller('myController', function($scope, $http) {
 	$http
 		.get("getItems")
 		.then(function(response) {
-			console.log(response.data);
-			items = response.data.items;
-			//getNames(items);
-			$scope.items = items;
+//			console.log(response.data);
+//			items = response.data.items;
+//			angular.forEach()
+//			$scope.items = items;
+			
+			var items = response.data.items;
+			console.log(items);
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
 	});
 	
-	function getNames(items) {
-		console.log(items);
-		var i = 0;
-		items.forEach(function(item) {
-			console.log(item);
-		});
-	}
+
+	//for removing items from list
+    $scope.remove = function () {
+        console.log("INSIDE REMOVE!");
+        var items = $scope.items;
+        $scope.items = [];
+        angular.forEach(items, function (item) {
+            if (!(item.check)) {
+                $scope.items.push(item);
+                console.log("POSTING");
+            } else {
+            	$http
+                .post("removeItemFromFridge", item)
+                .then(function success(response) {
+                	console.log("SUCCESS");
+                	
+                }, function error(response) {
+        	        console.log("FAILED TO REMOVE ITEM");
+        	    });
+            }     
+        });
+    }
 	
-	// for creating items
-	//My attempt at using JS for sending the new item to the controller, 
-	//it was a complete failure, but its here until I figure out how to 
-	//accomplish this
-	
+	//for adding items to list
 	$scope.createNewItem = function() {
-		console.log("INSIDE NEWITEM()");
 		makeItem();
-		console.log("DONE");
-		console.log($scope.newItem);
 		$http
 		.post("addItem", $scope.newItem)
 		.then(function success(response) {
 			console.log("SUCESSSSSSSS!!!!!");
-			console.log(response.data);
-			$scope.items = response.data.items;
+			var items = response.data.items;
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1) {
+	                $scope.items.push(item);
+	            }          
+	        });
 		}, function error(response) {
 	        console.log("FAILED GET ITEM NAME");
 	    });

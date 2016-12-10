@@ -4,7 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import com.revature.beans.Item;
 import com.revature.beans.UserItem;
 import com.revature.util.HibernateUtil;
 
@@ -36,4 +35,13 @@ public class UserItemDAOimpl implements UserItemDAO {
 		session.close();
 		return userItem;
 	}
+
+	@Override
+	public void updateUserItem(UserItem ui) {
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		session.update(ui);
+		tx.commit();
+		session.close();
+	}	
 }

@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.revature.beans.Item;
 import com.revature.beans.User;
 import com.revature.beans.UserItem;
-import com.revature.dao.ItemDAOimpl;
 import com.revature.helper.HomeHelper;
 import com.revature.helper.IndexHelper;
 
@@ -134,28 +132,14 @@ public class HomeController {
 		return user;
 	}
 	
-	
-	//My attempt at getting the new item into the controller from JS.
-	
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
-		System.out.println("INSIDE ADD ITEM");
-		System.out.println("USERITEM:  " + ui);
-		
 		return HomeHelper.addItem(ui, session);
 	}
 	
-	/**
-	 * Gets the item name.
-	 *
-	 * @param ui
-	 *            the UserItem
-	 * @return the item name
-	 */
-	/*@RequestMapping(value = "/getItemName", method = RequestMethod.POST)
-	public @ResponseBody Item getItemName(@RequestBody UserItem ui) {
-		
-		Item item = new ItemDAOimpl().getItem(ui.getItemId());
-		return item;
-	}*/
+	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
+		System.out.println("REMOVE ITEM CONTROLLER");
+		return HomeHelper.removeItemFromFridgeHelper(ui, session);
+	}
 }
