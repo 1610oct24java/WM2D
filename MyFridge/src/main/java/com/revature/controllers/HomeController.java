@@ -143,9 +143,14 @@ public class HomeController {
 	@RequestMapping(value= "/sList",method = RequestMethod.GET)
 	public String shoppingListGet(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap){
-		
 		modelMap.addAttribute("User", user);
 		return "shoppingList";
+	}
+	
+	@RequestMapping(value="/homepage", method = RequestMethod.GET)
+	public String homepage(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap) {
+		return "home";
 	}
 	
 	@RequestMapping(value="/deleteItemFromList", method = RequestMethod.GET)

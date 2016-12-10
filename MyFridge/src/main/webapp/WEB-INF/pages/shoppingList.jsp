@@ -35,13 +35,17 @@
 		class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Logout</button>
 	</form:form>
+	
+	<form:form action="homepage" method="GET" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">Home</button>
+	</form:form>
 	<br>
 
 	<br>
 	<div class="alert alert-info">
 		<p>Sort Type: {{ sortType }}</p>
 		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchFish }}</p>
+		<p>Search Query: {{ searchItem }}</p>
 	</div>
 	<br>
 	<form>
@@ -88,20 +92,20 @@
 		</thead>
 		<tbody>
 			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
 				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}</td>
 				<td>{{item.itemDetails}}</td>
 				<td>
 					<form action="deleteItemFromList" method="post">
-							<input name="iId" type="hidden" value="${item.getItemId()}"> 
-							<input name="iStatus" type="hidden" value="${item.getItemStatus()}">
-							<input class="btn btn-info" type="submit" value="Delete Item">
+						<input name="iId" type="hidden" value="${item.getItemId()}">
+						<input name="iStatus" type="hidden"
+							value="${item.getItemStatus()}"> <input
+							class="btn btn-info" type="submit" value="Delete Item">
 					</form>
 				</td>
 		</tbody>
 	</table>
-
-	<script src="resources/js/home.js" type="text/javascript"></script>
+	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
 </body>
 </html>
