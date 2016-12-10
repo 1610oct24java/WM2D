@@ -19,7 +19,7 @@ public class ItemDAOimpl implements ItemDAO {
 	 * Instantiates a new item DAOimpl. 
 	 */
 	public ItemDAOimpl() {
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
 	}
 	//hu = HibernateUtil.getInstance();
 	

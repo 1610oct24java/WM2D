@@ -41,6 +41,7 @@ public class UserDAOimpl implements UserDAO {
 		
 		User user = (User) session.createCriteria(User.class)
 				.add(Restrictions.eq("username", username)).uniqueResult();
+		session.close();
 		return user;
 	}
 	
@@ -66,6 +67,6 @@ public class UserDAOimpl implements UserDAO {
 	 */
 	public UserDAOimpl() {
 		super();
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
 	}
 }

@@ -20,6 +20,22 @@ public class HibernateUtil {
 	 *
 	 * @return the session factory
 	 */
+	
+	 /*Singleton config*/
+
+	private static HibernateUtil instance = null;
+	private HibernateUtil(){
+		
+	}
+	public static HibernateUtil getInstance(){
+		if(instance==null){
+			instance= new HibernateUtil();
+		}
+		return instance;
+	}
+	
+	
+	
 	public SessionFactory getSessionFactory() {
 		
 		if (sessionFactory == null) {
