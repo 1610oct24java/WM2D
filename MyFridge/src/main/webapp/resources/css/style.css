@@ -74,6 +74,8 @@ generated automatically and are common for each slider. */
 	list-style: none;
 	width: 101%;
 }
+
+
 .accordion > ul > li, .accordion-title {
 	position: relative;
 }

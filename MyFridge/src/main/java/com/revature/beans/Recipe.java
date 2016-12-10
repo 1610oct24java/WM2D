@@ -2,6 +2,8 @@
 package com.revature.beans;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -45,14 +47,14 @@ public class Recipe {
 			name = "RECIPE_ITEM_TABLE",
 			joinColumns = @JoinColumn(name = "RECIPE_ID"),
 			inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
-	private List<Item> items;
+	private Set<Item> items;
 	
 	/**
 	 * Gets the items.
 	 *
 	 * @return the items
 	 */
-	public List<Item> getItems() {
+	public Set<Item> getItems() {
 		
 		return items;
 	}
@@ -63,7 +65,7 @@ public class Recipe {
 	 * @param items
 	 *            the new items
 	 */
-	public void setItems(List<Item> items) {
+	public void setItems(Set<Item> items) {
 		
 		this.items = items;
 	}
@@ -218,7 +220,7 @@ public class Recipe {
 	 *            the items
 	 */
 	public Recipe(int recipeId, String recipeName, String recipeDescription,
-			String recipeUrl, int imgId, List<Item> items) {
+			String recipeUrl, int imgId, Set<Item> items) {
 		super();
 		this.recipeId = recipeId;
 		this.recipeName = recipeName;

@@ -72,6 +72,17 @@
 		>Logout</button>
 	</form:form>
 	<br>
+	<form:form
+		action="viewRecipes"
+		method="POST"
+		class="navbar-form navbar-left"
+	>
+		<button
+			type="submit"
+			class="btn btn-default"
+		>View Recipes</button>
+	</form:form>
+
 
 	<br>
 	<!-- Creating angular filters -->

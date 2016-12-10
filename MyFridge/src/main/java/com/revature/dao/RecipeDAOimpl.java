@@ -1,13 +1,17 @@
 
 package com.revature.dao;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.beans.Recipe;
-import com.revature.util.HibernateUtil;
-
 import com.revature.util.Error;
+import com.revature.util.HibernateUtil;
 
 /**
  * The Class RecipeDAOimpl.
@@ -43,6 +47,31 @@ public class RecipeDAOimpl implements RecipeDAO {
 		return recipe;
 	}
 	
+	@Override
+	public Set<Recipe> getAllRecipes(){
+		List<Recipe> tempRecipes = new ArrayList<Recipe>();
+		Set<Recipe> recipes = null;
+		try {
+			Session session = hu.getSession();
+			
+			tempRecipes = (List<Recipe>)session.createCriteria(Recipe.class).list();
+			recipes = new HashSet(tempRecipes);
+			System.out.println(recipes.size());
+						
+			session.close();
+		} catch (Exception e) {
+			StackTraceElement thing = Thread.currentThread().getStackTrace()[1];
+			Error.error(
+					"\nat Line:\t"
+							+ thing.getLineNumber()
+							+ "\nin Method:\t"
+							+ thing.getMethodName()
+							+ "\nin Class:\t"
+							+ thing.getClassName(),
+					e);
+		}
+		return recipes;
+	}
 	/*
 	 * (non-Javadoc)
 	 * @see com.revature.dao.RecipeDAO#submitRecipe(com.revature.beans.Recipe)

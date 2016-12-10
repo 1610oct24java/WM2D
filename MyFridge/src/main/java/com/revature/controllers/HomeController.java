@@ -1,6 +1,8 @@
 
 package com.revature.controllers;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.revature.beans.Recipe;
 import com.revature.beans.User;
 import com.revature.helper.IndexHelper;
+import com.revature.helper.RecipeHelper;
 import com.revature.util.Error;
 
 // TODO: Auto-generated Javadoc
@@ -132,6 +136,17 @@ public class HomeController {
 		return user;
 	}
 	
+	
+	@RequestMapping(value = "/viewRecipes", method = RequestMethod.POST)
+	public String getRecipes(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap) {
+		return "Recipes";
+	}
+	
+	@RequestMapping(value = "/getRecipes", method = RequestMethod.GET)
+	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request){
+		return RecipeHelper.getAllRecipes();
+	}
 	/**
 	 * Gets the item name.
 	 *
