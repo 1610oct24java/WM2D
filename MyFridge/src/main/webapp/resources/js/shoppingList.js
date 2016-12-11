@@ -27,7 +27,53 @@ app.controller('myController', function($scope, $http) {
 		var i = 0;
 		items.forEach(function(item) {
 			console.log(item);
-			
 		});
 	}
-});
+	
+	 $scope.remove = function (item) {
+	        console.log("INSIDE REMOVE!");
+	        console.log(item);
+	        $http
+		      .post("removeItemFromShoppingList", item)
+		      .then(function success(response) {
+		      	console.log("SUCCESS");
+		      	var items = response.data.items;
+		        $scope.items = items;		        
+		      }, function error(response) {
+		        console.log("FAILED TO REMOVE ITEM");
+		      })
+	 }
+	 
+	//for adding items to list
+		$scope.createNewItem = function() {
+			makeItem();
+			$http
+			.post("addItemToShoppingList", $scope.newItem)
+			.then(function success(response) {
+				console.log("SUCESSSSSSSS!!!!!");
+				var items = response.data.items;
+		        $scope.items = [];
+		        angular.forEach(items, function (item) {
+		            if (item.itemStatus == 0 || item.itemStatus == 2) {
+		                $scope.items.push(item);
+		            }          
+		        });
+			}, function error(response) {
+		        console.log("FAILED GET ITEM NAME");
+		    });
+		}
+		var item;
+		function makeItem() {
+			item = {}
+			item.userId = $scope.items.userId;
+			item.itemId = {
+					"itemId" : -1,
+					"itemName" : $scope.newItemName
+			};
+			item.itemStatus = 0;
+			item.measureAmount = $scope.newItemAmount;
+			item.itemDetails = $scope.newItemDetails;
+			$scope.newItem = item;
+			console.log(item);
+		}
+	});

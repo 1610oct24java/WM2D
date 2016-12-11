@@ -91,18 +91,19 @@
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td><input type="text" data-ng-model="newItemName" /></td>
+				<td><input type="number" data-ng-model="newItemAmount" />
+				<td><input type="text" data-ng-model="newItemDetails" /></td>
+				<td><button data-ng-click="createNewItem()">Create Item</button></td>
+			</tr>
 			<tr
 				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
 				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}</td>
 				<td>{{item.itemDetails}}</td>
 				<td>
-					<form action="deleteItemFromList" method="post">
-						<input name="iId" type="hidden" value="${item.getItemId()}">
-						<input name="iStatus" type="hidden"
-							value="${item.getItemStatus()}"> <input
-							class="btn btn-info" type="submit" value="Delete Item">
-					</form>
+					<td><button data-ng-click="remove(item)">X</button></td>
 				</td>
 		</tbody>
 	</table>

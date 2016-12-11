@@ -170,11 +170,22 @@ public class HomeController {
 		return HomeHelper.addItem(ui, session);
 	}
 	
+	@RequestMapping(value = "/addItemToShoppingList", method = RequestMethod.POST)
+	public @ResponseBody User addItemToShoppingList(@RequestBody UserItem ui, HttpSession session){
+		return HomeHelper.addItemToShoppingList(ui, session);
+	}
+	
 	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
 	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
 		System.out.println("REMOVE ITEM CONTROLLER");
 		return HomeHelper.removeItemFromFridgeHelper(ui, session);
 	}
+	
+	@RequestMapping(value="/removeItemFromShoppingList", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromShoppingList(@RequestBody UserItem ui, HttpSession session){
+		System.out.println("Remove item from shopping list controller".toUpperCase()); //the ultimate laziness.
+		return HomeHelper.removeItemFromShoppingHelper(ui, session);
+}
 	
 	/**
 	 * Handle error.
