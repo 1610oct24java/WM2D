@@ -160,10 +160,15 @@ public class HomeController {
 	 */
 
 	@RequestMapping(value= "/sList",method = RequestMethod.GET)
-	public String shoppingListGet(@Valid User user, BindingResult bindingResult,
-			ModelMap modelMap){
+	public String shoppingListGet(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
 		modelMap.addAttribute("User", user);
 		return "shoppingList";
+	}
+	
+	@RequestMapping(value="/viewFridgeHistory", method = RequestMethod.GET)
+	public String viewFridgeHistory(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+		modelMap.addAttribute("User", user);
+		return "history";
 	}
 	
 	@RequestMapping(value="/homepage", method = RequestMethod.GET)
