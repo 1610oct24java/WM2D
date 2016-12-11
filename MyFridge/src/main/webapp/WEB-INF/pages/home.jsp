@@ -82,6 +82,10 @@
 			class="btn btn-default"
 		>Shopping List</button>
 	</form:form>
+
+	<form:form action="viewFridgeHistory" method="GET" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">History</button>
+	</form:form>
 	<br>
 	<br>
 	
@@ -95,12 +99,8 @@
 				</div>
 
 				<!-- Creating a text search field -->
-				<input
-					type="text"
-					class="form-control"
-					placeholder="Search Items"
-					data-ng-model="searchItems"
-				>
+				<input type="text" class="form-control" placeholder="Search Items"
+					data-ng-model="searchItems">
 
 			</div>
 		</div>
@@ -114,24 +114,18 @@
 		<!-- Setting up table to be sortable via title click -->
 		<thead>
 			<tr>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'name'; sortReverse = !sortReverse"
-				> Name <span
-						data-ng-show="sortType == 'name' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+				<th><a href='#'
+					data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
+						Name <span data-ng-show="sortType == 'name' && !sortReverse"
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'name' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse"
-				> Amount <span
+				<th><a href='#'
+					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
+						Amount <span
 						data-ng-show="sortType == 'measureAmount' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'measureAmount' && sortReverse"
 						class="fa fa-caret-up"
 					></span>
@@ -152,22 +146,17 @@
 					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse"
 				> Expiration Date <span
 						data-ng-show="sortType == 'expirationDate' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'expirationDate' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse"
-				> Details <span
+				<th><a href='#'
+					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
+						Details <span
 						data-ng-show="sortType == 'itemDetails' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'itemDetails' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
 			</tr>
 		</thead>
@@ -180,8 +169,9 @@
 				<td><input type="text" data-ng-model="newItemDetails" /></td>
 				<td><button class = "btn" data-ng-click="createNewItem()">Create Item</button></td>
 			</tr>
-		
-			<tr data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
+
+			<tr
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}</td>
@@ -191,10 +181,9 @@
 				<td><button class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
+	<!-- <button data-ng-click="remove()">Remove</button> -->
+	<button>Add to shopping list</button>
 
-	<script
-		src="resources/js/home.js"
-		type="text/javascript"
-	></script>
+	<script src="resources/js/home.js" type="text/javascript"></script>
 </body>
 </html>

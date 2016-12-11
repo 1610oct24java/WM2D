@@ -36,6 +36,10 @@
 		class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Home</button>
 	</form:form>
+	
+	<form:form action="viewFridgeHistory" method="GET" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">History</button>
+	</form:form>
 	<br>
 	<br>
 	<form>

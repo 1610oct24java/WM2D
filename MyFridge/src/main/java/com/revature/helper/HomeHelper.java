@@ -124,7 +124,7 @@ public class HomeHelper {
 	public static User removeItemFromFridgeHelper(UserItem ui, HttpSession session) {
 		
 		if(ui.getItemStatus()==2){
-		ui.setItemStatus(0); // set status to -1
+		ui.setItemStatus(0); // set status to 0
 		}
 		else{
 			ui.setItemStatus(-1);
