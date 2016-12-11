@@ -32,6 +32,7 @@ public class HomeHelper {
 		List<UserItem> list = user.getItems(); // get User's list of items
 		Item newItem = i;
 		ui.setUserId(user.getUserId()); // set UserItem's userId to the current User
+		ui.setExpirationDate(ui.getExpirationDate().split("T")[0]);
 		if(i == null) { //if item doesnt exist in DB
 			newItem = new Item();
 			newItem.setItemName(ui.getItemId().getItemName());
@@ -97,7 +98,7 @@ public class HomeHelper {
 				if(newUI.getItemStatus() != 0 || newUI.getItemStatus() != 2) {
 					System.out.println("In here!");
 					newUI.setItemStatus(0);
-					uiDao.updateUserItem(newUI);
+					uiDao.updateUserItem1(newUI);
 					list.add(newUI);
 					user.setItems(list);
 				}

@@ -40,13 +40,6 @@
 		<button type="submit" class="btn btn-default">Home</button>
 	</form:form>
 	<br>
-
-	<br>
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchItem }}</p>
-	</div>
 	<br>
 	<form>
 		<div class="form-group">
@@ -104,7 +97,6 @@
 				<td>{{item.itemDetails}}</td>
 				<td>
 					<td><button data-ng-click="remove(item)">X</button></td>
-				</td>
 		</tbody>
 	</table>
 	<script src="resources/js/shoppingList.js" type="text/javascript"></script>

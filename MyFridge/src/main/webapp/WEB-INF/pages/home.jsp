@@ -83,14 +83,6 @@
 		>Shopping List</button>
 	</form:form>
 	<br>
-
-	<br>
-	<!-- Creating angular filters -->
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchItem }}</p>
-	</div>
 	<br>
 	<form>
 		<div class="form-group">
