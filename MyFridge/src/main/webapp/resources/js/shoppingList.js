@@ -73,6 +73,8 @@ app.controller('myController', function($scope, $http) {
 			};
 			item.itemStatus = 0;
 			item.measureAmount = $scope.newItemAmount;
+			item.expirationDate = "0";
+			item.measureType = "";
 			item.itemDetails = $scope.newItemDetails;
 			$scope.newItem = item;
 			console.log(item);

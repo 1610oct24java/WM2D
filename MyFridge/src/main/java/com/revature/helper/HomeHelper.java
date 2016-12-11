@@ -32,6 +32,7 @@ public class HomeHelper {
 		List<UserItem> list = user.getItems(); // get User's list of items
 		Item newItem = i;
 		ui.setUserId(user.getUserId()); // set UserItem's userId to the current User
+		ui.setExpirationDate(ui.getExpirationDate().split("T")[0]);
 		if(i == null) { //if item doesnt exist in DB
 			newItem = new Item();
 			newItem.setItemName(ui.getItemId().getItemName());
@@ -87,7 +88,8 @@ public class HomeHelper {
 			user.setItems(list);
 		} else { // else item exists in DB
 			ui.setItemId(newItem); //update UserItem's item
-			UserItem newUI = uiDao.getUserItemByIds(ui); // Check if UserItem already exists
+			UserItem newUI = uiDao.getUserItemByIdsForRemove(ui); // Check if UserItem already exists
+			System.out.println("ADD UI: " + newUI);
 			if(newUI == null) { //if item isn't connected to user
 				uiDao.insertUserItem(ui);
 				list.add(ui);
@@ -132,8 +134,12 @@ public class HomeHelper {
 	
 	public static User updateStatus(UserItem ui, HttpSession session){
 		UserItemDAO uiDao = new UserItemDAOimpl();
-		uiDao.updateUserItem(ui); // update current useritem
 		System.out.println("REOMVED UI: " + ui);
+		System.out.println("USERITEM_ID: " + ui.getUserItemId());
+		UserItem userItem = uiDao.getUserItemByIdsForRemove(ui);
+		userItem.setItemStatus(-1);
+		System.out.println("REOMVED UI: " + userItem);
+		uiDao.updateUserItem(userItem); // update current useritem
 		UserDAO uDao = new UserDAOimpl();
 		User currentUser = (User) session.getAttribute("currentUser"); // get currentUser
 		User user = uDao.getUserByName(currentUser.getUsername()); // get user with updated item list

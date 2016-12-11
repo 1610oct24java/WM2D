@@ -44,13 +44,6 @@
 		<button type="submit" class="btn btn-default">History</button>
 	</form:form>
 	<br>
-
-	<br>
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchItem }}</p>
-	</div>
 	<br>
 	<form>
 		<div class="form-group">

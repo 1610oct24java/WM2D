@@ -43,5 +43,16 @@ public class UserItemDAOimpl implements UserItemDAO {
 		session.update(ui);
 		tx.commit();
 		session.close();
+	}
+
+	@Override
+	public UserItem getUserItemByIdsForRemove(UserItem ui) {
+		Session session = hu.getSession();
+		UserItem userItem = (UserItem) session.createCriteria(UserItem.class)
+				.add(Restrictions.and(Restrictions.eq("userId", ui.getUserId()), 
+						Restrictions.eq("itemId", ui.getItemId()), 
+						Restrictions.eq("expirationDate", ui.getExpirationDate()))).uniqueResult();
+		session.close();
+		return userItem;
 	}	
 }
