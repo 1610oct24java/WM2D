@@ -43,14 +43,5 @@ public class UserItemDAOimpl implements UserItemDAO {
 		session.update(ui);
 		tx.commit();
 		session.close();
-	}
-
-	@Override
-	public void updateUserItem1(UserItem ui) {
-		Session session = hu.getSession();
-		Transaction tx = session.beginTransaction();
-		session.update(ui);
-		tx.commit();
-		session.close();	
 	}	
 }

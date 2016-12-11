@@ -98,7 +98,7 @@ public class HomeHelper {
 				if(newUI.getItemStatus() != 0 || newUI.getItemStatus() != 2) {
 					System.out.println("In here!");
 					newUI.setItemStatus(0);
-					uiDao.updateUserItem1(newUI);
+					uiDao.updateUserItem(newUI);
 					list.add(newUI);
 					user.setItems(list);
 				}
