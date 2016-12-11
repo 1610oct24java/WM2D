@@ -43,6 +43,7 @@ app.controller('myController', function($scope, $http) {
 	//for adding items to list
 	$scope.createNewItem = function() {
 		makeItem();
+		
 		$http
 		.post("addItem", $scope.newItem)
 		.then(function success(response) {
@@ -52,7 +53,12 @@ app.controller('myController', function($scope, $http) {
 	        angular.forEach(items, function (item) {
 	            if (item.itemStatus == 1 || item.itemStatus == 2) {
 	                $scope.items.push(item);
-	            }          
+	            } 
+	            $scope.newItemName = null;
+	            $scope.newItemAmount = null;
+	    		$scope.newExpirationDate = null;
+	    		$scope.newItemMeasureType = null;
+	    		$scope.newItemDetails = null;
 	        });
 		}, function error(response) {
 	        console.log("FAILED GET ITEM NAME");
