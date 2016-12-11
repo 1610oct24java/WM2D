@@ -84,6 +84,9 @@
 	</form:form>
 	<br>
 	<br>
+	
+	<br>
+	<h1>Your Fridge</h1>
 	<form>
 		<div class="form-group">
 			<div class="input-group">
@@ -104,7 +107,6 @@
 	</form>
 
 	<!-- Printing out the User's items -->
-	<h1>Fridge</h1>
 	<table
 		id=table
 		class="table table-bordered table-striped"
@@ -136,6 +138,17 @@
 				</a></th>
 				<th><a
 					href='#'
+					data-ng-click="sortType = 'measureType'; sortReverse = !sortReverse"
+				> Measure Type <span
+						data-ng-show="sortType == 'measureType' && !sortReverse"
+						class="fa fa-caret-down"
+					></span> <span
+						data-ng-show="sortType == 'measureType' && sortReverse"
+						class="fa fa-caret-up"
+					></span>
+				</a></th>
+				<th><a
+					href='#'
 					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse"
 				> Expiration Date <span
 						data-ng-show="sortType == 'expirationDate' && !sortReverse"
@@ -161,20 +174,21 @@
 		<tbody>
 			<tr>
 				<td><input type="text" data-ng-model="newItemName" /></td>
-				<td><input type="number" data-ng-model="newItemAmount" />
-				<input type="text" data-ng-model="newItemMeasureType" /></td>
+				<td><input type="number" data-ng-model="newItemAmount" /></td>
+				<td><input type="text" data-ng-model="newItemMeasureType" /></td>
 				<td><input type="date" data-ng-model="newExpirationDate" /></td>
 				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button data-ng-click="createNewItem()">Create Item</button></td>
+				<td><button class = "btn" data-ng-click="createNewItem()">Create Item</button></td>
 			</tr>
 		
 			<tr data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
-				<td>{{item.measureAmount}}{{item.measureType}}</td>
+				<td>{{item.measureAmount}}</td>
+				<td>{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td><button data-ng-click="remove(item)">X</button></td>
+				<td><button class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
 	<!-- <button data-ng-click="remove()">Remove</button> -->
