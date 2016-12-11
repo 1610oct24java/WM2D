@@ -33,7 +33,7 @@ public class Testing {
 		UserDAO uDAO = new UserDAOimpl();
 		User user = new User();
 		
-		System.out.println(uDAO.getUser("Alpha", "Alpha"));
+		rDAO.getMakeableRecipes(10);
 		
 	}
 	

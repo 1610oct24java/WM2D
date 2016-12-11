@@ -71,7 +71,7 @@
 			class="btn btn-default"
 		>Logout</button>
 	</form:form>
-<<<<<<< HEAD
+
 	<br>
 	<form:form
 		action="viewRecipes"
@@ -84,8 +84,6 @@
 		>View Recipes</button>
 	</form:form>
 
-=======
->>>>>>> 94e5ad30bc8ce462a520439e1f25ecb26d811fa5
 
 	<form:form
 		action="sList"

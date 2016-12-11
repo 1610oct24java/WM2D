@@ -2,15 +2,18 @@
 package com.revature.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.transform.Transformers;
 
-import com.revature.beans.Item;
 import com.revature.beans.Recipe;
 import com.revature.util.Error;
 import com.revature.util.HibernateUtil;
@@ -84,8 +87,12 @@ public class RecipeDAOimpl implements RecipeDAO {
 			Session session = hu.getSession();
 			Transaction tx = session.beginTransaction();
 			
+			//this should work, but doesn't
+			session.save(recipe);
 			
-			Query q1 = session.createSQLQuery(
+			
+			//this sort of works, but also heavily sucks
+			/*Query q1 = session.createSQLQuery(
 					"INSERT INTO RECIPE_TABLE"
 					+ "(RECIPE_NAME, RECIPE_DESCRIPTION, RECIPE_URL, IMAGE_ID) "
 					+ "VALUES (:name,:descr,:url,:imgId )");
@@ -107,7 +114,7 @@ public class RecipeDAOimpl implements RecipeDAO {
 						+ "VALUES(:rid,iid:)");
 				q3.setParameter("rid", rId);
 				q3.setParameter("iid", item.getItemId());
-			}
+			}*/
 			
 			tx.commit();
 			session.close();
@@ -122,6 +129,47 @@ public class RecipeDAOimpl implements RecipeDAO {
 							+ thing.getClassName(),
 					e);
 		}
+	}
+	
+	@Override
+	public Map<Integer, Integer>  getMakeableRecipes(int userid){
+		//final value out, should be map<recipeId, no. of items user has for recipe>
+		Map<Integer, Integer> recipeData = new HashMap<Integer, Integer>();
+		//temp variable to hold recipe id's from DB 
+		List<Integer> tempRecipeIds = new ArrayList<Integer>();
+		//final variable to ensure unique recipe id's returned from DB
+		Set<Integer> recipeIds = null;
+		
+		
+		List<Recipe> tempRecipes = new ArrayList<Recipe>();
+		Set<Recipe> recipes = null;
+		try {
+			Session session = hu.getSession();
+			
+			tempRecipes = (List<Recipe>)session.createCriteria(Recipe.class).list();
+			recipes = new HashSet(tempRecipes);
+						
+			session.close();
+		} catch (Exception e) {
+			StackTraceElement thing = Thread.currentThread().getStackTrace()[1];
+			Error.error(
+					"\nat Line:\t"
+							+ thing.getLineNumber()
+							+ "\nin Method:\t"
+							+ thing.getMethodName()
+							+ "\nin Class:\t"
+							+ thing.getClassName(),
+					e);
+		}
+		
+		for(Recipe r:recipes){
+			recipeIds.add(r.getRecipeId());
+		}
+		System.out.println(recipeIds);
+		
+		
+		
+		return null;
 	}
 	
 	/**
