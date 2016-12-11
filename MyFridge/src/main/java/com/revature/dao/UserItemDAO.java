@@ -7,5 +7,4 @@ public interface UserItemDAO {
 	public UserItem getUserItemByIds(UserItem ui);
 	public UserItem getUserItemByIdsForRemove(UserItem ui);
 	public void updateUserItem(UserItem ui);
-	public void updateUserItem1(UserItem ui);
 }

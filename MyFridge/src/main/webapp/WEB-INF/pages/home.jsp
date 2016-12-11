@@ -191,8 +191,6 @@
 				<td><button class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
-	<!-- <button data-ng-click="remove()">Remove</button> -->
-	<button>Add to shopping list</button>
 
 	<script
 		src="resources/js/home.js"

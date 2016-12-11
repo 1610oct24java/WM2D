@@ -99,7 +99,7 @@ public class HomeHelper {
 				if(newUI.getItemStatus() != 0 || newUI.getItemStatus() != 2) {
 					System.out.println("In here!");
 					newUI.setItemStatus(0);
-					uiDao.updateUserItem1(newUI);
+					uiDao.updateUserItem(newUI);
 					list.add(newUI);
 					user.setItems(list);
 				}
@@ -137,6 +137,7 @@ public class HomeHelper {
 		System.out.println("REOMVED UI: " + ui);
 		System.out.println("USERITEM_ID: " + ui.getUserItemId());
 		UserItem userItem = uiDao.getUserItemByIdsForRemove(ui);
+		userItem.setItemStatus(-1);
 		System.out.println("REOMVED UI: " + userItem);
 		uiDao.updateUserItem(userItem); // update current useritem
 		UserDAO uDao = new UserDAOimpl();

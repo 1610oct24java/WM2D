@@ -46,15 +46,6 @@ public class UserItemDAOimpl implements UserItemDAO {
 	}
 
 	@Override
-	public void updateUserItem1(UserItem ui) {
-		Session session = hu.getSession();
-		Transaction tx = session.beginTransaction();
-		session.update(ui);
-		tx.commit();
-		session.close();	
-	}
-
-	@Override
 	public UserItem getUserItemByIdsForRemove(UserItem ui) {
 		Session session = hu.getSession();
 		UserItem userItem = (UserItem) session.createCriteria(UserItem.class)
