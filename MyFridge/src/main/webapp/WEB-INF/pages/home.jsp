@@ -143,17 +143,6 @@
 				</a></th>
 				<th><a
 					href='#'
-					data-ng-click="sortType = 'measureType'; sortReverse = !sortReverse"
-				> Measure Type <span
-						data-ng-show="sortType == 'measureType' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
-						data-ng-show="sortType == 'measureType' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
-				</a></th>
-				<th><a
-					href='#'
 					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse"
 				> Expiration Date <span
 						data-ng-show="sortType == 'expirationDate' && !sortReverse"

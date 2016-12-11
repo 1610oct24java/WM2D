@@ -16,7 +16,7 @@ app.controller('myController', function($scope, $http) {
 	});
 	
 	$scope.expDateFilter = function (item) {
-		  if (item.expirationDate != null) {
+		  if (item.itemStatus==-1 && item.expirationDate != 0 && item.expirationDate != null) {
 		  return item;
 		 }
 		};
