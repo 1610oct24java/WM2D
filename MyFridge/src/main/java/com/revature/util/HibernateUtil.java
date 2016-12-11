@@ -66,7 +66,6 @@ public class HibernateUtil {
 	 */
 	@Override
 	protected void finalize() throws Throwable {
-		
 		sessionFactory.close();
 		super.finalize();
 	}

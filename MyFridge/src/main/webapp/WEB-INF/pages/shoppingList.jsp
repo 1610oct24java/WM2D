@@ -35,14 +35,11 @@
 		class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Logout</button>
 	</form:form>
+	
+	<form:form action="homepage" method="GET" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">Home</button>
+	</form:form>
 	<br>
-
-	<br>
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchFish }}</p>
-	</div>
 	<br>
 	<form>
 		<div class="form-group">
@@ -87,20 +84,21 @@
 			</tr>
 		</thead>
 		<tbody>
+			<tr>
+				<td><input type="text" data-ng-model="newItemName" /></td>
+				<td><input type="number" data-ng-model="newItemAmount" />
+				<td><input type="text" data-ng-model="newItemDetails" /></td>
+				<td><button data-ng-click="createNewItem()">Create Item</button></td>
+			</tr>
 			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
-				<td>{{item.name}}</td>
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
+				<td>{{item.itemId.itemName}}</td>
 				<td>{{item.measureAmount}}</td>
 				<td>{{item.itemDetails}}</td>
 				<td>
-					<form action="deleteFromShoppingList" method="post">
-							<input name="sList" type="hidden" value="${item.getItemId()}"> 
-							<input class="btn btn-info" type="submit" value="Delete Item">
-					</form>
-				</td>
+					<td><button data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
-
-	<script src="resources/js/home.js" type="text/javascript"></script>
+	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
 </body>
 </html>

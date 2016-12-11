@@ -31,31 +31,13 @@ app.controller('myController', function($scope, $http) {
 	      	var items = response.data.items;
 	        $scope.items = [];
 	        angular.forEach(items, function (item) {
-	            if (item.itemStatus == 1) {
+	            if (item.itemStatus == 1 || item.itemStatus == 2) {
 	                $scope.items.push(item);
 	            }          
 	        });
 	      }, function error(response) {
 	        console.log("FAILED TO REMOVE ITEM");
 	      })
-        
-//        var items = $scope.items;
-//        $scope.items = [];
-//        angular.forEach(items, function (item) {
-//            if (!(item.check)) {
-//                $scope.items.push(item);
-//                console.log("POSTING");
-//            } else {
-//            	$http
-//                .post("removeItemFromFridge", item)
-//                .then(function success(response) {
-//                	console.log("SUCCESS");
-//                	
-//                }, function error(response) {
-//        	        console.log("FAILED TO REMOVE ITEM");
-//        	    });
-//            }     
-//        });
     }
 	
 	//for adding items to list
@@ -68,7 +50,7 @@ app.controller('myController', function($scope, $http) {
 			var items = response.data.items;
 	        $scope.items = [];
 	        angular.forEach(items, function (item) {
-	            if (item.itemStatus == 1) {
+	            if (item.itemStatus == 1 || item.itemStatus == 2) {
 	                $scope.items.push(item);
 	            }          
 	        });

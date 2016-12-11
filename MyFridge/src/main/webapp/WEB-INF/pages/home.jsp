@@ -71,6 +71,7 @@
 			class="btn btn-default"
 		>Logout</button>
 	</form:form>
+<<<<<<< HEAD
 	<br>
 	<form:form
 		action="viewRecipes"
@@ -83,14 +84,20 @@
 		>View Recipes</button>
 	</form:form>
 
+=======
+>>>>>>> 94e5ad30bc8ce462a520439e1f25ecb26d811fa5
 
+	<form:form
+		action="sList"
+		method="GET"
+		class="navbar-form navbar-left"
+	>
+		<button
+			type="submit"
+			class="btn btn-default"
+		>Shopping List</button>
+	</form:form>
 	<br>
-	<!-- Creating angular filters -->
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchItem }}</p>
-	</div>
 	<br>
 	<form>
 		<div class="form-group">

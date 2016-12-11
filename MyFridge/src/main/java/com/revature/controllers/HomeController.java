@@ -151,6 +151,31 @@ public class HomeController {
 		return user;
 	}
 	
+	/**
+	 * Gets the item name.
+	 *
+	 * @param ui
+	 *            the UserItem
+	 * @return the item name
+	 */
+
+	@RequestMapping(value= "/sList",method = RequestMethod.GET)
+	public String shoppingListGet(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap){
+		modelMap.addAttribute("User", user);
+		return "shoppingList";
+	}
+	
+	@RequestMapping(value="/homepage", method = RequestMethod.GET)
+	public String homepage(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap) {
+		return "home";
+	}
+
+	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
+	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
+		return HomeHelper.addItem(ui, session);
+	}
 	
 	@RequestMapping(value = "/viewRecipes", method = RequestMethod.POST)
 	public String getRecipes(@Valid User user, BindingResult bindingResult,
@@ -177,9 +202,14 @@ public class HomeController {
 	}
 	//recipe controller mappings	
 
-	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
-	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
-		return HomeHelper.addItem(ui, session);
+
+
+
+
+
+	@RequestMapping(value = "/addItemToShoppingList", method = RequestMethod.POST)
+	public @ResponseBody User addItemToShoppingList(@RequestBody UserItem ui, HttpSession session){
+		return HomeHelper.addItemToShoppingList(ui, session);
 	}
 	
 	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
@@ -187,6 +217,12 @@ public class HomeController {
 		System.out.println("REMOVE ITEM CONTROLLER");
 		return HomeHelper.removeItemFromFridgeHelper(ui, session);
 	}
+	
+	@RequestMapping(value="/removeItemFromShoppingList", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromShoppingList(@RequestBody UserItem ui, HttpSession session){
+		System.out.println("Remove item from shopping list controller".toUpperCase()); //the ultimate laziness.
+		return HomeHelper.removeItemFromShoppingHelper(ui, session);
+}
 	
 	/**
 	 * Handle error.

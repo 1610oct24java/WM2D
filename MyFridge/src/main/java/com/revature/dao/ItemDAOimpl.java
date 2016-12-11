@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
 import com.revature.beans.Item;
+import com.revature.beans.User;
 import com.revature.util.HibernateUtil;
 
 /**
@@ -19,13 +20,14 @@ public class ItemDAOimpl implements ItemDAO {
 	private HibernateUtil hu;
 	
 	/**
-	 * Instantiates a new item DA oimpl.
+	 * Instantiates a new item DAOimpl. 
 	 */
 	public ItemDAOimpl() {
 		hu = HibernateUtil.getInstance();
 	}
+	//hu = HibernateUtil.getInstance();
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see com.revature.dao.ItemDAO#getItem(int)
 	 */
@@ -38,7 +40,7 @@ public class ItemDAOimpl implements ItemDAO {
 		return item;
 	}
 	
-	/*
+	/**
 	 * (non-Javadoc)
 	 * @see com.revature.dao.ItemDAO#insertItem(com.revature.beans.Item)
 	 */
@@ -58,6 +60,14 @@ public class ItemDAOimpl implements ItemDAO {
 				.add(Restrictions.eq("itemName", itemName)).uniqueResult();
 		session.close();
 		return item;
+	}
+
+	@Override
+	public void deleteItem(Item item) {
+		Session session = hu.getSession();
+		//User user = (User) session.get(User.class, id);
+		
+		
 	}
 	
 	@Override

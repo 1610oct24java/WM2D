@@ -27,6 +27,15 @@ public interface ItemDAO {
 	 */
 	void insertItem(Item item);
 	
+	
+	/**
+	 * Deletes item from shopping list.
+	 * 
+	 * @param item
+	 * 				the item
+	 */
+	void deleteItem(Item item);
+	
 	Item getItemByName(String itemName);
 	
 	ArrayList<Item> getAllItems();
