@@ -31,8 +31,9 @@
 		class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Logout</button>
 	</form:form>
-	
-	<form:form action="homepage" method="GET" class="navbar-form navbar-left">
+
+	<form:form action="homepage" method="GET"
+		class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Home</button>
 	</form:form>
 	<br>
@@ -98,7 +99,6 @@
 		</table>
 	</div>
 	<button onclick="printData()">Print List</button>
-	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
 	<br>
 	<br>
 	<br>
@@ -106,5 +106,7 @@
 		<strong>* Note:</strong> Modifying the details after creating the item
 		does not modify the database, but will show up when printed
 	</div>
+
+	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
 </body>
 </html>
