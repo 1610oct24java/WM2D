@@ -23,29 +23,33 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-<title>MyFridge | Shopping List</title>
+<title>MyFridge | History</title>
 </head>
+
+<!-- Setting up angular app/controller -->
 <body class="container" data-ng-app="myApp"
 	data-ng-controller="myController">
 
+	<!-- Temporary storage for the user information to work with -->
 	<input type="hidden" id="test" name="x" value="${UserJSON}">
 
+	<!-- The JSTL way -->
 	<!-- <div>${currentUser}</div> -->
-	<form:form action="logout" method="POST"
-		class="navbar-form navbar-left">
+	<form:form action="logout" method="POST" class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Logout</button>
 	</form:form>
-	
+
 	<form:form action="homepage" method="GET" class="navbar-form navbar-left">
 		<button type="submit" class="btn btn-default">Home</button>
 	</form:form>
-	
-	<form:form action="viewFridgeHistory" method="GET" class="navbar-form navbar-left">
-		<button type="submit" class="btn btn-default">History</button>
+
+	<form:form action="sList" method="GET" class="navbar-form navbar-left">
+		<button type="submit" class="btn btn-default">Shopping List</button>
 	</form:form>
 	<br>
 
 	<br>
+	<!-- Creating angular filters -->
 	<div class="alert alert-info">
 		<p>Sort Type: {{ sortType }}</p>
 		<p>Sort Reverse: {{ sortReverse }}</p>
@@ -59,14 +63,17 @@
 					<i class="fa fa-search"></i>
 				</div>
 
+				<!-- Creating a text search field -->
 				<input type="text" class="form-control" placeholder="Search Items"
 					data-ng-model="searchItems">
 			</div>
 		</div>
 	</form>
 
-	<h1>Shopping List!</h1>
+	<!-- Printing out the User's items -->
+	<h1>History</h1>
 	<table id=table class="table table-bordered table-striped">
+		<!-- Setting up table to be sortable via title click -->
 		<thead>
 			<tr>
 				<th><a href='#'
@@ -77,11 +84,11 @@
 						class="fa fa-caret-up"></span>
 				</a></th>
 				<th><a href='#'
-					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
-						Amount <span
-						data-ng-show="sortType == 'measureAmount' && !sortReverse"
+					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse">
+						Expiration Date <span
+						data-ng-show="sortType == 'expirationDate' && !sortReverse"
 						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'measureAmount' && sortReverse"
+						data-ng-show="sortType == 'expirationDate' && sortReverse"
 						class="fa fa-caret-up"></span>
 				</a></th>
 				<th><a href='#'
@@ -95,20 +102,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><input type="text" data-ng-model="newItemName" /></td>
-				<td><input type="number" data-ng-model="newItemAmount" />
-				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button data-ng-click="createNewItem()">Create Item</button></td>
-			</tr>
-			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
+
+			<tr data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:expDateFilter">
+				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
-				<td>{{item.measureAmount}}</td>
+				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td><button data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
-	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
+
+	<script src="resources/js/history.js" type="text/javascript"></script>
 </body>
 </html>

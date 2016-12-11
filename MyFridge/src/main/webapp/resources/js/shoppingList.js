@@ -56,7 +56,8 @@ app.controller('myController', function($scope, $http) {
 		        angular.forEach(items, function (item) {
 		            if (item.itemStatus == 0 || item.itemStatus == 2) {
 		                $scope.items.push(item);
-		            }          
+		                window.location.reload(true); 
+		            }  
 		        });
 			}, function error(response) {
 		        console.log("FAILED GET ITEM NAME");
