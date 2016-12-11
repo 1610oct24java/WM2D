@@ -1,6 +1,7 @@
 
 package com.revature.controllers;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.revature.beans.Item;
 import com.revature.beans.Recipe;
 import com.revature.beans.User;
 import com.revature.beans.UserItem;
@@ -156,10 +158,25 @@ public class HomeController {
 		return "Recipes";
 	}
 	
+	
+	//recipe controller mappings
 	@RequestMapping(value = "/getRecipes", method = RequestMethod.GET)
 	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request){
 		return RecipeHelper.getAllRecipes();
 	}
+	
+	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET)
+	public @ResponseBody ArrayList<Item> getAllItems(HttpServletRequest request){
+		return RecipeHelper.getAllItems();
+	}
+
+	@RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
+	public @ResponseBody Set<Recipe> addRecipe(@RequestBody Recipe recipe, HttpSession session){
+		RecipeHelper.addRecipe(recipe);
+		return RecipeHelper.getAllRecipes();
+	}
+	//recipe controller mappings	
+
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
 	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
 		return HomeHelper.addItem(ui, session);

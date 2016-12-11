@@ -6,9 +6,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.revature.beans.Item;
 import com.revature.beans.Recipe;
 import com.revature.util.Error;
 import com.revature.util.HibernateUtil;
@@ -56,7 +58,6 @@ public class RecipeDAOimpl implements RecipeDAO {
 			
 			tempRecipes = (List<Recipe>)session.createCriteria(Recipe.class).list();
 			recipes = new HashSet(tempRecipes);
-			System.out.println(recipes.size());
 						
 			session.close();
 		} catch (Exception e) {
@@ -82,7 +83,32 @@ public class RecipeDAOimpl implements RecipeDAO {
 		try {
 			Session session = hu.getSession();
 			Transaction tx = session.beginTransaction();
-			session.save(recipe);
+			
+			
+			Query q1 = session.createSQLQuery(
+					"INSERT INTO RECIPE_TABLE"
+					+ "(RECIPE_NAME, RECIPE_DESCRIPTION, RECIPE_URL, IMAGE_ID) "
+					+ "VALUES (:name,:descr,:url,:imgId )");
+			q1.setParameter("name", recipe.getRecipeName());
+			q1.setParameter("descr", recipe.getRecipeDescription());
+			q1.setParameter("url", recipe.getRecipeUrl());
+			q1.setParameter("imgId", recipe.getImgId());
+			q1.executeUpdate();
+			
+			Query q2 = session.createSQLQuery("SELECT RECIPE_ID FROM RECIPE_TABLE WHERE"
+					+ "RECIPE_NAME = :name");
+			q2.setParameter("name", recipe.getRecipeName());
+			q2.executeUpdate();
+			int rId = (int)q2.uniqueResult(); 
+					
+			for(Item item : recipe.getItems()){
+				Query q3 = session.createSQLQuery("INSERT INTO RECIPE_ITEM_TABLE"
+						+ "(RECIPE_ID,ITEM_ID)"
+						+ "VALUES(:rid,iid:)");
+				q3.setParameter("rid", rId);
+				q3.setParameter("iid", item.getItemId());
+			}
+			
 			tx.commit();
 			session.close();
 		} catch (Exception e) {

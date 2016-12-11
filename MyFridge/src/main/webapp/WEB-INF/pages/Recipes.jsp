@@ -91,21 +91,26 @@
 	<ul>
 		<li>
 		<!-- test content -->
-
-			<form data-ng-controller="NewRecipeCtrl" data-ng-submit="submitRecipe()" > 
-    			<input form="newRecipe" type='text' data-ng-model='table.title' placeholder='*RecipeName' required> |
-    			<input form="newRecipe" type="text" name="newRecipeLink" placeholder = "Link to instructions" > <br>
-    			<textarea form="newRecipe" rows="5" cols="45" placeholder="Custom Instructions"></textarea> <br>
-    			
-    			<input data-ng-repeat="field in table.fields track by $index" 
-    				type='text' data-ng-model='table.fields[$index]' 
-    				placeholder='Item'>
-    			<div>
-      				
-      				<button data-ng-click="addFormField()">New Item</button>
-      				<button type='submit'>Submit</button>
-    			</div>
-  			</form>
+		<form data-ng-controller="NewRecipeCtrl" data-ng-submit="submitRecipe()"> 
+    		<input type='text' data-ng-model='recipe.recipeName' placeholder='Recipe Name'> |
+    		<input type= 'text' data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'> <br>
+    		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45" placeholder="Custom Instructions"></textarea>
+       		<div>
+<!--     			<select data-ng-repeat="item in recipe.items track by $index"  data-ng-model='recipe.items[$index]'>
+    				<option data-ng-repeat = "item in items" value={{item}}>
+    					{{item.itemName}}
+    				</option>
+    			</select> -->
+    			<select data-ng-repeat="item in recipe.items track by $index"  
+    				data-ng-model='recipe.items[$index].itemId' >
+    				<option data-ng-repeat = "item in items" value={{item.itemId}}>
+    					{{item.itemName}}
+    				</option>
+    			</select>
+    			<br><button data-ng-click="addFormField()">Add Item</button>
+      			<button data-ng-click="submitRecipe()">Save Recipe</button>
+			</div> 		
+  		</form>
 		<!-- test content -->
 			
 		<li data-ng-repeat="recipe in recipes">

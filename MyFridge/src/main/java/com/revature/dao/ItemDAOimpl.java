@@ -1,7 +1,7 @@
 
 package com.revature.dao;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -60,4 +60,12 @@ public class ItemDAOimpl implements ItemDAO {
 		return item;
 	}
 	
+	@Override
+	public ArrayList<Item> getAllItems(){
+		ArrayList<Item> itemList =  new ArrayList<Item>();
+		Session session = hu.getSession();
+		itemList=(ArrayList<Item>) session.createCriteria(Item.class).list();
+		System.out.println(itemList.size());
+		return itemList;
+	}
 }

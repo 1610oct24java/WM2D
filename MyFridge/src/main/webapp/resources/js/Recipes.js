@@ -6,6 +6,7 @@ app.controller('recipeController', function($scope, $http) {
 	$scope.sortReverse = false;
 	$scope.searchItems = ''; 
 
+	//get all recipes out of database into json objects
 	$http
 		.get("getRecipes")
 		.then(function(response) {
@@ -15,23 +16,40 @@ app.controller('recipeController', function($scope, $http) {
 			$scope.recipes = recipes;
 	});
 	
+	//get all items out of database into json objects
+	$http
+		.get("getAllItems")
+		.then(function(response){
+			console.log(response.data);
+			items = response.data;
+			$scope.items = items;
+	});
 	
 
 });
 
 
-app.controller('NewRecipeCtrl', function($scope) {
-  
-  $scope.table = { fields: [] };
+app.controller('NewRecipeCtrl', function($scope, $http) {
+	  
+	  $scope.recipe = { items:[{itemId: "",itemName: "" }] };
 
-  $scope.addFormField = function() {
-    $scope.table.fields.push('');
-  }
-
-  $scope.submitTable = function() {
-    console.log($scope.table);
-  }
-  
+	  $scope.addFormField = function() {
+	    $scope.recipe.items.push({itemId: "" ,itemName: "" });
+	  }
+	  
+	  $scope.submitRecipe = function() {
+		  $http
+		  	.post("addRecipe", $scope.recipe)
+		  	.then(function(response){
+		  		console.log(response.data);
+		  		recipes = response.data;
+			
+		  		$scope.recipes = recipes;
+		  	});
+					
+	  }
+	  
+	  
 });
 
 

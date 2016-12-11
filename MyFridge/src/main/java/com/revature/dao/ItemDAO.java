@@ -1,6 +1,8 @@
 
 package com.revature.dao;
 
+import java.util.ArrayList;
+
 import com.revature.beans.Item;
 
 /**
@@ -26,4 +28,6 @@ public interface ItemDAO {
 	void insertItem(Item item);
 	
 	Item getItemByName(String itemName);
+	
+	ArrayList<Item> getAllItems();
 }
