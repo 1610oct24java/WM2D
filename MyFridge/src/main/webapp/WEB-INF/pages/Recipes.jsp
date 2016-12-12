@@ -112,18 +112,17 @@
       			<button data-ng-click="submitRecipe()">Save Recipe</button>
 			</div> 		
   		</form>
-		<!-- test content -->
-			
-		<li data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'" >
-			{{recipe.recipeName}} | {{recipe.userAmount}}/{{recipe.items.length}} required item(s) | <a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a>
+		<li data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'" data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }" >
+			<p>{{recipe.recipeName}} | {{recipe.userAmount}}/{{recipe.items.length}} required item(s) | {{recipe.completion * 100}} % </p>
 			<table class="table table-bordered table-striped" id="recipe-table">
-				<tr data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }">
+				<tr>
 					<td width="150px"> Instructions </td>
 					<td width="100px"> Required Items </td>
 				</tr>
 				<tr>
 					<td width="150px">
-						{{recipe.recipeDescription}}
+						{{recipe.recipeDescription}}<br>
+						<a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a> 
 					</td>
 					<td width="100px">
 						<table>

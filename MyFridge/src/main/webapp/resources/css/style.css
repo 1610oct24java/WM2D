@@ -4,15 +4,26 @@
     align-content: right;
 }
 
-.green {
-	background-color: green !important;
+ul{ 
+  list-style-type: none;
 }
 
-.yellow {
-	background-color: yellow !important;
+li > p{
+	
+	font-variant: small-caps;
+	font-size: 18pt;
+	border-style: outset;
+	border-width: 6px;
 }
-.red {
-	background-color: red !important;
+.green >p { 
+	background-color: #42f461;
+}
+
+.yellow >p {
+	background-color: #fbf757;
+}
+.red >p {
+	background-color: #ff3c3c;
 }
 
 
