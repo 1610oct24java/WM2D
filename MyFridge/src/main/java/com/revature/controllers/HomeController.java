@@ -202,6 +202,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
 	public @ResponseBody Set<Recipe> addRecipe(@RequestBody Recipe recipe, HttpSession session){
+		System.out.println("in HomeController");
 		RecipeHelper.addRecipe(recipe);
 		return RecipeHelper.getAllRecipes();
 	}

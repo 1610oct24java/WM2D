@@ -8,13 +8,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
-import org.hibernate.transform.Transformers;
+import org.hibernate.criterion.Restrictions;
 
+import com.revature.beans.Item;
 import com.revature.beans.Recipe;
+import com.revature.beans.UserItem;
 import com.revature.util.Error;
 import com.revature.util.HibernateUtil;
 
@@ -86,35 +86,16 @@ public class RecipeDAOimpl implements RecipeDAO {
 		try {
 			Session session = hu.getSession();
 			Transaction tx = session.beginTransaction();
+			Set<Item> tempItems = recipe.getItems();
 			
-			//this should work, but doesn't
+			recipe.setItems(null);
 			session.save(recipe);
 			
-			
-			//this sort of works, but also heavily sucks
-			/*Query q1 = session.createSQLQuery(
-					"INSERT INTO RECIPE_TABLE"
-					+ "(RECIPE_NAME, RECIPE_DESCRIPTION, RECIPE_URL, IMAGE_ID) "
-					+ "VALUES (:name,:descr,:url,:imgId )");
-			q1.setParameter("name", recipe.getRecipeName());
-			q1.setParameter("descr", recipe.getRecipeDescription());
-			q1.setParameter("url", recipe.getRecipeUrl());
-			q1.setParameter("imgId", recipe.getImgId());
-			q1.executeUpdate();
-			
-			Query q2 = session.createSQLQuery("SELECT RECIPE_ID FROM RECIPE_TABLE WHERE"
-					+ "RECIPE_NAME = :name");
-			q2.setParameter("name", recipe.getRecipeName());
-			q2.executeUpdate();
-			int rId = (int)q2.uniqueResult(); 
-					
-			for(Item item : recipe.getItems()){
-				Query q3 = session.createSQLQuery("INSERT INTO RECIPE_ITEM_TABLE"
-						+ "(RECIPE_ID,ITEM_ID)"
-						+ "VALUES(:rid,iid:)");
-				q3.setParameter("rid", rId);
-				q3.setParameter("iid", item.getItemId());
-			}*/
+			Recipe recipeNew = (Recipe) session.createCriteria(Recipe.class)
+					.add(Restrictions.eq("recipeName", recipe.getRecipeName())).uniqueResult();
+		
+			recipeNew.setItems(tempItems);
+			session.update(recipeNew);
 			
 			tx.commit();
 			session.close();

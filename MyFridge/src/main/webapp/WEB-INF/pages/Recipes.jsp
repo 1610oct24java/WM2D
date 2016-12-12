@@ -51,8 +51,7 @@
 		value="${UserJSON}"
 	>
 
-	<!-- The JSTL way -->
-	<!-- <div>${currentUser}</div> -->
+	
 	<form:form
 		action="logout"
 		method="POST"
@@ -89,9 +88,10 @@
 	<h1>Recipes</h1>
 		
 	<ul>
+	
 		<li>
 		<!-- test content -->
-		<form data-ng-controller="NewRecipeCtrl" data-ng-submit="submitRecipe()"> 
+		<form data-ng-controller="recipeController" > 
     		<input type='text' data-ng-model='recipe.recipeName' placeholder='Recipe Name'> |
     		<input type= 'text' data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'> <br>
     		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45" placeholder="Custom Instructions"></textarea>
@@ -114,7 +114,7 @@
 		<!-- test content -->
 			
 		<li data-ng-repeat="recipe in recipes">
-			{{recipe.recipeName}} | {{recipe.items.length}} item(s) required | {{recipe.recipeUrl}}
+			{{recipe.recipeName}} | {{recipe.items.length}} item(s) required | <a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a>
 			<table class="table table-bordered table-striped" id="recipe-table">
 				<tr>
 					<td width="150px"> Instructions </td>

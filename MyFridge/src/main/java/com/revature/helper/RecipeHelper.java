@@ -11,6 +11,7 @@ import com.revature.dao.RecipeDAO;
 import com.revature.dao.RecipeDAOimpl;
 
 public class RecipeHelper {
+	
 	static RecipeDAO rDao = new RecipeDAOimpl();
 	static ItemDAO iDao = new ItemDAOimpl();
 		public static Set<Recipe> getAllRecipes(){
@@ -27,6 +28,7 @@ public class RecipeHelper {
 		}
 		
 		public static void addRecipe(Recipe recipe){
+			System.out.println("in addRecipe");
 			System.out.println(recipe);
 			rDao.submitRecipe(recipe);
 		}
