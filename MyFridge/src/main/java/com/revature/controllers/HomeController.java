@@ -230,6 +230,12 @@ public class HomeController {
 		return HomeHelper.removeItemFromFridgeHelper(ui, session);
 	}
 	
+	@RequestMapping(value="/updateItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User updateItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
+		System.out.println("REMOVE ITEM CONTROLLER");
+		return HomeHelper.updateItemFromFridgeHelper(ui, session);
+	}
+	
 	@RequestMapping(value="/removeItemFromShoppingList", method = RequestMethod.POST)
 	public @ResponseBody User removeItemFromShoppingList(@RequestBody UserItem ui, HttpSession session){
 		System.out.println("Remove item from shopping list controller".toUpperCase()); //the ultimate laziness.

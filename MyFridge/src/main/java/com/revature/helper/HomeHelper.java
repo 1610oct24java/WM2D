@@ -146,4 +146,14 @@ public class HomeHelper {
 		session.setAttribute("currentUser", user);
 		return user;
 	}
+
+	public static User updateItemFromFridgeHelper(UserItem ui, HttpSession session) {
+		UserItemDAO uiDao = new UserItemDAOimpl();
+		UserDAO uDao = new UserDAOimpl();
+		uiDao.updateUserItem(ui);
+		User user = (User)session.getAttribute("currentUser");
+		user = uDao.getUserByName(user.getUsername());
+		session.setAttribute("currentUser", user);
+		return user;
+	}
 }

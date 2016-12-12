@@ -5,7 +5,7 @@ app.controller('myController', function($scope, $http) {
 	$scope.sortType = '';
 	$scope.sortReverse = false;
 	$scope.searchItems = '';
-
+	
 	$http
 		.get("getItems")
 		.then(function(response) {	
@@ -40,6 +40,23 @@ app.controller('myController', function($scope, $http) {
 	      })
     }
 	
+	//for removing items from list
+    $scope.update = function (item) {
+        $http
+	      .post("updateItemFromFridge", item)
+	      .then(function success(response) {
+	      	var items = response.data.items;
+	        $scope.items = [];
+	        angular.forEach(items, function (item) {
+	            if (item.itemStatus == 1 || item.itemStatus == 2) {
+	                $scope.items.push(item);
+	            }          
+	        });
+	      }, function error(response) {
+	        console.log("FAILED TO REMOVE ITEM");
+	      })
+    }
+    
 	//for adding items to list
 	$scope.createNewItem = function() {
 		makeItem();
