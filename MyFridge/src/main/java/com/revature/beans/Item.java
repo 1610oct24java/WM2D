@@ -70,6 +70,7 @@ public class Item implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -85,6 +86,7 @@ public class Item implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -109,6 +111,7 @@ public class Item implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -126,7 +129,7 @@ public class Item implements Serializable {
 	 *            the item name
 	 */
 	public Item(int itemId, String itemName) {
-		super();
+		this();
 		this.itemId = itemId;
 		this.itemName = itemName;
 	}

@@ -1,147 +1,133 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@taglib
-	uri="http://www.springframework.org/tags/form"
-	prefix="form"
-%>
-<%@taglib
-	prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"
-%>
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Latest compiled and minified CSS -->
-<link
-	rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous"
->
-<link
-	href="resources/css/style.css"
-	rel="stylesheet"
-	type="text/css"
->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"
-></script>
-
-<link
-	rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
->
-
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"
-></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
 <title>MyFridge | Recipes</title>
 </head>
-<body
-	class="container"
-	data-ng-app="recipeApp"
-	data-ng-controller="recipeController"
->
-
-	<!-- Temporary storage for the user information to work with -->
-	<input
-		type="hidden"
-		id="test"
-		name="x"
-		value="${UserJSON}"
-	>
-
-	
-	<form:form
-		action="logout"
-		method="POST"
-		class="navbar-form navbar-left"
-	>
-		<button
-			type="submit"
-			class="btn btn-default"
-		>Logout</button>
-	</form:form>
-	<br>
-
-	
-	<form>
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="fa fa-search"></i>
-				</div>
-
-				<!-- Creating a text search field -->
-				<input
-					type="text"
-					class="form-control"
-					placeholder="Search Recipes"
-					data-ng-model="searchRecipes"
-				>
-
+<body class="container" data-ng-app="recipeApp"
+	data-ng-controller="recipeController">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#topFixedNavbar1">
+					<span class="sr-only">Toggle navigation</span><span
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/MyFridge/">WM2D</a>
 			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="topFixedNavbar1">
+				<form:form action="viewFridgeHistory" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">History</button>
+				</form:form>
+				<form:form action="homepage" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">My Fridge</button>
+				</form:form>
+				<form:form action="sList" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">Shopping
+						List</button>
+				</form:form>
+				<form:form action="logout" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">Logout</button>
+				</form:form>
+				<form>
+					<div class="form-group col-lg-5">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+
+							<!-- Creating a text search field -->
+							<input type="text" class="form-control"
+								placeholder="Search Recipes" data-ng-model="searchRecipes">
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.navbar-collapse -->
 		</div>
-	</form>
+		<!-- /.container-fluid -->
+	</nav>
+	<br>
+	<br>
+	<!-- Temporary storage for the user information to work with -->
+	<input type="hidden" id="test" name="x" value="${UserJSON}">
+	<br>
 
 	<!-- Printing out the Recipes -->
 	<h1>Recipes</h1>
-		
 	<ul>
-	
 		<li>
-		<!-- test content -->
-		<form> 
-    		<input type='text' data-ng-model='recipe.recipeName' placeholder='Recipe Name'> |
-    		<input type= 'text' data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'> <br>
-    		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45" placeholder="Custom Instructions"></textarea>
-       		<div>
+			<!-- test content -->
+			<form>
+				<input type='text' data-ng-model='recipe.recipeName'
+					placeholder='Recipe Name'> | <input type='text'
+					data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'>
+				<br>
+				<textarea rows="5" data-ng-model='recipe.recipeDescription'
+					cols="45" placeholder="Custom Instructions"></textarea>
+				<div>
 
-    			<select data-ng-repeat="item in recipe.items  track by $index "  
-    				data-ng-model='recipe.items[$index].itemId' >
-    				<option data-ng-repeat = "item in items | orderBy: 'itemName'" value={{item.itemId}}>
-    					{{item.itemName}}
-    				</option>
-    			</select>
-    			<br><button data-ng-click="addFormField()">Add Item</button>
-      			<button data-ng-click="submitRecipe()">Save Recipe</button>
-			</div> 		
-  		</form>
-		<li data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'" data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }" >
-			<p>{{recipe.recipeName}} | {{recipe.userAmount}}/{{recipe.items.length}} required item(s) | {{recipe.completion * 100}} % </p>
+					<select data-ng-repeat="item in recipe.items  track by $index "
+						data-ng-model='recipe.items[$index].itemId'>
+						<option data-ng-repeat="item in items | orderBy: 'itemName'"
+							value={{item.itemId}}>{{item.itemName}}</option>
+					</select> <br>
+					<button data-ng-click="addFormField()">Add Item</button>
+					<button data-ng-click="submitRecipe()">Save Recipe</button>
+				</div>
+			</form>
+		<li
+			data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'"
+			data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }">
+			<p>{{recipe.recipeName}} |
+				{{recipe.userAmount}}/{{recipe.items.length}} required item(s) |
+				{{recipe.completion * 100}} %</p>
+
 			<table class="table table-bordered table-striped" id="recipe-table">
-				<tr>
-					<td width="150px"> Instructions </td>
-					<td width="100px"> Required Items </td>
+				<tr
+					data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }">
+					<td width="150px">Instructions</td>
+					<td width="100px">Required Items</td>
 				</tr>
 				<tr>
-					<td width="150px">
-						{{recipe.recipeDescription}}<br>
-						<a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a> 
+					<td width="150px">{{recipe.recipeDescription}}<br> <a
+						target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a>
 					</td>
 					<td width="100px">
 						<table>
+
 							<tr data-ng-repeat="item in recipe.items">
-								<td >
-									{{item.itemName}}
-								</td>
+								<td>{{item.itemName}}</td>
 							</tr>
 						</table>
 					</td>
 				</tr>
-				
 			</table>
 		</li>
 	</ul>
-
-	<script
-		src="resources/js/Recipes.js"
-		type="text/javascript"
-	></script>
+	<script src="resources/js/Recipes.js" type="text/javascript"></script>
+	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>

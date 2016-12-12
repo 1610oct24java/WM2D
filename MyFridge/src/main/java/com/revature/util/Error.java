@@ -7,10 +7,9 @@ import java.util.Date;
 import com.revature.Logging.Logging;
 
 /**
- * The Error class
- * <br>
+ * The Error class <br>
  * Primarily used for generating error reports for specified exceptions,<br>
- * but also provides a method to create a time stamp
+ * but also provides a method to create a time stamp.
  */
 public class Error {
 	
@@ -32,8 +31,7 @@ public class Error {
 	}
 	
 	/**
-	 * Produces an error report, also sends errors to log4j2.
-	 * Specifically:<br>
+	 * Produces an error report, also sends errors to log4j2. Specifically:<br>
 	 * <ul>
 	 * <li>Borders</li>
 	 * <li>Time</li>

@@ -9,9 +9,7 @@ app.controller('myController', function($scope, $http) {
 	$http
 		.get("getItems")
 		.then(function(response) {
-			console.log(response.data);
 			items = response.data.items;
-			//getNames(items);
 			$scope.items = items;
 		});
 
@@ -23,20 +21,14 @@ app.controller('myController', function($scope, $http) {
 
 
 	function getNames(items) {
-		console.log(items);
 		var i = 0;
-		items.forEach(function(item) {
-			console.log(item);
-		});
+		items.forEach(function(item) {});
 	}
 
 	$scope.remove = function(item) {
-		console.log("INSIDE REMOVE!");
-		console.log(item);
 		$http
 			.post("removeItemFromShoppingList", item)
 			.then(function success(response) {
-				console.log("SUCCESS");
 				var items = response.data.items;
 				$scope.items = items;
 			}, function error(response) {
@@ -45,20 +37,19 @@ app.controller('myController', function($scope, $http) {
 	}
 
 	//for adding items to list
-		$scope.createNewItem = function() {
-			makeItem();
-			$http
+	$scope.createNewItem = function() {
+		makeItem();
+		$http
 			.post("addItemToShoppingList", $scope.newItem)
 			.then(function success(response) {
-				console.log("SUCESSSSSSSS!!!!!");
 				var items = response.data.items;
-		        $scope.items = [];
-		        angular.forEach(items, function (item) {
-		            if (item.itemStatus == 0 || item.itemStatus == 2) {
-		                $scope.items.push(item);
-		                window.location.reload(true); 
-		            }  
-		        });
+				$scope.items = [];
+				angular.forEach(items, function(item) {
+					if (item.itemStatus == 0 || item.itemStatus == 2) {
+						$scope.items.push(item);
+						window.location.reload(true);
+					}
+				});
 			}, function error(response) {
 				console.log("FAILED GET ITEM NAME");
 			});
@@ -77,7 +68,6 @@ app.controller('myController', function($scope, $http) {
 		item.measureType = "";
 		item.itemDetails = $scope.newItemDetails;
 		$scope.newItem = item;
-		console.log(item);
 	}
 });
 function printData() {
