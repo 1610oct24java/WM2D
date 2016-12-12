@@ -69,7 +69,6 @@ public class UserItemId implements Serializable {
 	 */
 	public UserItemId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -81,13 +80,14 @@ public class UserItemId implements Serializable {
 	 *            the item id
 	 */
 	public UserItemId(int userId, int itemId) {
-		super();
+		this();
 		this.userId = userId;
 		this.itemId = itemId;
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -98,6 +98,7 @@ public class UserItemId implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -112,6 +113,7 @@ public class UserItemId implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

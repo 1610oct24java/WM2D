@@ -40,8 +40,7 @@ public class IndexHelper {
 		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute(
-					"errorMessage",
+			modelMap.addAttribute("errorMessage",
 					"Please enter a usermane or password, but maybe I'm lion");
 			return "index";
 		}
@@ -73,8 +72,7 @@ public class IndexHelper {
 		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute(
-					"errorMessage",
+			modelMap.addAttribute("errorMessage",
 					"Please enter a usermane or password, but maybe I'm lion");
 			return "index";
 		}

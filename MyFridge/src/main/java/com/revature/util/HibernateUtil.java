@@ -21,21 +21,34 @@ public class HibernateUtil {
 	 * @return the session factory
 	 */
 	
-	 /*Singleton config*/
-
+	/* Singleton config */
+	
 	private static HibernateUtil instance = null;
-	private HibernateUtil(){
+	
+	/**
+	 * Instantiates a new hibernate util.
+	 */
+	private HibernateUtil() {
 		
 	}
-	public static HibernateUtil getInstance(){
-		if(instance==null){
-			instance= new HibernateUtil();
+	
+	/**
+	 * Gets the single instance of HibernateUtil.
+	 *
+	 * @return single instance of HibernateUtil
+	 */
+	public static HibernateUtil getInstance() {
+		if (instance == null) {
+			instance = new HibernateUtil();
 		}
 		return instance;
 	}
 	
-	
-	
+	/**
+	 * Gets the session factory.
+	 *
+	 * @return the session factory
+	 */
 	public SessionFactory getSessionFactory() {
 		
 		if (sessionFactory == null) {
@@ -62,6 +75,7 @@ public class HibernateUtil {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#finalize()
 	 */
 	@Override

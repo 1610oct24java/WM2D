@@ -1,129 +1,90 @@
-<%@ page
-	language="java"
-	contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"
-%>
-<%@taglib
-	uri="http://www.springframework.org/tags/form"
-	prefix="form"
-%>
-<%@taglib
-	prefix="c"
-	uri="http://java.sun.com/jsp/jstl/core"
-%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
 <head>
-<meta
-	http-equiv="Content-Type"
-	content="text/html; charset=ISO-8859-1"
->
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Latest compiled and minified CSS -->
-<link
-	rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous"
->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <!-- Latest compiled and minified JavaScript -->
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"
-></script>
-<link
-	rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
->
-
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"
-></script>
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
 <title>MyFridge | Home</title>
 </head>
 
 <!-- Setting up angular app/controller -->
-<body
-	class="container"
-	data-ng-app="myApp"
-	data-ng-controller="myController"
->
+<body class="container" data-ng-app="myApp"
+	data-ng-controller="myController">
 
 	<!-- Temporary storage for the user information to work with -->
-	<input
-		type="hidden"
-		id="test"
-		name="x"
-		value="${UserJSON}"
-	>
+	<input type="hidden" id="test" name="x" value="${UserJSON}">
+
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#topFixedNavbar1">
+					<span class="sr-only">Toggle navigation</span><span
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/MyFridge/">WM2D</a>
+			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="topFixedNavbar1">
+				<form:form action="viewFridgeHistory" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">History</button>
+				</form:form>
+				<form:form action="viewRecipes" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">View Recipes</button>
+				</form:form>
+				<form:form action="sList" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">Shopping
+						List</button>
+				</form:form>
+				<form:form action="logout" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">Logout</button>
+				</form:form>
+				<form>
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+
+							<!-- Creating a text search field -->
+							<input type="text" class="form-control"
+								placeholder="Search Items" data-ng-model="searchItems">
+
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
 
 	<!-- The JSTL way -->
 	<!-- <div>${currentUser}</div> -->
-	<form:form
-		action="logout"
-		method="POST"
-		class="navbar-form navbar-left"
-	>
-		<button
-			type="submit"
-			class="btn btn-default"
-		>Logout</button>
-	</form:form>
-
-	<br>
-	<form:form
-		action="viewRecipes"
-		method="POST"
-		class="navbar-form navbar-left"
-	>
-		<button
-			type="submit"
-			class="btn btn-default"
-		>View Recipes</button>
-	</form:form>
-
-
-	<form:form
-		action="sList"
-		method="GET"
-		class="navbar-form navbar-left"
-	>
-		<button
-			type="submit"
-			class="btn btn-default"
-		>Shopping List</button>
-	</form:form>
-
-	<form:form action="viewFridgeHistory" method="GET" class="navbar-form navbar-left">
-		<button type="submit" class="btn btn-default">History</button>
-	</form:form>
 	<br>
 	<br>
-	
 	<br>
 	<h1>Your Fridge</h1>
-	<form>
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="fa fa-search"></i>
-				</div>
-
-				<!-- Creating a text search field -->
-				<input type="text" class="form-control" placeholder="Search Items"
-					data-ng-model="searchItems">
-
-			</div>
-		</div>
-	</form>
 
 	<!-- Printing out the User's items -->
-	<table
-		id=table
-		class="table table-bordered table-striped"
-	>
+	<table id=table class="table table-bordered table-striped">
 		<!-- Setting up table to be sortable via title click -->
 		<thead>
 			<tr>
@@ -140,24 +101,19 @@
 						data-ng-show="sortType == 'measureAmount' && !sortReverse"
 						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'measureAmount' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'measureType'; sortReverse = !sortReverse"
-				> Measure Type <span
+				<th><a href='#'
+					data-ng-click="sortType = 'measureType'; sortReverse = !sortReverse">
+						Measure Type <span
 						data-ng-show="sortType == 'measureType' && !sortReverse"
-						class="fa fa-caret-down"
-					></span> <span
+						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'measureType' && sortReverse"
-						class="fa fa-caret-up"
-					></span>
+						class="fa fa-caret-up"></span>
 				</a></th>
-				<th><a
-					href='#'
-					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse"
-				> Expiration Date <span
+				<th><a href='#'
+					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse">
+						Expiration Date <span
 						data-ng-show="sortType == 'expirationDate' && !sortReverse"
 						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'expirationDate' && sortReverse"
@@ -178,9 +134,11 @@
 				<td><input type="text" data-ng-model="newItemName" /></td>
 				<td><input type="number" data-ng-model="newItemAmount" /></td>
 				<td><input type="text" data-ng-model="newItemMeasureType" /></td>
-				<td><input type="date" data-ng-model="newExpirationDate" /></td>
+				<td><input type="date" id="date"
+					data-ng-model="newExpirationDate" /></td>
 				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button class = "btn" data-ng-click="createNewItem()">Create Item</button></td>
+				<td><button class="btn" data-ng-click="createNewItem()">Create
+						Item</button></td>
 			</tr>
 
 			<tr
@@ -191,12 +149,15 @@
 				<td>{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td><button class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
+				<td><button class="btn btn-danger btn-sm"
+						data-ng-click="remove(item)">X</button></td>
 		</tbody>
 	</table>
 	<!-- <button data-ng-click="remove()">Remove</button> -->
 	<button>Add to shopping list</button>
 
 	<script src="resources/js/home.js" type="text/javascript"></script>
+	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>

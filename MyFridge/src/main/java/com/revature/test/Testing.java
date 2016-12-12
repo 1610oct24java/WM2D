@@ -39,6 +39,7 @@ public class Testing {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#finalize()
 	 */
 	public void finalize() {

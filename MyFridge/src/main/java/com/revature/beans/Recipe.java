@@ -6,13 +6,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -45,10 +42,7 @@ public class Recipe {
 	
 	/** The items. */
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "RECIPE_ITEM_TABLE",
-			joinColumns = @JoinColumn(name = "RECIPE_ID"),
-			inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
+	@JoinTable(name = "RECIPE_ITEM_TABLE", joinColumns = @JoinColumn(name = "RECIPE_ID"), inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
 	private Set<Item> items;
 	
 	/**
@@ -223,7 +217,7 @@ public class Recipe {
 	 */
 	public Recipe(int recipeId, String recipeName, String recipeDescription,
 			String recipeUrl, int imgId, Set<Item> items) {
-		super();
+		this();
 		this.recipeId = recipeId;
 		this.recipeName = recipeName;
 		this.recipeDescription = recipeDescription;
@@ -241,6 +235,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -263,6 +258,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -273,8 +269,7 @@ public class Recipe {
 		result = prime * result + imgId;
 		result = prime * result + ((items == null) ? 0 : items.hashCode());
 		result = prime * result
-				+ ((recipeDescription == null)
-						? 0
+				+ ((recipeDescription == null) ? 0
 						: recipeDescription.hashCode());
 		result = prime * result + recipeId;
 		result = prime * result
@@ -286,6 +281,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

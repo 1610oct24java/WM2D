@@ -2,7 +2,6 @@
 package com.revature.dao;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import com.revature.beans.Recipe;
@@ -12,6 +11,11 @@ import com.revature.beans.Recipe;
  */
 public interface RecipeDAO {
 	
+	/**
+	 * Gets the all recipes.
+	 *
+	 * @return the all recipes
+	 */
 	Set<Recipe> getAllRecipes();
 	
 	/**
@@ -31,5 +35,12 @@ public interface RecipeDAO {
 	 */
 	void submitRecipe(Recipe recipe);
 	
+	/**
+	 * Gets the makeable recipes.
+	 *
+	 * @param userid
+	 *            the userid
+	 * @return the makeable recipes
+	 */
 	List<int[]> getMakeableRecipes(int userid);
 }

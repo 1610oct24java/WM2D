@@ -3,7 +3,6 @@ package com.revature.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +28,6 @@ import com.revature.helper.IndexHelper;
 import com.revature.helper.RecipeHelper;
 import com.revature.util.Error;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class HomeController.
  */
@@ -62,7 +60,7 @@ public class HomeController {
 	 *            the model map
 	 * @return the string
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String loginGet(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap) {
 		
@@ -83,7 +81,7 @@ public class HomeController {
 	 *            the request
 	 * @return the string
 	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/home", method = RequestMethod.POST)
 	public String login(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap, HttpServletRequest request) {
 		
@@ -131,6 +129,19 @@ public class HomeController {
 		return "index";
 	}
 	
+	/**
+	 * Logout get.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @param request
+	 *            the request
+	 * @return the string
+	 */
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutGet(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap, HttpServletRequest request) {
@@ -156,85 +167,189 @@ public class HomeController {
 	/**
 	 * Gets the item name.
 	 *
-	 * @param ui
-	 *            the UserItem
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
 	 * @return the item name
 	 */
-
-	@RequestMapping(value= "/sList",method = RequestMethod.GET)
-	public String shoppingListGet(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+	
+	@RequestMapping(value = "/sList", method = RequestMethod.POST)
+	public String shoppingListGet(@Valid User user, BindingResult bindingResult,
+			ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		return "shoppingList";
 	}
 	
-	@RequestMapping(value="/viewFridgeHistory", method = RequestMethod.GET)
-	public String viewFridgeHistory(@Valid User user, BindingResult bindingResult, ModelMap modelMap){
+	/**
+	 * View fridge history.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @return the string
+	 */
+	@RequestMapping(value = "/viewFridgeHistory", method = RequestMethod.POST)
+	public String viewFridgeHistory(@Valid User user,
+			BindingResult bindingResult, ModelMap modelMap) {
 		modelMap.addAttribute("User", user);
 		return "history";
 	}
 	
-	@RequestMapping(value="/homepage", method = RequestMethod.GET)
+	/**
+	 * Homepage.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @return the string
+	 */
+	@RequestMapping(value = "/homepage", method = RequestMethod.POST)
 	public String homepage(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap) {
 		return "home";
 	}
-
+	
+	/**
+	 * Adds the item.
+	 *
+	 * @param ui
+	 *            the ui
+	 * @param session
+	 *            the session
+	 * @return the user
+	 */
 	@RequestMapping(value = "/addItem", method = RequestMethod.POST)
-	public @ResponseBody User addItem(@RequestBody UserItem ui, HttpSession session) {
+	public @ResponseBody User addItem(@RequestBody UserItem ui,
+			HttpSession session) {
 		return HomeHelper.addItem(ui, session);
 	}
 	
+	/**
+	 * Gets the recipes.
+	 *
+	 * @param user
+	 *            the user
+	 * @param bindingResult
+	 *            the binding result
+	 * @param modelMap
+	 *            the model map
+	 * @return the recipes
+	 */
 	@RequestMapping(value = "/viewRecipes", method = RequestMethod.POST)
 	public String getRecipes(@Valid User user, BindingResult bindingResult,
 			ModelMap modelMap) {
 		return "Recipes";
 	}
 	
-	//recipe controller mappings
+	/**
+	 * Gets the recipes percentages.
+	 *
+	 * @param session
+	 *            the session
+	 * @return the recipes percentages
+	 */
+	// recipe controller mappings
 	@RequestMapping(value = "/getRecipesPercentages", method = RequestMethod.GET)
-	public @ResponseBody List<int[]> getRecipesPercentages(HttpSession session){
+	public @ResponseBody List<int[]> getRecipesPercentages(
+			HttpSession session) {
 		return RecipeHelper.getRecipesPercentages(session);
 	}
 	
+	/**
+	 * Gets the recipes.
+	 *
+	 * @param request
+	 *            the request
+	 * @return the recipes
+	 */
 	@RequestMapping(value = "/getRecipes", method = RequestMethod.GET)
-	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request){
+	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request) {
 		return RecipeHelper.getAllRecipes();
 	}
 	
+	/**
+	 * Gets the all items.
+	 *
+	 * @param request
+	 *            the request
+	 * @return the all items
+	 */
 	@RequestMapping(value = "/getAllItems", method = RequestMethod.GET)
-	public @ResponseBody ArrayList<Item> getAllItems(HttpServletRequest request){
+	public @ResponseBody ArrayList<Item> getAllItems(
+			HttpServletRequest request) {
 		return RecipeHelper.getAllItems();
 	}
-
+	
+	/**
+	 * Adds the recipe.
+	 *
+	 * @param recipe
+	 *            the recipe
+	 * @param session
+	 *            the session
+	 * @return the sets the
+	 */
 	@RequestMapping(value = "/addRecipe", method = RequestMethod.POST)
-	public @ResponseBody Set<Recipe> addRecipe(@RequestBody Recipe recipe, HttpSession session){
-		System.out.println("in HomeController");
+	public @ResponseBody Set<Recipe> addRecipe(@RequestBody Recipe recipe,
+			HttpSession session) {
 		RecipeHelper.addRecipe(recipe);
 		return RecipeHelper.getAllRecipes();
 	}
-	//recipe controller mappings	
-
-
-
-
-
-
+	// recipe controller mappings
+	
+	/**
+	 * Adds the item to shopping list.
+	 *
+	 * @param ui
+	 *            the ui
+	 * @param session
+	 *            the session
+	 * @return the user
+	 */
 	@RequestMapping(value = "/addItemToShoppingList", method = RequestMethod.POST)
-	public @ResponseBody User addItemToShoppingList(@RequestBody UserItem ui, HttpSession session){
+	public @ResponseBody User addItemToShoppingList(@RequestBody UserItem ui,
+			HttpSession session) {
 		return HomeHelper.addItemToShoppingList(ui, session);
 	}
 	
-	@RequestMapping(value="/removeItemFromFridge", method = RequestMethod.POST)
-	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui, HttpSession session) {
-		System.out.println("REMOVE ITEM CONTROLLER");
+	/**
+	 * Removes the item from fridge.
+	 *
+	 * @param ui
+	 *            the ui
+	 * @param session
+	 *            the session
+	 * @return the user
+	 */
+	@RequestMapping(value = "/removeItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromFridge(@RequestBody UserItem ui,
+			HttpSession session) {
 		return HomeHelper.removeItemFromFridgeHelper(ui, session);
 	}
 	
-	@RequestMapping(value="/removeItemFromShoppingList", method = RequestMethod.POST)
-	public @ResponseBody User removeItemFromShoppingList(@RequestBody UserItem ui, HttpSession session){
-		System.out.println("Remove item from shopping list controller".toUpperCase()); //the ultimate laziness.
+	/**
+	 * Removes the item from shopping list.
+	 *
+	 * @param ui
+	 *            the ui
+	 * @param session
+	 *            the session
+	 * @return the user
+	 */
+	@RequestMapping(value = "/removeItemFromShoppingList", method = RequestMethod.POST)
+	public @ResponseBody User removeItemFromShoppingList(
+			@RequestBody UserItem ui, HttpSession session) {
 		return HomeHelper.removeItemFromShoppingHelper(ui, session);
-}
+	}
 	
 	/**
 	 * Handle error.
@@ -249,14 +364,12 @@ public class HomeController {
 	public ModelAndView handleError(HttpServletRequest req, Exception ex) {
 		
 		StackTraceElement thing = Thread.currentThread().getStackTrace()[1];
-		Error.error(
-				"\nat Line:\t"
-						+ thing.getLineNumber()
-						+ "\nin Method:\t"
-						+ thing.getMethodName()
-						+ "\nin Class:\t"
-						+ thing.getClassName(),
-				ex);
+		Error.error("\nat Line:\t"
+				+ thing.getLineNumber()
+				+ "\nin Method:\t"
+				+ thing.getMethodName()
+				+ "\nin Class:\t"
+				+ thing.getClassName(), ex);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("exception", ex);
