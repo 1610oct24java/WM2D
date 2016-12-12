@@ -32,8 +32,10 @@ public class Testing {
 		Recipe recipe = new Recipe();
 		UserDAO uDAO = new UserDAOimpl();
 		User user = new User();
-		
-		rDAO.getMakeableRecipes(251);
+//		
+//		rDAO.getMakeableRecipes(251);
+		String asd = "asDaSDaSd";
+		System.out.println((asd.charAt(0)+"").toUpperCase() + asd.substring(1).toLowerCase());
 		
 	}
 	

@@ -53,6 +53,9 @@ public class ItemDAOimpl implements ItemDAO {
 	public void insertItem(Item item) {
 		Session session = hu.getSession();
 		Transaction tx = session.beginTransaction();
+		String lowerName = item.getItemName().toLowerCase();
+		String newName = (lowerName.charAt(0)+"").toUpperCase() + lowerName.substring(1).toLowerCase();
+		item.setItemName(newName);
 		session.save(item);
 		tx.commit();
 		session.close();
