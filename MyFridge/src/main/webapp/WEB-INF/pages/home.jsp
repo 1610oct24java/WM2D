@@ -155,8 +155,6 @@
 			</tr>
 		</tbody>
 	</table>
-	<!-- <button data-ng-click="remove()">Remove</button> -->
-	<button>Add to shopping list</button>
 
 	<script src="resources/js/home.js" type="text/javascript"></script>
 	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
