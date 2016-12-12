@@ -3,7 +3,6 @@ package com.revature.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -350,6 +349,21 @@ public class HomeController {
 	public @ResponseBody User removeItemFromShoppingList(
 			@RequestBody UserItem ui, HttpSession session) {
 		return HomeHelper.removeItemFromShoppingHelper(ui, session);
+	}
+	
+	/**
+	 * Update item from fridge.
+	 *
+	 * @param ui
+	 *            the ui
+	 * @param session
+	 *            the session
+	 * @return the user
+	 */
+	@RequestMapping(value = "/updateItemFromFridge", method = RequestMethod.POST)
+	public @ResponseBody User updateItemFromFridge(@RequestBody UserItem ui,
+			HttpSession session) {
+		return HomeHelper.updateItemFromFridgeHelper(ui, session);
 	}
 	
 	/**

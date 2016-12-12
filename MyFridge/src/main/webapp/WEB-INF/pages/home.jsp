@@ -144,11 +144,14 @@
 				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td>{{item.itemId.itemName}}</td>
-				<td><input type="number" data-ng-model="item.measureAmount"/></td>
+				<td><input type="number" data-ng-model="item.measureAmount" /></td>
 				<td>{{item.measureType}}</td>
 				<td>{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
-				<td><button id="update" class = "btn btn-sm" data-ng-click="update(item)">Update</button><button id="remove" class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
+				<td><button id="update" class="btn btn-sm"
+						data-ng-click="update(item)">Update</button>
+					<button id="remove" class="btn btn-danger btn-sm"
+						data-ng-click="remove(item)">X</button></td>
 			</tr>
 		</tbody>
 	</table>
