@@ -19,6 +19,11 @@
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous"
 >
+<link
+	href="resources/css/style.css"
+	rel="stylesheet"
+	type="text/css"
+>
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
@@ -76,8 +81,8 @@
 				<input
 					type="text"
 					class="form-control"
-					placeholder="Search Items"
-					data-ng-model="searchItems"
+					placeholder="Search Recipes"
+					data-ng-model="searchRecipes"
 				>
 
 			</div>
@@ -91,19 +96,15 @@
 	
 		<li>
 		<!-- test content -->
-		<form data-ng-controller="recipeController" > 
+		<form> 
     		<input type='text' data-ng-model='recipe.recipeName' placeholder='Recipe Name'> |
     		<input type= 'text' data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'> <br>
     		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45" placeholder="Custom Instructions"></textarea>
        		<div>
-<!--     			<select data-ng-repeat="item in recipe.items track by $index"  data-ng-model='recipe.items[$index]'>
-    				<option data-ng-repeat = "item in items" value={{item}}>
-    					{{item.itemName}}
-    				</option>
-    			</select> -->
-    			<select data-ng-repeat="item in recipe.items track by $index"  
+
+    			<select data-ng-repeat="item in recipe.items  track by $index "  
     				data-ng-model='recipe.items[$index].itemId' >
-    				<option data-ng-repeat = "item in items" value={{item.itemId}}>
+    				<option data-ng-repeat = "item in items | orderBy: 'itemName'" value={{item.itemId}}>
     					{{item.itemName}}
     				</option>
     			</select>
@@ -113,10 +114,10 @@
   		</form>
 		<!-- test content -->
 			
-		<li data-ng-repeat="recipe in recipes">
-			{{recipe.recipeName}} | {{recipe.items.length}} item(s) required | <a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a>
+		<li data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'" >
+			{{recipe.recipeName}} | {{recipe.userAmount}}/{{recipe.items.length}} required item(s) | <a target="_blank" href="http://{{recipe.recipeUrl}}">{{recipe.recipeUrl}}</a>
 			<table class="table table-bordered table-striped" id="recipe-table">
-				<tr>
+				<tr data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5   }">
 					<td width="150px"> Instructions </td>
 					<td width="100px"> Required Items </td>
 				</tr>

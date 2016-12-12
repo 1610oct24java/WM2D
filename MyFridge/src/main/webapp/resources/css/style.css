@@ -4,6 +4,17 @@
     align-content: right;
 }
 
+.green {
+	background-color: green !important;
+}
+
+.yellow {
+	background-color: yellow !important;
+}
+.red {
+	background-color: red !important;
+}
+
 
 .accordion.Fridge {
 	font-family: Arial, Helvetica, sans-serif;

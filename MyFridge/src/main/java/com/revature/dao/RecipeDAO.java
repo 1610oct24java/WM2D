@@ -1,6 +1,7 @@
 
 package com.revature.dao;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -30,5 +31,5 @@ public interface RecipeDAO {
 	 */
 	void submitRecipe(Recipe recipe);
 	
-	Map<Integer, Integer> getMakeableRecipes(int userid);
+	List<int[]> getMakeableRecipes(int userid);
 }

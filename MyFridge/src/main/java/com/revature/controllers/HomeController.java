@@ -2,6 +2,8 @@
 package com.revature.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
@@ -188,8 +190,12 @@ public class HomeController {
 		return "Recipes";
 	}
 	
-	
 	//recipe controller mappings
+	@RequestMapping(value = "/getRecipesPercentages", method = RequestMethod.GET)
+	public @ResponseBody List<int[]> getRecipesPercentages(HttpSession session){
+		return RecipeHelper.getRecipesPercentages(session);
+	}
+	
 	@RequestMapping(value = "/getRecipes", method = RequestMethod.GET)
 	public @ResponseBody Set<Recipe> getRecipes(HttpServletRequest request){
 		return RecipeHelper.getAllRecipes();

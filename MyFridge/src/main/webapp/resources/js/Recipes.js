@@ -13,6 +13,27 @@ app.controller('recipeController', function($scope, $http) {
 			recipes = response.data;
 			//getNames(items);
 			$scope.recipes = recipes;
+			
+			$http
+			.get("getRecipesPercentages")
+			.then(function(response) {
+				var mappedRecipes = response.data;
+				var recipes = $scope.recipes
+				$scope.recipes = [];
+				angular.forEach(recipes, function (recipe) {
+					recipe.userAmount = 0;
+					recipe.completion = 0;
+					angular.forEach(mappedRecipes, function (mapRecipe) {
+						if(recipe.recipeId == mapRecipe[0]) { 
+	                    	 recipe.userAmount = mapRecipe[1];
+	                    	 recipe.completion = mapRecipe[1]/recipe.items.length;
+	                    	 console.log("ASDFGH " + recipe.completion);
+	                     }
+			        });
+		        });
+				$scope.recipes = recipes;
+				
+		});
 	});
 	
 	//get all items out of database into json objects

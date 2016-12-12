@@ -1,10 +1,15 @@
 package com.revature.helper;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
+
+import javax.servlet.http.HttpSession;
 
 import com.revature.beans.Item;
 import com.revature.beans.Recipe;
+import com.revature.beans.User;
 import com.revature.dao.ItemDAO;
 import com.revature.dao.ItemDAOimpl;
 import com.revature.dao.RecipeDAO;
@@ -33,4 +38,8 @@ public class RecipeHelper {
 			rDao.submitRecipe(recipe);
 		}
 
+		public static List<int[]> getRecipesPercentages(HttpSession session) {
+			int userId = ((User)session.getAttribute("currentUser")).getUserId();
+			return rDao.getMakeableRecipes(userId);
+		}
 }
