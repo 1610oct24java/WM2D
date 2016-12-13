@@ -1,31 +1,25 @@
-#topFixedNavbar1{
-
-
-    align-content: right;
+#topFixedNavbar1 {
+	align-content: right;
 }
 
-ul{ 
-  list-style-type: none;
-}
-
-li > p{
-	
+#title {
 	font-variant: small-caps;
 	font-size: 18pt;
 	border-style: outset;
 	border-width: 6px;
 }
-.green >p { 
-	background-color: #42f461;
+
+.green>#title {
+	background-color: #42f461 !important;
 }
 
-.yellow >p {
-	background-color: #fbf757;
-}
-.red >p {
-	background-color: #ff3c3c;
+.yellow>#title {
+	background-color: #fbf757 !important;
 }
 
+.red>#title {
+	background-color: #ff3c3c !important;
+}
 
 .accordion.Fridge {
 	font-family: Arial, Helvetica, sans-serif;
@@ -36,17 +30,22 @@ li > p{
 	margin: 0 auto;
 	width: 400px;
 }
-.accordion.Fridge > ul > li, .Fridge .accordion-title, .Fridge .accordion-content, .Fridge .accordion-separator {
+
+.accordion.Fridge>ul>li, .Fridge .accordion-title, .Fridge .accordion-content,
+	.Fridge .accordion-separator {
 	float: left;
 }
-.accordion.Fridge > ul > li {
+
+.accordion.Fridge>ul>li {
 	margin-right: -700px;
 	margin-bottom: -0px;
 }
+
 .Fridge .accordion-select:checked ~ .accordion-separator {
 	margin-right: 600px;
 	margin-bottom: 0px;
 }
+
 .Fridge .accordion-title, .Fridge .accordion-select {
 	position: absolute;
 	opacity: 0;
@@ -54,6 +53,7 @@ li > p{
 	height: 235px;
 	font-size: 15px;
 }
+
 .Fridge .accordion-title span {
 	margin-bottom: 20px;
 	margin-left: 20px;
@@ -65,15 +65,14 @@ li > p{
 	height: 234px;
 	width: 400px;
 }
-#door_label {
-    width 234px;
-    position: absolute;
-    top:20%;
-    left:100px;
-    font: bold 24px Georia;
-    
-    
+
+#door_label {width 234px;
+	position: absolute;
+	top: 20%;
+	left: 100px;
+	font: bold 24px Georia;
 }
+
 #bottom_door.Fridge .accordion-content {
 	background-color: #ffffff;
 	color: #4c5157;
@@ -81,7 +80,22 @@ li > p{
 	width: 400px;
 }
 
-.Fridge .accordion-title, .Fridge .accordion-select:checked ~ .accordion-content {
+@font-face {
+	font-family: Icicle;
+	src: url('icicle.ttf');
+}
+
+#interior {
+	color: black;
+	position: absolute;
+	top: 30px;
+	left: 70px;
+	font-size: 20px;
+	font-family: Icicle;
+}
+
+.Fridge .accordion-title, .Fridge .accordion-select:checked ~
+	.accordion-content {
 	margin-right: 1px;
 	margin-bottom: 1px;
 }
@@ -90,17 +104,18 @@ generated automatically and are common for each slider. */
 .accordion {
 	overflow: hidden;
 }
-.accordion > ul {
+
+.accordion>ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 	width: 101%;
 }
 
-
-.accordion > ul > li, .accordion-title {
+.accordion>ul>li, .accordion-title {
 	position: relative;
 }
+
 .accordion-select {
 	cursor: pointer;
 	position: absolute;
@@ -110,6 +125,7 @@ generated automatically and are common for each slider. */
 	margin: 0;
 	z-index: 1;
 }
+
 .accordion-title span {
 	display: block;
 	position: absolute;
@@ -117,13 +133,23 @@ generated automatically and are common for each slider. */
 	width: 100%;
 	white-space: nowrap;
 }
+
 .accordion-content {
 	position: relative;
 	overflow: auto;
 }
+
 .accordion-separator {
 	transition: margin 0.3s ease 0.1s;
 	-o-transition: margin 0.3s ease 0.1s;
 	-moz-transition: margin 0.3s ease 0.1s;
 	-webkit-transition: margin 0.3s ease 0.1s;
+}
+
+#search {
+	width: 30%;
+}
+
+#searchBar {
+	margin-top: 8px;
 }

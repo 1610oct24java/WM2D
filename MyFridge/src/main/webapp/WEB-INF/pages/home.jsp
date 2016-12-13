@@ -10,11 +10,15 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified JavaScript -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+<!-- Angular Material style sheet -->
+<link rel="stylesheet"
+	href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
 <title>MyFridge | Home</title>
 </head>
 
@@ -57,14 +61,14 @@
 					<button type="submit" class="btn btn-default">Logout</button>
 				</form:form>
 				<form>
-					<div class="form-group">
+					<div class="form-group" id="searchBar">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<i class="fa fa-search"></i>
 							</div>
 
 							<!-- Creating a text search field -->
-							<input type="text" class="form-control"
+							<input id="search" type="text" class="form-control"
 								placeholder="Search Items" data-ng-model="searchItems">
 
 						</div>
@@ -136,18 +140,22 @@
 				<td><input type="text" data-ng-model="newItemMeasureType" /></td>
 				<td><input type="date" data-ng-model="newExpirationDate" /></td>
 				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button class = "btn" data-ng-click="createNewItem()">Create Item</button></td>
+				<td><button class="btn" data-ng-click="createNewItem()">Create
+						Item</button></td>
 			</tr>
 			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems"
+				data-ng-class="{green:item.measureAmount > 5, yellow:item.measureAmount < 5, red:item.measureAmount < 1}">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
-				<td>{{item.itemId.itemName}}</td>
-				<td><input type="number" style="width: 110px" data-ng-model="item.measureAmount"/>
-				<button id="update" class = "btn btn-sm" data-ng-click="update(item)">Update</button></td>
-				<td>{{item.measureType}}</td>
-				<td>{{item.expirationDate}}</td>
-				<td>{{item.itemDetails}}</td>
-				<td><button id="remove" class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
+				<td id="title">{{item.itemId.itemName}}</td>
+				<td id="title"><input type="number" style="width: 110px"
+					data-ng-model="item.measureAmount" />
+					<button id="update" class="btn btn-sm" data-ng-click="update(item)">Update</button></td>
+				<td id="title">{{item.measureType}}</td>
+				<td id="title">{{item.expirationDate}}</td>
+				<td id="title">{{item.itemDetails}}</td>
+				<td id="title"><button id="remove"
+						class="btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
 			</tr>
 		</tbody>
 	</table>
