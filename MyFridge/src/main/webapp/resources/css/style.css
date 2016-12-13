@@ -21,6 +21,18 @@
 	background-color: #ff3c3c !important;
 }
 
+.green>#row {
+	background-color: #42f461 !important;
+}
+
+.yellow>#row {
+	background-color: #fbf757 !important;
+}
+
+.red>#row {
+	background-color: #ff3c3c !important;
+}
+
 .accordion.Fridge {
 	font-family: Arial, Helvetica, sans-serif;
 	border-color: #191d23;
