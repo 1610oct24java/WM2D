@@ -10,6 +10,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified JavaScript -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
@@ -59,7 +60,7 @@
 					<button type="submit" class="btn btn-default">Logout</button>
 				</form:form>
 				<form>
-					<div class="form-group">
+					<div class="form-group" id="searchBar">
 						<div class="input-group">
 							<div class="input-group-addon">
 								<i class="fa fa-search"></i>
@@ -67,7 +68,8 @@
 
 							<!-- Creating a text search field -->
 							<input type="text" class="form-control"
-								placeholder="Search Items" data-ng-model="searchItems">
+								placeholder="Search Items" data-ng-model="searchItems"
+								id="search">
 						</div>
 					</div>
 				</form>

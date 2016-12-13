@@ -70,7 +70,6 @@
 				<c:if test="${successMessage != null}">
 					<span class="alert alert-success">${successMessage}</span>
 				</c:if>
-
 			</div>
 			<!-- /.navbar-collapse -->
 		</div>
@@ -85,10 +84,12 @@
 				<div class="accordion-content">
 					<img src="resources/images/doorInTop.jpg" width="100%"
 						height="100%" alt="" />
-					<form>
+					<form id="interior">
 						<fieldset>
 							<legend>My Fridge</legend>
-							<div>This is where a basic app description will go</div>
+							<div>
+								This is where a<br> basic app description<br> will go
+							</div>
 
 						</fieldset>
 					</form>
@@ -113,9 +114,11 @@
 				<div class="accordion-content">
 					<img src="resources/images/doorInBottom.jpg" width="100%"
 						height="100%" alt="" />
-					<form>
+					<form id="interior">
 						<fieldset>
-							<div>Scan or click the QR code below:</div>
+							<div>
+								Scan or click the<br> QR code below:
+							</div>
 							<br> <a href="mailto:dougshmkr@gmail.com"><img
 								alt="dougshmkr@gmail.com" src="resources/images/qrcode.png"></a>
 						</fieldset>
