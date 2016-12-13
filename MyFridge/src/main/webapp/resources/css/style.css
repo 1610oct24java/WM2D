@@ -25,7 +25,16 @@ li > p{
 .red >p {
 	background-color: #ff3c3c;
 }
+.greentr >tr { 
+	background-color: #42f461;
+}
 
+.yellowtr >tr {
+	background-color: #fbf757;
+}
+.redtr >tr {
+	background-color: #ff3c3c;
+}
 
 .accordion.Fridge {
 	font-family: Arial, Helvetica, sans-serif;

@@ -13,6 +13,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
 <title>MyFridge | Home</title>
@@ -138,14 +139,15 @@
 				<td><input type="text" data-ng-model="newItemDetails" /></td>
 				<td><button class = "btn" data-ng-click="createNewItem()">Create Item</button></td>
 			</tr>
-			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
+			<tr 
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems" 
+				data-ng-class="{yellowtr:dateDifference(item) > 0, redtr: dateDifference(item) <= 0}">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
-				<td>{{item.itemId.itemName}}</td>
+				<td>{{item.itemId.itemName}} {{dateDifference(item)}}</td>
 				<td><input type="number" style="width: 110px" data-ng-model="item.measureAmount"/>
 				<button id="update" class = "btn btn-sm" data-ng-click="update(item)">Update</button></td>
 				<td>{{item.measureType}}</td>
-				<td>{{item.expirationDate}}</td>
+				<td data-ng-class="{yellowtr:dateDifference(item) > 0, redtr: dateDifference(item) <= 0}">{{item.expirationDate}}</td>
 				<td>{{item.itemDetails}}</td>
 				<td><button id="remove" class = "btn btn-danger btn-sm" data-ng-click="remove(item)">X</button></td>
 			</tr>
