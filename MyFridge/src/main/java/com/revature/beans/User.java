@@ -130,6 +130,7 @@ public class User implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -167,7 +168,7 @@ public class User implements Serializable {
 	 */
 	public User(int userId, String username, String password,
 			List<UserItem> items) {
-		super();
+		this();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
@@ -195,6 +196,7 @@ public class User implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -213,6 +215,7 @@ public class User implements Serializable {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

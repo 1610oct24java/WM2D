@@ -14,13 +14,9 @@
 <!-- Latest compiled and minified JavaScript -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-<!-- Angular Material style sheet -->
-<link rel="stylesheet"
-	href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-<title>MyFridge | Home</title>
+<title>MyFridge | History</title>
 </head>
 
 <!-- Setting up angular app/controller -->
@@ -30,6 +26,8 @@
 	<!-- Temporary storage for the user information to work with -->
 	<input type="hidden" id="test" name="x" value="${UserJSON}">
 
+	<!-- The JSTL way -->
+	<!-- <div>${currentUser}</div> -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -44,9 +42,9 @@
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="topFixedNavbar1">
-				<form:form action="viewFridgeHistory" method="POST"
+				<form:form action="homepage" method="POST"
 					class="navbar-form navbar-left">
-					<button type="submit" class="btn btn-default">History</button>
+					<button type="submit" class="btn btn-default">My Fridge</button>
 				</form:form>
 				<form:form action="viewRecipes" method="POST"
 					class="navbar-form navbar-left">
@@ -69,9 +67,9 @@
 							</div>
 
 							<!-- Creating a text search field -->
-							<input id="search" type="text" class="form-control"
-								placeholder="Search Items" data-ng-model="searchItems">
-
+							<input type="text" class="form-control"
+								placeholder="Search Items" data-ng-model="searchItems"
+								id="search">
 						</div>
 					</div>
 				</form>
@@ -80,15 +78,12 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
-
-	<!-- The JSTL way -->
-	<!-- <div>${currentUser}</div> -->
 	<br>
 	<br>
 	<br>
-	<h1>Your Fridge</h1>
 
 	<!-- Printing out the User's items -->
+	<h1>History</h1>
 	<table id=table class="table table-bordered table-striped">
 		<!-- Setting up table to be sortable via title click -->
 		<thead>
@@ -98,22 +93,6 @@
 						Name <span data-ng-show="sortType == 'name' && !sortReverse"
 						class="fa fa-caret-down"></span> <span
 						data-ng-show="sortType == 'name' && sortReverse"
-						class="fa fa-caret-up"></span>
-				</a></th>
-				<th><a href='#'
-					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
-						Amount <span
-						data-ng-show="sortType == 'measureAmount' && !sortReverse"
-						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'measureAmount' && sortReverse"
-						class="fa fa-caret-up"></span>
-				</a></th>
-				<th><a href='#'
-					data-ng-click="sortType = 'measureType'; sortReverse = !sortReverse">
-						Measure Type <span
-						data-ng-show="sortType == 'measureType' && !sortReverse"
-						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'measureType' && sortReverse"
 						class="fa fa-caret-up"></span>
 				</a></th>
 				<th><a href='#'
@@ -135,33 +114,17 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><input type="text" data-ng-model="newItemName" /></td>
-				<td><input type="number" data-ng-model="newItemAmount" /></td>
-				<td><input type="text" data-ng-model="newItemMeasureType" /></td>
-				<td><input type="date" data-ng-model="newExpirationDate" /></td>
-				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button class="btn" data-ng-click="createNewItem()">Create
-						Item</button></td>
-			</tr>
+
 			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems"
-				data-ng-class="{yellow:dateDifference(item) < 518400000, red:dateDifference(item) < 1}">
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:expDateFilter">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
-				<td id="row">{{item.itemId.itemName}}</td>
-				<td id="row"><input type="number" min="0" style="width: 110px"
-					data-ng-model="item.measureAmount" />
-					<button id="update" class="btn btn-sm" data-ng-click="update(item)">Update</button></td>
-				<td id="row">{{item.measureType}}</td>
-				<td id="row">{{item.expirationDate}}</td>
-				<td id="row">{{item.itemDetails}}</td>
-				<td id="row"><button id="remove" class="btn btn-danger btn-sm"
-						data-ng-click="remove(item)">X</button></td>
-			</tr>
+				<td>{{item.itemId.itemName}}</td>
+				<td>{{item.expirationDate}}</td>
+				<td>{{item.itemDetails}}</td>
 		</tbody>
 	</table>
 
-	<script src="resources/js/home.js" type="text/javascript"></script>
+	<script src="resources/js/history.js" type="text/javascript"></script>
 	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
 </body>

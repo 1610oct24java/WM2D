@@ -18,6 +18,7 @@ public class UserDAOimpl implements UserDAO {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.revature.dao.UserDAO#createUser(com.revature.beans.User)
 	 */
 	@Override
@@ -32,6 +33,7 @@ public class UserDAOimpl implements UserDAO {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.revature.dao.UserDAO#getUserByName(java.lang.String)
 	 */
 	@Override
@@ -41,11 +43,13 @@ public class UserDAOimpl implements UserDAO {
 		
 		User user = (User) session.createCriteria(User.class)
 				.add(Restrictions.eq("username", username)).uniqueResult();
+		session.close();
 		return user;
 	}
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see com.revature.dao.UserDAO#getUser(java.lang.String, java.lang.String)
 	 */
 	@Override
@@ -53,10 +57,11 @@ public class UserDAOimpl implements UserDAO {
 		
 		Session session = hu.getSession();
 		
-		User user =
-				(User) session.createCriteria(User.class).add(Restrictions.and(
-						Restrictions.eq("username", username),
-						Restrictions.eq("password", password))).uniqueResult();
+		User user = (User) session.createCriteria(User.class)
+				.add(Restrictions.and(Restrictions.eq("username", username),
+						Restrictions.eq("password", password)))
+				.uniqueResult();
+		session.close();
 		return user;
 	}
 	
@@ -65,6 +70,20 @@ public class UserDAOimpl implements UserDAO {
 	 */
 	public UserDAOimpl() {
 		super();
-		hu = new HibernateUtil();
+		hu = HibernateUtil.getInstance();
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.revature.dao.UserDAO#updateUser(com.revature.beans.User)
+	 */
+	@Override
+	public void updateUser(User user) {
+		Session session = hu.getSession();
+		Transaction tx = session.beginTransaction();
+		session.merge(user);
+		tx.commit();
+		session.close();
 	}
 }

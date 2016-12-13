@@ -16,12 +16,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "USER_ITEM_TABLE")
-// @AssociationOverrides({
-// @AssociationOverride(name="primaryKey.user",
-// joinColumns = @JoinColumn(name="USER_ID")),
-// @AssociationOverride(name="primaryKey.item",
-// joinColumns = @JoinColumn(name="ITEM_ID"))
-// })
 public class UserItem implements Serializable {
 	
 	/** The Constant serialVersionUID. */
@@ -37,9 +31,9 @@ public class UserItem implements Serializable {
 	private int userId;
 	
 	/** The item id. */
-	//Don't need to call @Column because item name is in another table.
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity=Item.class)
-	@JoinColumn(name="ITEM_ID")
+	// Don't need to call @Column because item name is in another table.
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Item.class)
+	@JoinColumn(name = "ITEM_ID")
 	private Item itemId;
 	
 	/** The item status. */
@@ -230,12 +224,6 @@ public class UserItem implements Serializable {
 		this.itemDetails = itemDetails;
 	}
 	
-	/*
-	 * (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-
-	
 	/**
 	 * Instantiates a new user item.
 	 */
@@ -243,14 +231,32 @@ public class UserItem implements Serializable {
 		super();
 	}
 	
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "UserItem [userItemId=" + userItemId + ", userId=" + userId + ", itemId=" + itemId + ", itemStatus="
-				+ itemStatus + ", measureAmount=" + measureAmount + ", expirationDate=" + expirationDate
-				+ ", measureType=" + measureType + ", itemDetails=" + itemDetails + "]";
+		return "UserItem [userItemId="
+				+ userItemId
+				+ ", userId="
+				+ userId
+				+ ", itemId="
+				+ itemId
+				+ ", itemStatus="
+				+ itemStatus
+				+ ", measureAmount="
+				+ measureAmount
+				+ ", expirationDate="
+				+ expirationDate
+				+ ", measureType="
+				+ measureType
+				+ ", itemDetails="
+				+ itemDetails
+				+ "]";
 	}
-
+	
 	/**
 	 * Instantiates a new user item.
 	 *
@@ -274,7 +280,7 @@ public class UserItem implements Serializable {
 	public UserItem(int userItemId, int userId, Item itemId, int itemStatus,
 			double measureAmount, String expirationDate, String measureType,
 			String itemDetails) {
-		super();
+		this();
 		this.userItemId = userItemId;
 		this.userId = userId;
 		this.itemId = itemId;

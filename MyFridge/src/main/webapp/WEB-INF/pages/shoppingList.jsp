@@ -9,21 +9,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="resources/css/style.css" rel="stylesheet" type="text/css">
 <!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-<title>Shopping List</title>
+<title>MyFridge | Shopping List</title>
 </head>
 <body class="container" data-ng-app="myApp"
 	data-ng-controller="myController">
@@ -31,76 +24,117 @@
 	<input type="hidden" id="test" name="x" value="${UserJSON}">
 
 	<!-- <div>${currentUser}</div> -->
-	<form:form action="logout" method="POST"
-		class="navbar-form navbar-left">
-		<button type="submit" class="btn btn-default">Logout</button>
-	</form:form>
-	<br>
-
-	<br>
-	<div class="alert alert-info">
-		<p>Sort Type: {{ sortType }}</p>
-		<p>Sort Reverse: {{ sortReverse }}</p>
-		<p>Search Query: {{ searchFish }}</p>
-	</div>
-	<br>
-	<form>
-		<div class="form-group">
-			<div class="input-group">
-				<div class="input-group-addon">
-					<i class="fa fa-search"></i>
-				</div>
-
-				<input type="text" class="form-control" placeholder="Search Items"
-					data-ng-model="searchItems">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#topFixedNavbar1">
+					<span class="sr-only">Toggle navigation</span><span
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/MyFridge/">WM2D</a>
 			</div>
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="topFixedNavbar1">
+				<form:form action="viewFridgeHistory" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">History</button>
+				</form:form>
+				<form:form action="viewRecipes" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">View Recipes</button>
+				</form:form>
+				<form:form action="homepage" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">My Fridge</button>
+				</form:form>
+				<form:form action="logout" method="POST"
+					class="navbar-form navbar-left">
+					<button type="submit" class="btn btn-default">Logout</button>
+				</form:form>
+				<form>
+					<div class="form-group" id="searchBar">
+						<div class="input-group">
+							<div class="input-group-addon">
+								<i class="fa fa-search"></i>
+							</div>
+
+							<input type="text" class="form-control"
+								placeholder="Search Items" data-ng-model="searchItems"
+								id="search">
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- /.navbar-collapse -->
 		</div>
-	</form>
+		<!-- /.container-fluid -->
+	</nav>
+	<br>
+	<br>
+	<br>
 
-	<h1>Shopping List!</h1>
-	<table id=table class="table table-bordered table-striped">
-		<thead>
-			<tr>
-				<th><a href='#'
-					data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
-						Name <span data-ng-show="sortType == 'name' && !sortReverse"
-						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'name' && sortReverse"
-						class="fa fa-caret-up"></span>
-				</a></th>
-				<th><a href='#'
-					data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
-						Amount <span
-						data-ng-show="sortType == 'measureAmount' && !sortReverse"
-						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'measureAmount' && sortReverse"
-						class="fa fa-caret-up"></span>
-				</a></th>
-				<th><a href='#'
-					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
-						Details <span
-						data-ng-show="sortType == 'itemDetails' && !sortReverse"
-						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'itemDetails' && sortReverse"
-						class="fa fa-caret-up"></span>
-				</a></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr
-				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems">
-				<td>{{item.name}}</td>
-				<td>{{item.measureAmount}}</td>
-				<td>{{item.itemDetails}}</td>
-				<td>
-					<form action="deleteFromShoppingList" method="post">
-							<input name="sList" type="hidden" value="${item.getItemId()}"> 
-							<input class="btn btn-info" type="submit" value="Delete Item">
-					</form>
-				</td>
-		</tbody>
-	</table>
+	<div>
+		<h1>Shopping List!</h1>
+		<table id=table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th><a href='#'
+						data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
+							Name <span data-ng-show="sortType == 'name' && !sortReverse"
+							class="fa fa-caret-down"></span> <span
+							data-ng-show="sortType == 'name' && sortReverse"
+							class="fa fa-caret-up"></span>
+					</a></th>
+					<th><a href='#'
+						data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
+							Amount <span
+							data-ng-show="sortType == 'measureAmount' && !sortReverse"
+							class="fa fa-caret-down"></span> <span
+							data-ng-show="sortType == 'measureAmount' && sortReverse"
+							class="fa fa-caret-up"></span>
+					</a></th>
+					<th><a href='#'
+						data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
+							Details <strong>*</strong> <span
+							data-ng-show="sortType == 'itemDetails' && !sortReverse"
+							class="fa fa-caret-down"></span> <span
+							data-ng-show="sortType == 'itemDetails' && sortReverse"
+							class="fa fa-caret-up"></span>
+					</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input type="text" data-ng-model="newItemName" /></td>
+					<td><input type="number" data-ng-model="newItemAmount" />
+					<td><input type="text" data-ng-model="newItemDetails" /></td>
+					<td><button data-ng-click="createNewItem()">Create
+							Item</button></td>
+				</tr>
+				<tr
+					data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
+					<td>{{item.itemId.itemName}}</td>
+					<td>{{item.measureAmount}}</td>
+					<td><input type="text" data-ng-model="item.itemDetails"
+						placeholder={{item.itemDetails}} /></td>
+					<td><button data-ng-click="remove(item)">X</button></td>
+			</tbody>
+		</table>
+	</div>
+	<button onclick="printData()">Print List</button>
+	<br>
+	<br>
+	<br>
+	<div>
+		<strong>* Note:</strong> Modifying the details after creating the item
+		does not modify the database, but will show up when printed
+	</div>
 
-	<script src="resources/js/home.js" type="text/javascript"></script>
+	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
+	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
 </body>
 </html>

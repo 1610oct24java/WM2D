@@ -1,7 +1,8 @@
 
 package com.revature.beans;
 
-import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,18 +42,15 @@ public class Recipe {
 	
 	/** The items. */
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "RECIPE_ITEM_TABLE",
-			joinColumns = @JoinColumn(name = "RECIPE_ID"),
-			inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
-	private List<Item> items;
+	@JoinTable(name = "RECIPE_ITEM_TABLE", joinColumns = @JoinColumn(name = "RECIPE_ID"), inverseJoinColumns = @JoinColumn(name = "ITEM_ID"))
+	private Set<Item> items;
 	
 	/**
 	 * Gets the items.
 	 *
 	 * @return the items
 	 */
-	public List<Item> getItems() {
+	public Set<Item> getItems() {
 		
 		return items;
 	}
@@ -63,7 +61,7 @@ public class Recipe {
 	 * @param items
 	 *            the new items
 	 */
-	public void setItems(List<Item> items) {
+	public void setItems(Set<Item> items) {
 		
 		this.items = items;
 	}
@@ -218,8 +216,8 @@ public class Recipe {
 	 *            the items
 	 */
 	public Recipe(int recipeId, String recipeName, String recipeDescription,
-			String recipeUrl, int imgId, List<Item> items) {
-		super();
+			String recipeUrl, int imgId, Set<Item> items) {
+		this();
 		this.recipeId = recipeId;
 		this.recipeName = recipeName;
 		this.recipeDescription = recipeDescription;
@@ -237,6 +235,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -259,6 +258,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -269,8 +269,7 @@ public class Recipe {
 		result = prime * result + imgId;
 		result = prime * result + ((items == null) ? 0 : items.hashCode());
 		result = prime * result
-				+ ((recipeDescription == null)
-						? 0
+				+ ((recipeDescription == null) ? 0
 						: recipeDescription.hashCode());
 		result = prime * result + recipeId;
 		result = prime * result
@@ -282,6 +281,7 @@ public class Recipe {
 	
 	/*
 	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
