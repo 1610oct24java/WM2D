@@ -2,10 +2,10 @@ var app = angular.module('myApp', []);
 var items = 0;
 
 app.controller('myController', function($scope, $http, $filter) {
-	$scope.sortType = '';
+	$scope.sortType = 'itemName';
 	$scope.sortReverse = false;
 	$scope.searchItems = '';
-    $scope.date = new Date();
+	$scope.date = new Date();
 
 	$http
 		.get("getItems")
@@ -21,12 +21,12 @@ app.controller('myController', function($scope, $http, $filter) {
 
 	//for calculating difference between dates
 	$scope.dateDifference = function(item) {
-		var today = ($filter('date')(new Date(), "yyyy-MM-dd")); 
+		var today = ($filter('date')(new Date(), "yyyy-MM-dd"));
 		var difference = Date.parse(item.expirationDate) - Date.parse(today);
 		return difference;
 	}
-	
-	
+
+
 	//for removing items from list
 	$scope.remove = function(item) {
 		$http
@@ -86,13 +86,13 @@ app.controller('myController', function($scope, $http, $filter) {
 	}
 	var item;
 	function makeItem() {
-		item = {}
+		item = []
 		//		item.userItemId = -1;
 		item.userId = $scope.items.userId;
-		item.itemId = {
+		item.itemId = [ {
 			"itemId" : -1,
 			"itemName" : $scope.newItemName
-		};
+		} ];
 		item.itemStatus = 1;
 		item.measureAmount = $scope.newItemAmount;
 		item.expirationDate = $scope.newExpirationDate;

@@ -94,10 +94,10 @@
 		<thead>
 			<tr>
 				<th><a href='#'
-					data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
-						Name <span data-ng-show="sortType == 'name' && !sortReverse"
+					data-ng-click="sortType = 'itemName'; sortReverse = !sortReverse">
+						Name <span data-ng-show="sortType == 'itemName' && !sortReverse"
 						class="fa fa-caret-down"></span> <span
-						data-ng-show="sortType == 'name' && sortReverse"
+						data-ng-show="sortType == 'itemName' && sortReverse"
 						class="fa fa-caret-up"></span>
 				</a></th>
 				<th><a href='#'
@@ -140,7 +140,7 @@
 				<td><input type="text" data-ng-model="newItemName"
 					spellcheck="true" /></td>
 				<td><input type="number" min="0.01" max="99"
-					data-ng-model="newItemAmount" /></td>
+					data-ng-model="newItemAmount" style="width: 100%" /></td>
 				<td><input type="text" data-ng-model="newItemMeasureType"
 					spellcheck="true" /></td>
 				<td><input type="date" data-ng-model="newExpirationDate" /></td>
