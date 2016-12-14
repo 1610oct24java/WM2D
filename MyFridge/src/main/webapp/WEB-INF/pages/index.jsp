@@ -36,7 +36,8 @@
 				<a class="navbar-brand" href="/MyFridge/">WM2D</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="topFixedNavbar1">
+			<div class="collapse navbar-collapse" id="topFixedNavbar1"
+				style="margin-left: 50px;">
 
 				<form:form action="home" method="POST" commandName="User"
 					class="navbar-form navbar-left">
@@ -82,26 +83,26 @@
 			<li><input type="checkbox" name="select"
 				class="accordion-select" />
 				<div class="accordion-content">
-					<img src="resources/images/doorInTop.jpg" width="100%"
-						height="100%" alt="" />
+					<img src="resources/images/doorInTop.png" width="100%"
+						height="100%" alt="doorInteriorTop" />
 					<form id="interior">
-<!-- 						<fieldset> -->
-<!-- 							<legend>My Fridge</legend> -->
-<!-- 							<div> -->
-<!-- 								This is where a<br> basic app description<br> will go -->
-<!-- 							</div> -->
+						<!-- 						<fieldset> -->
+						<!-- 							<legend>My Fridge</legend> -->
+						<!-- 							<div> -->
+						<!-- 								This is where a<br> basic app description<br> will go -->
+						<!-- 							</div> -->
 
-<!-- 						</fieldset> -->
+						<!-- 						</fieldset> -->
 					</form>
 				</div>
 				<div class="accordion-separator"></div></li>
 			<li>
 
 				<div class="accordion-content">
-					<img src="resources/images/doorTop.jpg" width="100%" height="100%"
-						alt="" />
-						<div id="door_label"></div>
-<!-- 					<div id="door_label">About</div> -->
+					<img src="resources/images/doortop1.png" width="100%" height="100%"
+						alt="doorTop" />
+					<div id="door_label"></div>
+					<!-- 					<div id="door_label">About</div> -->
 				</div>
 				<div class="accordion-separator"></div>
 			</li>
@@ -113,25 +114,25 @@
 				class="accordion-select" />
 
 				<div class="accordion-content">
-					<img src="resources/images/doorInBottom.jpg" width="100%"
-						height="100%" alt="" />
+					<img src="resources/images/doorInBottom.png" width="100%"
+						height="100%" alt="doorInteriorBottom" />
 					<form id="interior">
-<!-- 						<fieldset> -->
-<!-- 							<div> -->
-<!-- 								Scan or click the<br> QR code below: -->
-<!-- 							</div> -->
-<!-- 							<br> <a href="mailto:dougshmkr@gmail.com"><img -->
-<!-- 								alt="dougshmkr@gmail.com" src="resources/images/qrcode.png"></a> -->
-<!-- 						</fieldset> -->
+						<!-- 						<fieldset> -->
+						<!-- 							<div> -->
+						<!-- 								Scan or click the<br> QR code below: -->
+						<!-- 							</div> -->
+						<!-- 							<br> <a href="mailto:dougshmkr@gmail.com"><img -->
+						<!-- 								alt="dougshmkr@gmail.com" src="resources/images/qrcode.png"></a> -->
+						<!-- 						</fieldset> -->
 					</form>
 				</div>
 				<div class="accordion-separator"></div></li>
 			<li>
 				<div class="accordion-content">
-					<img src="resources/images/doorBottom.jpg" width="100%"
-						height="100%" alt="" />
-						<div id="door_label"></div>
-<!-- 					<div id="door_label">Contact Us</div> -->
+					<img src="resources/images/doorBottom.png" width="100%"
+						height="100%" alt="doorBottom" />
+					<div id="door_label"></div>
+					<!-- 					<div id="door_label">Contact Us</div> -->
 				</div>
 				<div class="accordion-separator"></div>
 			</li>
