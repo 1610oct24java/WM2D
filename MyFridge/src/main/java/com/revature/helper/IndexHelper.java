@@ -41,7 +41,7 @@ public class IndexHelper {
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
 			modelMap.addAttribute("errorMessage",
-					"Please enter a usermane or password, but maybe I'm lion");
+					"Please enter a username or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
