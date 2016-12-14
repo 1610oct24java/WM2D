@@ -89,10 +89,10 @@ app.controller('myController', function($scope, $http, $filter) {
 		item = {}
 		//		item.userItemId = -1;
 		item.userId = $scope.items.userId;
-		item.itemId = [ {
+		item.itemId = {
 			"itemId" : -1,
 			"itemName" : $scope.newItemName
-		} ];
+		};
 		item.itemStatus = 1;
 		item.measureAmount = $scope.newItemAmount;
 		item.expirationDate = $scope.newExpirationDate;
