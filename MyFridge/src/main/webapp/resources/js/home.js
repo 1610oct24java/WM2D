@@ -86,7 +86,7 @@ app.controller('myController', function($scope, $http, $filter) {
 	}
 	var item;
 	function makeItem() {
-		item = []
+		item = {}
 		//		item.userItemId = -1;
 		item.userId = $scope.items.userId;
 		item.itemId = [ {
