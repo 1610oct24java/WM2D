@@ -132,6 +132,7 @@
 						data-ng-show="sortType == 'itemDetails' && sortReverse"
 						class="fa fa-caret-up"></span>
 				</a></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -149,8 +150,8 @@
 				data-ng-class="{yellow:dateDifference(item) < 518400000, red:dateDifference(item) < 1}">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td id="row">{{item.itemId.itemName}}</td>
-				<td id="row"><input type="number" min="0" style="width: 110px"
-					data-ng-model="item.measureAmount" />
+				<td id="row"><input type="number" min="0.01" max="99"
+					style="width: 110px" data-ng-model="item.measureAmount" />
 					<button id="update" class="btn btn-sm" data-ng-click="update(item)">Update</button></td>
 				<td id="row">{{item.measureType}}</td>
 				<td id="row">{{item.expirationDate}}</td>

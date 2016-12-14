@@ -21,9 +21,7 @@ import com.revature.dao.UserItemDAOimpl;
 public class HomeHelper {
 	
 	/**
-	 * ****************************************************************************************************
 	 * This is the method to add items to the fridge
-	 * ***************************************************************************************************.
 	 *
 	 * @param ui
 	 *            the ui
@@ -35,6 +33,11 @@ public class HomeHelper {
 	public static User addItem(UserItem ui, HttpSession session) {
 		ItemDAO iDao = new ItemDAOimpl();
 		UserItemDAO uiDao = new UserItemDAOimpl();
+		String lowerName = ui.getItemId().getItemName().toLowerCase();
+		String newName = (lowerName.charAt(0)+"").toUpperCase() + lowerName.substring(1).toLowerCase();
+		Item item = ui.getItemId();
+		item.setItemName(newName);
+		ui.setItemId(item);
 		Item i = iDao.getItemByName(ui.getItemId().getItemName()); // see if the
 																	// current
 																	// item
@@ -77,9 +80,7 @@ public class HomeHelper {
 	}
 	
 	/**
-	 * ****************************************************************************************************
 	 * This is the method to add items to the shopping list
-	 * ***************************************************************************************************.
 	 *
 	 * @param ui
 	 *            the ui
@@ -91,6 +92,11 @@ public class HomeHelper {
 	public static User addItemToShoppingList(UserItem ui, HttpSession session) {
 		ItemDAO iDao = new ItemDAOimpl();
 		UserItemDAO uiDao = new UserItemDAOimpl();
+		String lowerName = ui.getItemId().getItemName().toLowerCase();
+		String newName = (lowerName.charAt(0)+"").toUpperCase() + lowerName.substring(1).toLowerCase();
+		Item item = ui.getItemId();
+		item.setItemName(newName);
+		ui.setItemId(item);
 		Item i = iDao.getItemByName(ui.getItemId().getItemName()); // see if the
 																	// current
 																	// item
@@ -196,12 +202,13 @@ public class HomeHelper {
 		session.setAttribute("currentUser", user);
 		return user;
 	}
-
-	public static User updateItemFromFridgeHelper(UserItem ui, HttpSession session) {
+	
+	public static User updateItemFromFridgeHelper(UserItem ui,
+			HttpSession session) {
 		UserItemDAO uiDao = new UserItemDAOimpl();
 		UserDAO uDao = new UserDAOimpl();
 		uiDao.updateUserItem(ui);
-		User user = (User)session.getAttribute("currentUser");
+		User user = (User) session.getAttribute("currentUser");
 		user = uDao.getUserByName(user.getUsername());
 		session.setAttribute("currentUser", user);
 		return user;

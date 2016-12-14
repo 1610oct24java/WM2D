@@ -63,7 +63,7 @@
 
 							<input type="text" class="form-control"
 								placeholder="Search Items" data-ng-model="searchItems"
-								id="search">
+								id="search" spellcheck="true">
 						</div>
 					</div>
 				</form>
@@ -104,14 +104,15 @@
 							data-ng-show="sortType == 'itemDetails' && sortReverse"
 							class="fa fa-caret-up"></span>
 					</a></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><input type="text" data-ng-model="newItemName" /></td>
+					<td><input type="text" data-ng-model="newItemName" spellcheck="true"/></td>
 					<td><input type="number" data-ng-model="newItemAmount" />
-					<td><input type="text" data-ng-model="newItemDetails" /></td>
-					<td><button data-ng-click="createNewItem()">Create
+					<td><input type="text" data-ng-model="newItemDetails" spellcheck="true"/></td>
+					<td><button class="btn" data-ng-click="createNewItem()">Add
 							Item</button></td>
 				</tr>
 				<tr
@@ -119,8 +120,9 @@
 					<td>{{item.itemId.itemName}}</td>
 					<td>{{item.measureAmount}}</td>
 					<td><input type="text" data-ng-model="item.itemDetails"
-						placeholder={{item.itemDetails}} /></td>
-					<td><button data-ng-click="remove(item)">X</button></td>
+						placeholder={{item.itemDetails}} spellcheck="true" /></td>
+					<td><button class="btn btn-danger btn-sm"
+							data-ng-click="remove(item)">X</button></td>
 			</tbody>
 		</table>
 	</div>

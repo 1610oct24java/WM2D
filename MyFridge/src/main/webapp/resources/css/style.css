@@ -4,33 +4,52 @@
 
 #title {
 	font-variant: small-caps;
-	font-size: 18pt;
+	font-weight: bold;
 	border-style: outset;
 	border-width: 6px;
 }
 
+#title>p {
+	font-size: 18pt;
+}
+
+#table>tbody>tr>td {
+	border-collapse: collapse;
+	border: 1.75px solid black;
+	text-align: center;
+	vertical-align: center;
+}
+
+#table>thead>tr>th {
+	border-collapse: collapse;
+	border: 1.75px solid black;
+	text-align: center;
+	vertical-align: center;
+	font-size: 19pt;
+}
+
 .green>#title {
-	background-color: #42f461 !important;
+	background-color: #a0f8bd;
 }
 
 .yellow>#title {
-	background-color: #fbf757 !important;
+	background-color: #f7f373;
 }
 
 .red>#title {
-	background-color: #ff3c3c !important;
+	background-color: #ff8080;
 }
 
 .green>#row {
-	background-color: #42f461 !important;
+	background-color: #a0f8bd;
 }
 
 .yellow>#row {
-	background-color: #fbf757 !important;
+	background-color: #f7f373;
 }
 
 .red>#row {
-	background-color: #ff3c3c !important;
+	background-color: #fea7a7;
 }
 
 .accordion.Fridge {

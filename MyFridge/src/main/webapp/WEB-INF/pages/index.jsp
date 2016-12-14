@@ -85,13 +85,13 @@
 					<img src="resources/images/doorInTop.jpg" width="100%"
 						height="100%" alt="" />
 					<form id="interior">
-						<fieldset>
-							<legend>My Fridge</legend>
-							<div>
-								This is where a<br> basic app description<br> will go
-							</div>
+<!-- 						<fieldset> -->
+<!-- 							<legend>My Fridge</legend> -->
+<!-- 							<div> -->
+<!-- 								This is where a<br> basic app description<br> will go -->
+<!-- 							</div> -->
 
-						</fieldset>
+<!-- 						</fieldset> -->
 					</form>
 				</div>
 				<div class="accordion-separator"></div></li>
@@ -100,7 +100,8 @@
 				<div class="accordion-content">
 					<img src="resources/images/doorTop.jpg" width="100%" height="100%"
 						alt="" />
-					<div id="door_label">About</div>
+						<div id="door_label"></div>
+<!-- 					<div id="door_label">About</div> -->
 				</div>
 				<div class="accordion-separator"></div>
 			</li>
@@ -115,13 +116,13 @@
 					<img src="resources/images/doorInBottom.jpg" width="100%"
 						height="100%" alt="" />
 					<form id="interior">
-						<fieldset>
-							<div>
-								Scan or click the<br> QR code below:
-							</div>
-							<br> <a href="mailto:dougshmkr@gmail.com"><img
-								alt="dougshmkr@gmail.com" src="resources/images/qrcode.png"></a>
-						</fieldset>
+<!-- 						<fieldset> -->
+<!-- 							<div> -->
+<!-- 								Scan or click the<br> QR code below: -->
+<!-- 							</div> -->
+<!-- 							<br> <a href="mailto:dougshmkr@gmail.com"><img -->
+<!-- 								alt="dougshmkr@gmail.com" src="resources/images/qrcode.png"></a> -->
+<!-- 						</fieldset> -->
 					</form>
 				</div>
 				<div class="accordion-separator"></div></li>
@@ -129,7 +130,8 @@
 				<div class="accordion-content">
 					<img src="resources/images/doorBottom.jpg" width="100%"
 						height="100%" alt="" />
-					<div id="door_label">Contact Us</div>
+						<div id="door_label"></div>
+<!-- 					<div id="door_label">Contact Us</div> -->
 				</div>
 				<div class="accordion-separator"></div>
 			</li>

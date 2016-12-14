@@ -14,20 +14,21 @@
 <body>
 
 	<div class="alert alert-danger" role="alert">
-		<strong>Danger!</strong> If you are seeing this page, something <strong>MAJOR</strong>
-		happened.
+		<strong>Oops!</strong> Looks like your network is having difficulties.
 	</div>
 
 	<h3>Error</h3>
-	<br> Please contact support...
-	<p>
-		Cause:<br>
-		<%=exception.getCause()%>
-	</p>
-	<p>
-		Message:<br>
-		<%=exception.getMessage()%>
-	</p>
+	Please make a note of this error and contact support...
+	<div>
+		<p>
+			<strong>Cause:</strong><br>
+			<%=exception.getCause()%>
+		</p>
+		<p>
+			<strong>Message:</strong><br>
+			<%=exception.getMessage()%>
+		</p>
+	</div>
 	<!--
     Failed URL: ${url}
     

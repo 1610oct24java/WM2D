@@ -80,19 +80,21 @@
 	<!-- test content -->
 	<form>
 		<input type='text' data-ng-model='recipe.recipeName'
-			placeholder='Recipe Name'> | <input type='text'
-			data-ng-model='recipe.recipeUrl' placeholder='Link to instructions'>
-		<br> <br>
+			placeholder='Recipe Name' spellcheck="true"> | <input
+			type='text' data-ng-model='recipe.recipeUrl'
+			placeholder='Link to instructions'> <br> <br>
 		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45"
-			placeholder="Custom Instructions"></textarea>
+			placeholder="Custom Instructions" spellcheck="true"></textarea>
 		<div>
 			<select data-ng-repeat="item in recipe.items  track by $index "
 				data-ng-model='recipe.items[$index].itemId'>
 				<option data-ng-repeat="item in items | orderBy: 'itemName'"
 					value={{item.itemId}}>{{item.itemName}}</option>
 			</select> <br>
-			<button data-ng-click="addFormField()">Add Item</button>
-			<button data-ng-click="submitRecipe()">Save Recipe</button>
+			<button class="btn btn-sm" data-ng-click="addFormField()">Add
+				Item</button>
+			<button class="btn btn-sm" data-ng-click="submitRecipe()">Save
+				Recipe</button>
 		</div>
 	</form>
 	<br>
@@ -102,12 +104,12 @@
 			data-ng-repeat="recipe in recipes | filter:searchRecipes  | orderBy:'-completion'"
 			data-ng-class="{green:recipe.completion == 1, yellow:recipe.completion < 1, red:recipe.completion < 0.5}">
 			<div class="panel-heading" role="tab" id="title">
-				<h4 class="panel-title">
+				<p class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion1"
 						href="#collapse{{$index}}" style="width: 100%;">{{recipe.recipeName}}
 						| {{recipe.userAmount}}/{{recipe.items.length}} required item(s) |
 						{{recipe.completion * 100}} %</a>
-				</h4>
+				</p>
 			</div>
 			<div id="collapse{{$index}}" class="panel-collapse collapse">
 				<div class="panel-body">
