@@ -89,7 +89,7 @@
 	<h1>Your Fridge</h1>
 
 	<!-- Printing out the User's items -->
-	<table id=table class="table table-bordered table-striped">
+	<table id="table" class="table table-bordered table-striped">
 		<!-- Setting up table to be sortable via title click -->
 		<thead>
 			<tr>
@@ -137,20 +137,23 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><input type="text" data-ng-model="newItemName" /></td>
+				<td><input type="text" data-ng-model="newItemName"
+					spellcheck="true" /></td>
 				<td><input type="number" data-ng-model="newItemAmount" /></td>
-				<td><input type="text" data-ng-model="newItemMeasureType" /></td>
+				<td><input type="text" data-ng-model="newItemMeasureType"
+					spellcheck="true" /></td>
 				<td><input type="date" data-ng-model="newExpirationDate" /></td>
-				<td><input type="text" data-ng-model="newItemDetails" /></td>
-				<td><button class="btn" data-ng-click="createNewItem()">Create
+				<td><input type="text" data-ng-model="newItemDetails"
+					spellcheck="true" /></td>
+				<td><button class="btn" data-ng-click="createNewItem()">Add
 						Item</button></td>
 			</tr>
 			<tr
 				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems"
 				data-ng-class="{yellow:dateDifference(item) < 518400000, red:dateDifference(item) < 1}">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
-				<td id="row">{{item.itemId.itemName}}</td>
-				<td id="row"><input type="number" min="0.01" max="99"
+				<td id="row"><strong>{{item.itemId.itemName}}</strong></td>
+				<td id="row"><input type="number" min="0.01"
 					style="width: 110px" data-ng-model="item.measureAmount" />
 					<button id="update" class="btn btn-sm" data-ng-click="update(item)">Update</button></td>
 				<td id="row">{{item.measureType}}</td>
