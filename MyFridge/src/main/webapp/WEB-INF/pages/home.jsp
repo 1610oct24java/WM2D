@@ -139,7 +139,8 @@
 			<tr>
 				<td><input type="text" data-ng-model="newItemName"
 					spellcheck="true" /></td>
-				<td><input type="number" data-ng-model="newItemAmount" /></td>
+				<td><input type="number" min="0.01" max="99"
+					data-ng-model="newItemAmount" /></td>
 				<td><input type="text" data-ng-model="newItemMeasureType"
 					spellcheck="true" /></td>
 				<td><input type="date" data-ng-model="newExpirationDate" /></td>
@@ -153,7 +154,7 @@
 				data-ng-class="{yellow:dateDifference(item) < 518400000, red:dateDifference(item) < 1}">
 				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
 				<td id="row"><strong>{{item.itemId.itemName}}</strong></td>
-				<td id="row"><input type="number" min="0.01"
+				<td id="row"><input type="number" min="0.01" max="99"
 					style="width: 110px" data-ng-model="item.measureAmount" />
 					<button id="update" class="btn btn-sm" data-ng-click="update(item)">Update</button></td>
 				<td id="row">{{item.measureType}}</td>

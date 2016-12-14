@@ -84,7 +84,10 @@
 			type='text' data-ng-model='recipe.recipeUrl'
 			placeholder='Link to instructions'> <br> <br>
 		<textarea rows="5" data-ng-model='recipe.recipeDescription' cols="45"
-			placeholder="Custom Instructions" spellcheck="true"></textarea>
+			placeholder="Custom Instructions" spellcheck="true" maxlength="500"
+			data-ng-trim="false"></textarea>
+		<br> <span>{{500 - recipe.recipeDescription.length}} of
+			500 characters left</span>
 		<div>
 			<select data-ng-repeat="item in recipe.items  track by $index "
 				data-ng-model='recipe.items[$index].itemId'>
@@ -108,7 +111,7 @@
 					<a data-toggle="collapse" data-parent="#accordion1"
 						href="#collapse{{$index}}" style="width: 100%;">{{recipe.recipeName}}
 						| {{recipe.userAmount}}/{{recipe.items.length}} required item(s) |
-						{{recipe.completion * 100}} %</a>
+						{{(recipe.completion * 100) | number:0}} % </a>
 				</p>
 			</div>
 			<div id="collapse{{$index}}" class="panel-collapse collapse">
