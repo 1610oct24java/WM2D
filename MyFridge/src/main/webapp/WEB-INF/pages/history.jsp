@@ -16,13 +16,17 @@
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
-<title>MyFridge | Shopping List</title>
+<title>MyFridge | History</title>
 </head>
+
+<!-- Setting up angular app/controller -->
 <body class="container" data-ng-app="myApp"
 	data-ng-controller="myController">
 
+	<!-- Temporary storage for the user information to work with -->
 	<input type="hidden" id="test" name="x" value="${UserJSON}">
 
+	<!-- The JSTL way -->
 	<!-- <div>${currentUser}</div> -->
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -38,17 +42,18 @@
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="topFixedNavbar1">
-				<form:form action="viewFridgeHistory" method="POST"
+				<form:form action="homepage" method="POST"
 					class="navbar-form navbar-left">
-					<button type="submit" class="btn btn-default">History</button>
+					<button type="submit" class="btn btn-default">My Fridge</button>
 				</form:form>
 				<form:form action="viewRecipes" method="POST"
 					class="navbar-form navbar-left">
 					<button type="submit" class="btn btn-default">View Recipes</button>
 				</form:form>
-				<form:form action="homepage" method="POST"
+				<form:form action="sList" method="POST"
 					class="navbar-form navbar-left">
-					<button type="submit" class="btn btn-default">My Fridge</button>
+					<button type="submit" class="btn btn-default">Shopping
+						List</button>
 				</form:form>
 				<form:form action="logout" method="POST"
 					class="navbar-form navbar-left">
@@ -61,9 +66,10 @@
 								<i class="fa fa-search"></i>
 							</div>
 
+							<!-- Creating a text search field -->
 							<input type="text" class="form-control"
 								placeholder="Search Items" data-ng-model="searchItems"
-								id="search" spellcheck="true">
+								id="search">
 						</div>
 					</div>
 				</form>
@@ -76,66 +82,49 @@
 	<br>
 	<br>
 
-	<div>
-		<h1>Shopping List!</h1>
-		<table id=table class="table table-bordered table-striped">
-			<thead>
-				<tr>
-					<th><a href='#'
-						data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
-							Name <span data-ng-show="sortType == 'name' && !sortReverse"
-							class="fa fa-caret-down"></span> <span
-							data-ng-show="sortType == 'name' && sortReverse"
-							class="fa fa-caret-up"></span>
-					</a></th>
-					<th><a href='#'
-						data-ng-click="sortType = 'measureAmount'; sortReverse = !sortReverse">
-							Amount <span
-							data-ng-show="sortType == 'measureAmount' && !sortReverse"
-							class="fa fa-caret-down"></span> <span
-							data-ng-show="sortType == 'measureAmount' && sortReverse"
-							class="fa fa-caret-up"></span>
-					</a></th>
-					<th><a href='#'
-						data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
-							Details <strong>*</strong> <span
-							data-ng-show="sortType == 'itemDetails' && !sortReverse"
-							class="fa fa-caret-down"></span> <span
-							data-ng-show="sortType == 'itemDetails' && sortReverse"
-							class="fa fa-caret-up"></span>
-					</a></th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><input type="text" data-ng-model="newItemName" spellcheck="true"/></td>
-					<td><input type="number" data-ng-model="newItemAmount" />
-					<td><input type="text" data-ng-model="newItemDetails" spellcheck="true"/></td>
-					<td><button class="btn" data-ng-click="createNewItem()">Add
-							Item</button></td>
-				</tr>
-				<tr
-					data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:statusFilter ">
-					<td>{{item.itemId.itemName}}</td>
-					<td>{{item.measureAmount}}</td>
-					<td><input type="text" data-ng-model="item.itemDetails"
-						placeholder={{item.itemDetails}} spellcheck="true" /></td>
-					<td><button class="btn btn-danger btn-sm"
-							data-ng-click="remove(item)">X</button></td>
-			</tbody>
-		</table>
-	</div>
-	<button onclick="printData()">Print List</button>
-	<br>
-	<br>
-	<br>
-	<div>
-		<strong>* Note:</strong> Modifying the details after creating the item
-		does not modify the database, but will show up when printed
-	</div>
+	<!-- Printing out the User's items -->
+	<h1>History</h1>
+	<table id=table class="table table-bordered table-striped">
+		<!-- Setting up table to be sortable via title click -->
+		<thead>
+			<tr>
+				<th><a href='#'
+					data-ng-click="sortType = 'name'; sortReverse = !sortReverse">
+						Name <span data-ng-show="sortType == 'name' && !sortReverse"
+						class="fa fa-caret-down"></span> <span
+						data-ng-show="sortType == 'name' && sortReverse"
+						class="fa fa-caret-up"></span>
+				</a></th>
+				<th><a href='#'
+					data-ng-click="sortType = 'expirationDate'; sortReverse = !sortReverse">
+						Expiration Date <span
+						data-ng-show="sortType == 'expirationDate' && !sortReverse"
+						class="fa fa-caret-down"></span> <span
+						data-ng-show="sortType == 'expirationDate' && sortReverse"
+						class="fa fa-caret-up"></span>
+				</a></th>
+				<th><a href='#'
+					data-ng-click="sortType = 'itemDetails'; sortReverse = !sortReverse">
+						Details <span
+						data-ng-show="sortType == 'itemDetails' && !sortReverse"
+						class="fa fa-caret-down"></span> <span
+						data-ng-show="sortType == 'itemDetails' && sortReverse"
+						class="fa fa-caret-up"></span>
+				</a></th>
+			</tr>
+		</thead>
+		<tbody>
 
-	<script src="resources/js/shoppingList.js" type="text/javascript"></script>
+			<tr
+				data-ng-repeat="item in items | orderBy:sortType:sortReverse | filter:searchItems | filter:expDateFilter">
+				<!-- Print out of the information (first itemName is from UserItem, 2 from Item-->
+				<td>{{item.itemId.itemName}}</td>
+				<td>{{item.expirationDate}}</td>
+				<td>{{item.itemDetails}}</td>
+		</tbody>
+	</table>
+
+	<script src="resources/js/history.js" type="text/javascript"></script>
 	<script src="resources/js/jquery-1.11.2.min.js" type="text/javascript"></script>
 	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
 </body>

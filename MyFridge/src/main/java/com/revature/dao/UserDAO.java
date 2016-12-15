@@ -35,4 +35,12 @@ public interface UserDAO {
 	 * @return the user by name
 	 */
 	User getUserByName(String username);
+	
+	/**
+	 * Update user.
+	 *
+	 * @param user
+	 *            the user
+	 */
+	void updateUser(User user);
 }

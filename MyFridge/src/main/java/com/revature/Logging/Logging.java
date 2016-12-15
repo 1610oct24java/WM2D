@@ -9,8 +9,6 @@ import org.apache.log4j.Logger;
 public class Logging {
 	
 	/** The log. */
-	// private static Logger log = LogManager.getRootLogger();
-	
 	private static Logger log = Logger.getRootLogger();
 	
 	/**

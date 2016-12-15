@@ -40,9 +40,8 @@ public class IndexHelper {
 		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute(
-					"errorMessage",
-					"please enter a usermane or password");
+			modelMap.addAttribute("errorMessage",
+					"Please enter a username or password");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
@@ -52,7 +51,7 @@ public class IndexHelper {
 			request.getSession().setAttribute("currentUser", u);
 			return "home";
 		} else {
-			modelMap.addAttribute("errorMessage", "invalid username/password");
+			modelMap.addAttribute("errorMessage", "Invalid username/password");
 			return "index";
 		}
 	}
@@ -73,9 +72,8 @@ public class IndexHelper {
 		
 		modelMap.addAttribute("User", user);
 		if (bindingResult.hasErrors()) {
-			modelMap.addAttribute(
-					"errorMessage",
-					"please enter a username or password");
+			modelMap.addAttribute("errorMessage",
+					"Please enter a usermane or password, but maybe I'm lion");
 			return "index";
 		}
 		UserDAO uDao = new UserDAOimpl();
